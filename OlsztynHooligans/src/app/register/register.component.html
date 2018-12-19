@@ -1,22 +1,31 @@
 <html>
-<body id="LoginForm">
+<body id="RegisterForm">
 
   <div class="container">
     <h1 class="form-heading"style="font-family:Arial">Register Form</h1>
-    <div class="login-form" style="font-family:Arial">
+    <div class="register-form" style="font-family:Arial">
       <div class="main-div">
-        <h1>Login</h1>
-        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <h1>Register</h1>
+        <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
           <div class="form-group">
             <app-label [for]="'email'" [value]="'Email'"></app-label>
             <app-input [type]="'text'" [classname]="'form-control'" [name]="'email'" [required]="'required'"></app-input>
+          </div>
+          <div class="form-group">
+            <app-label [for]="'name'" [value]="'Name'"></app-label>
+            <app-input [type]="'text'" [classname]="'form-control'" [name]="'name'" [required]="'required'"></app-input>
+          </div>
+          <div class="form-group">
+            <app-label [for]="'surname'" [value]="'Surname'"></app-label>
+            <app-input [type]="'text'" [classname]="'form-control'" [name]="'surname'" [required]="'required'"></app-input>
           </div>
           <div class="form-group">
             <app-label [for]="'password'" [value]="'Password'"></app-label>
             <app-input [type]="'text'" [classname]="'form-control'" [name]="'password'" [required]="'required'"></app-input>
           </div>
           <div class="form-group">
-            <app-button [type]="'submit'" [classname]="'btn btn--success  block'" [value]="'Login'"></app-button>
+            <app-label [for]="'confirmpassword'" [value]="'ConfirmPassword'"></app-label>
+            <app-input [type]="'text'" [classname]="'form-control'" [name]="'confirmpassword'" [required]="'required'"></app-input>
           </div>
         </form>
         <div class="form-group">
