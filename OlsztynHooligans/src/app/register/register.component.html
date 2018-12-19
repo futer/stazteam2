@@ -26,7 +26,10 @@
             <app-label [for]="'confirmpassword'" [value]="'ConfirmPassword'"></app-label>
             <app-input [type]="'text'" [classname]="'form-control'" [name]="'confirmpassword'" [required]="'required'"></app-input>
           </div>
-          <!-- <div class="" -->
+          <div class="form-group">
+            <app-label [for]="'Image'" [value]="'Image'"></app-label>
+            <app-input [type]="'file'" [classname]="'form-control'" [name]="'Image'" [required]="'required'"></app-input>
+          </div>
         </form>
         <div class="form-group">
           <app-button (click)="getLogin()" [classname]="'btn btn--info block'" [value]="'Register'"></app-button>
