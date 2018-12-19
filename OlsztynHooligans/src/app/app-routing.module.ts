@@ -5,12 +5,14 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { DocumentComponent } from './document/document.component';
+import { EditUserPasswordComponent } from './edit-user-password/edit-user-password.component';
 
 const routes: Routes = [
   { path: '',redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'edit', component: EditUserComponent},
+  { path: 'editpassword', component: EditUserPasswordComponent},
   { path: 'dashboard', component: DashboardComponent},
   { path: 'Document/:id', component: DocumentComponent},
   { path: 'Document', component: DocumentComponent}
