@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-input',
@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputComponent implements OnInit {
 
+  @Input() required?:string;
+  @Input() type:string;
+  @Input() classname:string;
+  @Input() name:string;
+  @Input() readonly:string;
+  @Input() value:string;
+
+  @Output()
+  childChanged = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit() {
+    this.childChanged.emit(this.value);
   }
 
+  inputkeyup(input)
+  {
+    console.log(input.value);
+    this.childChanged.emit(input.value);
+  }
 }

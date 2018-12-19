@@ -11,6 +11,9 @@ import { DocumentComponent } from './document/document.component';
 import { ChatComponent } from './chat/chat.component';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +27,10 @@ import { BookmarksComponent } from './bookmarks/bookmarks.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

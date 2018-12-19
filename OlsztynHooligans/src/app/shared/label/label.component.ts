@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-label',
@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LabelComponent implements OnInit {
 
+  @Input() for:string;
+  @Input() value:string;
+  
   constructor() { }
 
   ngOnInit() {

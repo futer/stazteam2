@@ -12,8 +12,21 @@ import { DocumentIndexComponent } from './document-index/document-index.componen
 import { DocumentIndexBoxComponent } from './document-index-box/document-index-box.component';
 
 @NgModule({
-  declarations: [ButtonComponent, ImageComponent, InputComponent, LabelComponent, FormComponent, LiComponent, ChatComponent, NavbarComponent, DocumentIndexComponent, DocumentIndexBoxComponent],
+  declarations: [ButtonComponent, 
+    ImageComponent, 
+    InputComponent, 
+    LabelComponent, 
+    FormComponent, 
+    LiComponent, 
+    ChatComponent, 
+    NavbarComponent, 
+    DocumentIndexComponent, 
+    DocumentIndexBoxComponent
+  ],
   imports: [
+    CommonModule
+  ],
+  exports: [
     ButtonComponent,
     ImageComponent,
     InputComponent,
@@ -23,8 +36,7 @@ import { DocumentIndexBoxComponent } from './document-index-box/document-index-b
     ChatComponent,
     NavbarComponent,
     DocumentIndexComponent,
-    DocumentIndexBoxComponent,
-    CommonModule
+    DocumentIndexBoxComponent
   ]
 })
 export class SharedModule { }
