@@ -2,10 +2,9 @@
 <body id="RegisterForm">
 
   <div class="container">
-    <h1 class="form-heading"style="font-family:Arial">Register Form</h1>
+    <h1 class="form-heading"style="font-family:Arial">Register</h1>
     <div class="register-form" style="font-family:Arial">
       <div class="main-div">
-        <h1>Register</h1>
         <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
           <div class="form-group">
             <app-label [for]="'email'" [value]="'Email'"></app-label>
@@ -30,7 +29,7 @@
           <!-- <div class="" -->
         </form>
         <div class="form-group">
-          <app-button (click)="getRegister()" [classname]="'btn btn--info block'" [value]="'Register'"></app-button>
+          <app-button (click)="getLogin()" [classname]="'btn btn--info block'" [value]="'Register'"></app-button>
         </div>
       </div>
     </div>

@@ -2,10 +2,9 @@
 <body id="LoginForm">
 
   <div class="container">
-    <h1 class="form-heading"style="font-family:Arial">login Form</h1>
+    <h1 class="form-heading"style="font-family:Arial">Login</h1>
     <div class="login-form" style="font-family:Arial">
       <div class="main-div">
-        <h1>Login</h1>
         <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
           <div class="form-group">
             <app-label [for]="'email'" [value]="'Email'"></app-label>
@@ -19,9 +18,8 @@
             <app-button [type]="'submit'" [classname]="'btn btn--success  block'" [value]="'Login'"></app-button>
           </div>
         </form>
-        <div class="form-group">
-          <app-button (click)="getRegister()" [classname]="'btn btn--info block'" [value]="'Register'"></app-button>
-        </div>
+        Dont have an account?<a routerLink="/register">REGISTER NOW!</a>
+
       </div>
     </div>
   </div>
