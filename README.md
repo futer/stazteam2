@@ -1,2 +1,2 @@
 # stazteam2ssdasd
-Maciej krul
+Korwin krul
