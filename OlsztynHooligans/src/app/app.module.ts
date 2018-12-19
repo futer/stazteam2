@@ -13,6 +13,7 @@ import { BookmarksComponent } from './bookmarks/bookmarks.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import { EditUserPasswordComponent } from './edit-user-password/edit-user-password.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SharedModule } from './shared/shared.module';
     DashboardComponent,
     DocumentComponent,
     ChatComponent,
-    BookmarksComponent
+    BookmarksComponent,
+    EditUserPasswordComponent
   ],
   imports: [
     BrowserModule,
