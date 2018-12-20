@@ -1,4 +1,16 @@
-<p>
-  document works!
-</p>
-<textarea rows="20" cols="50"></textarea>
+<h3>Tytuł dokumentu</h3>
+
+
+<div>
+  <textarea rows="20" cols="50"></textarea>
+  <table>
+    <tr>
+      <td>
+          <app-button [type]="'submit'" [classname]="'btn btn--success  block'" [value]="'Save'"></app-button>
+      </td>
+      <td>
+          <app-button [type]="'submit'" [classname]="'btn btn--success  block'" [value]="'Approve'" ></app-button>
+      </td>
+    </tr>
+  </table>  
+</div>
