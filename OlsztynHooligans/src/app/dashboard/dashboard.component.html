@@ -1,7 +1,41 @@
-<div class="sidebar">
-  <ul>
-    <li><a href="/login">link1 </a></li>
-    <li class="right"><a href="/register">link2 </a></li>
-    <li class="right"><a href="/login">link3 </a></li>
-  </ul>
+<div class="grid-container">
+  <div class="item2">
+    <div class="sidebar">
+      <ul>
+        <li><a href="/login">link1 </a></li>
+        <li class="right"><a href="/register">link2 </a></li>
+        <li class="right"><a href="/login">link3 </a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="item3">
+    <table>
+      <tr>
+        <th>Nazwa</th>
+        <th>Data modyfikacji</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td>Test</td>
+        <td>12/20/2018</td>
+        <td>
+          <app-button [type]="'text'" [classname]="'btn btn--success  block'" [value]="'Edit'"></app-button>
+        </td>
+        <td>
+          <app-button [type]="'text'" [classname]="'btn btn--success  block'" [value]="'Delete'"></app-button>
+        </td>
+      </tr>
+      <tr>
+          <td>Test</td>
+          <td>12/20/2018</td>
+          <td>
+            <app-button [type]="'text'" [classname]="'btn btn--success  block'" [value]="'Edit'"></app-button>
+          </td>
+          <td>
+            <app-button [type]="'text'" [classname]="'btn btn--success  block'" [value]="'Delete'"></app-button>
+          </td>
+        </tr>
+    </table>
+  </div>
 </div>
