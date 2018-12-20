@@ -1,3 +1,10 @@
-<p>
-  chat works!
-</p>
+<div class = "container">
+<h3>Chat</h3>
+<textarea rows="20" cols="70" type="text"></textarea>
+<br>
+</div>
+<div class = "textPlusSend">
+<textarea rows="2" cols="60" type="text" id="message" [(ngModel)]="messageText"></textarea>
+
+<button (click)="sendMessage(userName, messageText)">Send</button>
+</div>

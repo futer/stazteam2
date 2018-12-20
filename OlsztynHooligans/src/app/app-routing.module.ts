@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { DocumentComponent } from './document/document.component';
 import { EditUserPasswordComponent } from './edit-user-password/edit-user-password.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   { path: '',redirectTo: '/login', pathMatch: 'full'},
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'editpassword', component: EditUserPasswordComponent},
   { path: 'dashboard', component: DashboardComponent},
   { path: 'document/:id', component: DocumentComponent},
-  { path: 'document', component: DocumentComponent}
+  { path: 'document', component: DocumentComponent},
+  { path: 'chat', component: ChatComponent}
 ];
 
 @NgModule({
