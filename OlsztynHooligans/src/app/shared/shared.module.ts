@@ -10,6 +10,7 @@ import { ChatComponent } from './chat/chat.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DocumentIndexComponent } from './document-index/document-index.component';
 import { DocumentIndexBoxComponent } from './document-index-box/document-index-box.component';
+import { ButtonlistComponent } from './buttonlist/buttonlist.component';
 
 @NgModule({
   declarations: [ButtonComponent, 
@@ -21,7 +22,8 @@ import { DocumentIndexBoxComponent } from './document-index-box/document-index-b
     ChatComponent, 
     NavbarComponent, 
     DocumentIndexComponent, 
-    DocumentIndexBoxComponent
+    DocumentIndexBoxComponent,
+    ButtonlistComponent
   ],
   imports: [
     CommonModule
@@ -36,7 +38,8 @@ import { DocumentIndexBoxComponent } from './document-index-box/document-index-b
     ChatComponent,
     NavbarComponent,
     DocumentIndexComponent,
-    DocumentIndexBoxComponent
+    DocumentIndexBoxComponent,
+    ButtonlistComponent
   ]
 })
 export class SharedModule { }
