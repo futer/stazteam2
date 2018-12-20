@@ -17,4 +17,9 @@ export class LoginComponent implements OnInit {
   {
       this.router.navigate([`/register`]);
   }
+
+  onSubmit()
+  {
+      this.router.navigate([`/dashboard`]);
+  }
 }
