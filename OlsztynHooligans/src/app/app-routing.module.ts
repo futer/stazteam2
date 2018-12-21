@@ -8,7 +8,7 @@ import { DocumentComponent } from './document/document.component';
 import { EditUserPasswordComponent } from './edit-user-password/edit-user-password.component';
 
 const routes: Routes = [
-  { path: '',redirectTo: '/login', pathMatch: 'full'},
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'edit', component: EditUserComponent},

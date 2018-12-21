@@ -2,12 +2,6 @@ textarea{
     resize: none; 
     overflow: auto;
 }
-.buttons-inline{
-    width: 380px;
-    display: flex;
-    justify-content: space-between;
-}
-
 .title{
     width: 380px;
     display: flex;
@@ -18,8 +12,8 @@ textarea{
 .main-div{
     margin: 10px;
 }
-.btn{
-        height: 26px;
-        border-top-width: 2px;
-        margin-top: 15px;
+.buttons{
+    width: 380px;
+    display: flex;
+    justify-content: space-between;
 }

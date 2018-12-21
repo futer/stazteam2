@@ -4,27 +4,27 @@
     <div class="main-div">
       <form #editForm="ngForm" (ngSubmit)="onSubmit(editForm)">
         <div class="form-group">
-          <app-label [for]="'email'" [value]="'Email'"></app-label>
+          <app-label [for]="'email'">Email</app-label>
           <app-input [type]="'text'" [name]="'email'" [required]="'required'"></app-input>
         </div>
         <div class="form-group">
-          <app-label [for]="'name'" [value]="'Name'"></app-label>
+          <app-label [for]="'name'">Name</app-label>
           <app-input [type]="'text'" [name]="'name'" [required]="'required'"></app-input>
         </div>
         <div class="form-group">
-          <app-label [for]="'surname'" [value]="'Surname'"></app-label>
+          <app-label [for]="'surname'">Surname</app-label>
           <app-input [type]="'text'" [name]="'surname'" [required]="'required'"></app-input>
         </div>
         <div class="form-group">
-          <app-label [for]="'Image'" [value]="'Image'"></app-label>
+          <app-label [for]="'Image'">Image</app-label>
           <input type="file" name="Image">
         </div>
       </form>
       <div class="form-group">
-        <app-button (click)="changePassword()" [value]="'Change Password'"></app-button>
+        <app-button (click)="changePassword()">Change Password</app-button>
       </div>
       <div class="form-group">
-        <app-button (click)="getRegister()" [value]="'Save'"></app-button>
+        <app-button (click)="getRegister()">Save</app-button>
       </div>        
     </div>
   </div>
