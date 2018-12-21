@@ -1,8 +1,25 @@
 textarea{
     resize: none; 
     overflow: auto;
-    margin: 2px 0 0 0;
 }
-table {
-    width: 750px;
+.buttons-inline{
+    width: 380px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title{
+    width: 380px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    margin: 10px 0 ;
+}
+.main-div{
+    margin: 10px;
+}
+.btn{
+        height: 26px;
+        border-top-width: 2px;
+        margin-top: 15px;
 }

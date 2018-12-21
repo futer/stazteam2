@@ -1,9 +1,13 @@
 <div class="container">
     <div class="main-div">
-      <h3>Tytuł dokumentu</h3>
-        <textarea rows="20" cols="50"></textarea>
-        
-        <app-button [type]="'submit'" [classname]="'btn btn--success'" [value]="'Save'"></app-button>
-        <app-button [type]="'submit'" [classname]="'btn btn--success'" [value]="'Approve'" ></app-button>
+      <div class="title">
+          <app-input [type]="'text'" [name]="'title'" [required]="'required'" [readonly]="readonly" [value]="title"></app-input>
+          <p>Document title:</p>
+      </div>
+      <textarea rows="20" cols="50"></textarea>
+        <div class="buttons-inline">
+          <app-button [type]="'submit'" [value]="'Save'"></app-button>
+          <app-button [type]="'submit'" [value]="'Approve'"></app-button>
+        </div>
     </div>
 </div>
