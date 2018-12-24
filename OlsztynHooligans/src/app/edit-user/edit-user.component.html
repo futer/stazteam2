@@ -1,37 +1,31 @@
-<html>
-<body id="EditForm">
-
-  <div class="container">
-    <h1 class="form-heading"style="font-family:Arial">Edit User</h1>
-    <div class="edit-form" style="font-family:Arial">
-      <div class="main-div">
-        <form #editForm="ngForm" (ngSubmit)="onSubmit(editForm)">
-          <div class="form-group">
-            <app-label [for]="'email'" [value]="'Email'"></app-label>
-            <app-input [type]="'text'" [classname]="'form-control'" [name]="'email'" [required]="'required'"></app-input>
-          </div>
-          <div class="form-group">
-            <app-label [for]="'name'" [value]="'Name'"></app-label>
-            <app-input [type]="'text'" [classname]="'form-control'" [name]="'name'" [required]="'required'"></app-input>
-          </div>
-          <div class="form-group">
-            <app-label [for]="'surname'" [value]="'Surname'"></app-label>
-            <app-input [type]="'text'" [classname]="'form-control'" [name]="'surname'" [required]="'required'"></app-input>
-          </div>
-          <div class="form-group">
-            <app-label [for]="'Image'" [value]="'Image'"></app-label>
-            <input type="file" name="Image">
-         </div>
-        </form>
+<div class="container">
+  <h1 class="form-heading"style="font-family:Arial">Edit User</h1>
+  <div class="edit-form" style="font-family:Arial">
+    <div class="main-div">
+      <form #editForm="ngForm" (ngSubmit)="onSubmit(editForm)">
         <div class="form-group">
-          <app-button (click)="changePassword()" [classname]="'btn btn--info block'" [value]="'Change Password'"></app-button>
+          <app-label [for]="'email'">Email</app-label>
+          <app-input [type]="'text'" [name]="'email'" [required]="'required'"></app-input>
         </div>
         <div class="form-group">
-          <app-button (click)="getRegister()" [classname]="'btn btn--info block'" [value]="'Save'"></app-button>
-        </div>        
+          <app-label [for]="'name'">Name</app-label>
+          <app-input [type]="'text'" [name]="'name'" [required]="'required'"></app-input>
+        </div>
+        <div class="form-group">
+          <app-label [for]="'surname'">Surname</app-label>
+          <app-input [type]="'text'" [name]="'surname'" [required]="'required'"></app-input>
+        </div>
+        <div class="form-group">
+          <app-label [for]="'Image'">Image</app-label>
+          <input type="file" name="Image">
+        </div>
+      </form>
+      <div class="form-group">
+        <app-button (click)="changePassword()">Change Password</app-button>
       </div>
+      <div class="form-group">
+        <app-button (click)="getRegister()">Save</app-button>
+      </div>        
     </div>
   </div>
-</body>
-
-</html>
+</div>

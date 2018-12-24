@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocumentComponent implements OnInit {
 
-  constructor() { }
+  title: string;
+  constructor() {}
 
   ngOnInit() {
+    this.title = 'Default Docuemnt Title';
   }
-
 }
