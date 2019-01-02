@@ -13,13 +13,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  getRegister()
-  {
+  getRegister() {
       this.router.navigate([`/register`]);
   }
 
-  onSubmit()
-  {
+  onSubmit() {
       this.router.navigate([`/dashboard`]);
   }
 }

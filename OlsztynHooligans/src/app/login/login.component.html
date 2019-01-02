@@ -7,15 +7,15 @@
       <div class="main-div">
         <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
           <div class="form-group">
-            <app-label [for]="'email'" [value]="'Email'"></app-label>
+            <app-label [for]="'email'">Email</app-label>
             <app-input [type]="'text'" [classname]="'form-control'" [name]="'email'" [required]="'required'"></app-input>
           </div>
           <div class="form-group">
-            <app-label [for]="'password'" [value]="'Password'"></app-label>
+            <app-label [for]="'password'">Password</app-label>
             <app-input [type]="'text'" [classname]="'form-control'" [name]="'password'" [required]="'required'"></app-input>
           </div>
           <div class="form-group">
-            <app-button [type]="'submit'" [classname]="'btn btn--success  block'" [value]="'Login'"></app-button>
+            <app-button [type]="'submit'">Login</app-button>
           </div>
         </form>
         Dont have an account?<a routerLink="/register">REGISTER NOW!</a>

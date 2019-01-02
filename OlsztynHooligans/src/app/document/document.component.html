@@ -1,16 +1,18 @@
-<h3>Tytuł dokumentu</h3>
-
-
-<div>
-  <textarea rows="20" cols="50"></textarea>
-  <table>
-    <tr>
-      <td>
-          <app-button [type]="'submit'" [classname]="'btn btn--success  block'" [value]="'Save'"></app-button>
-      </td>
-      <td>
-          <app-button [type]="'submit'" [classname]="'btn btn--success  block'" [value]="'Approve'" ></app-button>
-      </td>
-    </tr>
-  </table>  
+<div class="container">
+    <div class="main-div">
+      <div class="title">
+          <app-input [type]="'text'"
+            [name]="'title'"
+            [required]="'required'"
+            [readonly]="readonly"
+            [value]="title">
+          </app-input>
+          <p>Document title:</p>
+      </div>
+      <textarea rows="20" cols="50"></textarea>
+        <div class="buttons">
+          <app-button [type]="'submit'" [classname]="'btn btn--save'">Save</app-button>
+          <app-button [type]="'submit'" [classname]="'btn btn--aprove'">Aprove</app-button>
+        </div>
+    </div>
 </div>

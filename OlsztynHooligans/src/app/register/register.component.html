@@ -7,33 +7,33 @@
       <div class="main-div">
         <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
           <div class="form-group">
-            <app-label [for]="'email'" [value]="'Email'"></app-label>
+            <app-label [for]="'email'">Email</app-label>
             <app-input [type]="'text'" [classname]="'form-control'" [name]="'email'" [required]="'required'"></app-input>
           </div>
           <div class="form-group">
-            <app-label [for]="'name'" [value]="'Name'"></app-label>
+            <app-label [for]="'name'">Name</app-label>
             <app-input [type]="'text'" [classname]="'form-control'" [name]="'name'" [required]="'required'"></app-input>
           </div>
           <div class="form-group">
-            <app-label [for]="'surname'" [value]="'Surname'"></app-label>
+            <app-label [for]="'surname'">Surname</app-label>
             <app-input [type]="'text'" [classname]="'form-control'" [name]="'surname'" [required]="'required'"></app-input>
           </div>
           <div class="form-group">
-            <app-label [for]="'password'" [value]="'Password'"></app-label>
+            <app-label [for]="'password'">Password</app-label>
             <app-input [type]="'text'" [classname]="'form-control'" [name]="'password'" [required]="'required'"></app-input>
           </div>
           <div class="form-group">
-            <app-label [for]="'confirmpassword'" [value]="'ConfirmPassword'"></app-label>
+            <app-label [for]="'confirmpassword'">Confirm Password</app-label>
             <app-input [type]="'text'" [classname]="'form-control'" [name]="'confirmpassword'" [required]="'required'"></app-input>
           </div>
           <div class="form-group">
-            <app-label [for]="'Image'" [value]="'Image'"></app-label>
+            <app-label [for]="'Image'">Image</app-label>
             <input type="file" name="Image">
             <!-- <app-input [type]="'file'" [classname]="'form-control'" [name]="'Image'" [required]="'required'"></app-input> -->
           </div>
         </form>
         <div class="form-group">
-          <app-button (click)="getLogin()" [classname]="'btn btn--info block'" [value]="'Register'"></app-button>
+          <app-button (click)="getLogin()">Register</app-button>
         </div>
       </div>
     </div>

@@ -2,7 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ButtonlistComponent } from './buttonlist.component';
 
-describe('ButtonComponent', () => {
+
+describe('ButtonlistComponent', () => {
   let component: ButtonlistComponent;
   let fixture: ComponentFixture<ButtonlistComponent>;
 
