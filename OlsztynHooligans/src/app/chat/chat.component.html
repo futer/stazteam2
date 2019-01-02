@@ -1,10 +1,12 @@
-<div class = "container">
-<h3>Chat</h3>
-<textarea rows="20" cols="70" type="text"></textarea>
-<br>
-</div>
-<div class = "textPlusSend">
-<textarea rows="2" cols="60" type="text" id="message" [(ngModel)]="messageText"></textarea>
+<div class="chatContainer">
+    <div class="chatHeader">Chat</div>
+    <h3></h3>
+    <br>
+    <div class="chatMessages"></div>
 
-<button (click)="sendMessage(userName, messageText)">Send</button>
+    <div class="textPlusSend">
+        <textarea rows="2" cols="60" type="text" id="message" [(ngModel)]="messageText"></textarea>
+
+        <button (click)="sendMessage(userName, messageText)">Send</button>
+    </div>
 </div>
