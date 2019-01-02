@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './button/button.component';
+import { ButtonlistComponent } from './buttonlist/buttonlist.component';
 import { ImageComponent } from './image/image.component';
 import { InputComponent } from './input/input.component';
 import { LabelComponent } from './label/label.component';
@@ -13,6 +14,7 @@ import { DocumentIndexBoxComponent } from './document-index-box/document-index-b
 
 @NgModule({
   declarations: [ButtonComponent, 
+    ButtonlistComponent,
     ImageComponent, 
     InputComponent, 
     LabelComponent, 
@@ -28,6 +30,7 @@ import { DocumentIndexBoxComponent } from './document-index-box/document-index-b
   ],
   exports: [
     ButtonComponent,
+    ButtonlistComponent,
     ImageComponent,
     InputComponent,
     LabelComponent,

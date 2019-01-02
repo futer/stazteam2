@@ -9,33 +9,51 @@
     </div>
   </div>
   <div class="item3">
-    <table>
-      <tr>
-        <th>Nazwa</th>
-        <th>Data modyfikacji</th>
-        <th></th>
-        <th></th>
-      </tr>
-      <tr>
-        <td>Test</td>
-        <td>12/20/2018</td>
-        <td>
-          <app-button [type]="'text'" [classname]="'btn btn--success  block'">Edit</app-button>
-        </td>
-        <td>
-          <app-button [type]="'text'" [classname]="'btn btn--success  block'">Delete</app-button>
-        </td>
-      </tr>
-      <tr>
-          <td>Test</td>
-          <td>12/20/2018</td>
-          <td>
-            <app-button [type]="'text'" [classname]="'btn btn--success  block'">Edit</app-button>
-          </td>
-          <td>
-            <app-button [type]="'text'" [classname]="'btn btn--success  block'">Delete</app-button>
-          </td>
-        </tr>
-    </table>
+    <div class="row">
+      <div class="line">
+        <div class="tab element-sm">
+          Nazwa
+        </div>
+        <div class="tab element-sm">
+          Data modyfikacji
+        </div>
+        <div class="tab element-xs">
+
+        </div>
+        <div class="tab element-xs">
+
+        </div>
+      </div>
+
+      <div class="line">
+        <div class="tab element-sm">
+          Dokument1
+        </div>
+        <div class="tab element-sm">
+          21/12/2018
+        </div>
+        <div class="tab element-xs">
+          <app-buttonlist [type]="'text'" [classname]="'btn btn--edit'">Edit</app-buttonlist>
+        </div>
+        <div class="tab element-xs">
+          <app-buttonlist [type]="'text'" [classname]="'btn btn--delete'">Delete</app-buttonlist>
+        </div>
+      </div>
+
+      <div class="line">
+        <div class="tab element-sm">
+          Dokument2
+        </div>
+        <div class="tab element-sm">
+          20/12/2018
+        </div>
+        <div class="tab element-xs">
+          <app-buttonlist [type]="'text'" [classname]="'btn btn--edit'">Edit</app-buttonlist>
+        </div>
+        <div class="tab element-xs">
+          <app-buttonlist [type]="'text'" [classname]="'btn btn--delete'">Delete</app-buttonlist>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

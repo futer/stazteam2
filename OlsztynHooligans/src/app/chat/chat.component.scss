@@ -1,0 +1,33 @@
+textarea {
+  resize: none;
+}
+
+.textPlusSend {
+  display:flex;
+  flex-flow:flex-end;
+  margin-top: 10px;
+  align-items: center;
+  width: 550px;
+}
+
+.chatMessages {
+  margin-top:10px;
+  border-style: solid;
+  width: 543px;
+  height: 300px;
+}
+
+.chatHeader {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 26px;
+  width: 550px;
+}
+
+.chatContainer {
+  margin-left: 14px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
