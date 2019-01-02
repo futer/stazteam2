@@ -1,3 +1,8 @@
-<p>
-  chat works!
-</p>
+<div class="chatContainer">
+    <div class="chatHeader">Chat</div>
+    <div class="chatMessages"></div>
+    <div class="textPlusSend">
+        <app-input [type]="'text'" [required]="'required'" [classname]="'chat-input'"></app-input>
+        <app-button [type]="'submit'" [classname]="'btn chat-send'">Send</app-button>
+    </div>
+</div>
