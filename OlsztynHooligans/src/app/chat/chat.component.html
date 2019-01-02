@@ -1,12 +1,8 @@
 <div class="chatContainer">
     <div class="chatHeader">Chat</div>
-    <h3></h3>
-    <br>
     <div class="chatMessages"></div>
-
     <div class="textPlusSend">
-        <textarea rows="2" cols="60" type="text" id="message" [(ngModel)]="messageText"></textarea>
-
-        <button (click)="sendMessage(userName, messageText)">Send</button>
+        <app-input [type]="'text'" [required]="'required'"></app-input>
+        <app-button [type]="'submit'" [classname]="'btn btn--save'">Send</app-button>
     </div>
 </div>

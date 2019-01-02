@@ -2,21 +2,16 @@ textarea {
   resize: none;
 }
 
-button {
-  //display: inline-block;
-  vertical-align: middle;
-  height: 37px;
-  width: 63px;
-  margin-left: 7px;
-  margin-top: -32px;
-}
 .textPlusSend {
+  display:flex;
+  flex-flow:flex-end;
   margin-top: 10px;
   align-items: center;
   width: 550px;
 }
 
 .chatMessages {
+  margin-top:10px;
   border-style: solid;
   width: 543px;
   height: 300px;
@@ -24,7 +19,6 @@ button {
 
 .chatHeader {
   margin-top: 20px;
-  margin-bottom: -20px;
   text-align: center;
   font-size: 26px;
   width: 550px;
