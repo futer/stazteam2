@@ -14,6 +14,16 @@ const editRouter = require('./routes/edit');
 const editpasswordRouter = require('./routes/editpassword');
 
 const app = express();
+
+const admin = require("firebase-admin");
+
+const serviceAccount = require("./serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://projekt-ambitny.firebaseio.com"
+});
+
 const cors = require('cors');
 
 const corsOptions = {
