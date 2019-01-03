@@ -1,10 +1,9 @@
 <html>
-<body id="LoginForm">
-
   <div class="container">
-    <h1 class="form-heading"style="font-family:Arial">Login</h1>
-    <div class="login-form" style="font-family:Arial">
+    <h1 class="form-heading">Login</h1>
+    <div class="login-form">
       <div class="main-div">
+        <h1>Login</h1>
         <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
           <div class="form-group">
             <app-label [for]="'email'">Email</app-label>
@@ -19,10 +18,7 @@
           </div>
         </form>
         Dont have an account?<a routerLink="/register">REGISTER NOW!</a>
-
       </div>
     </div>
   </div>
-</body>
-
 </html>

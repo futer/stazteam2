@@ -7,9 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LabelComponent implements OnInit {
 
-  @Input() for:string;
-  @Input() value:string;
-  
+  @Input() for: string;
+
   constructor() { }
 
   ngOnInit() {
