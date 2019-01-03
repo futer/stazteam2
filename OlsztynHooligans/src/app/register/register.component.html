@@ -1,39 +1,80 @@
 <html>
+
 <body id="RegisterForm">
 
   <div class="container">
-    <h1 class="form-heading"style="font-family:Arial">Register</h1>
+    <h1 class="form-heading" style="font-family:Arial">Register</h1>
     <div class="register-form" style="font-family:Arial">
       <div class="main-div">
         <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
           <div class="form-group">
-            <app-label [for]="'email'">Email</app-label>
-            <app-input [type]="'text'" [classname]="'form-control'" [name]="'email'" [required]="'required'"></app-input>
+            <div class="row-Container">
+              <div class="label-Class">
+                <app-label [for]="'email'" [classname]="'label-register'">Email</app-label>
+              </div>
+              <div>
+                <app-input [type]="'text'" [classname]="'form-control'" [name]="'email'" [required]="'required'"></app-input>
+              </div>
+            </div>
           </div>
+
           <div class="form-group">
-            <app-label [for]="'name'">Name</app-label>
-            <app-input [type]="'text'" [classname]="'form-control'" [name]="'name'" [required]="'required'"></app-input>
+            <div class="row-Container">
+              <div class="label-Class">
+                <app-label [for]="'name'" [classname]="'label-register'">Name</app-label>
+              </div>
+              <div>
+                <app-input [type]="'text'" [classname]="'form-control'" [name]="'name'" [required]="'required'"></app-input>
+              </div>
+            </div>
           </div>
+
           <div class="form-group">
-            <app-label [for]="'surname'">Surname</app-label>
-            <app-input [type]="'text'" [classname]="'form-control'" [name]="'surname'" [required]="'required'"></app-input>
+            <div class="row-Container">
+              <div class="label-Class">
+                <app-label [for]="'surname'" [classname]="'label-register'">Surname</app-label>
+              </div>
+              <div>
+                <app-input [type]="'text'" [classname]="'form-control'" [name]="'surname'" [required]="'required'"></app-input>
+              </div>
+            </div>
           </div>
+
           <div class="form-group">
-            <app-label [for]="'password'">Password</app-label>
-            <app-input [type]="'text'" [classname]="'form-control'" [name]="'password'" [required]="'required'"></app-input>
+            <div class="row-Container">
+              <div class="label-Class">
+                <app-label [for]="'password'" [classname]="'label-register'">Password</app-label>
+              </div>
+              <div>
+                <app-input [type]="'text'" [classname]="'form-control'" [name]="'password'" [required]="'required'"></app-input>
+              </div>
+            </div>
           </div>
+
           <div class="form-group">
-            <app-label [for]="'confirmpassword'">Confirm Password</app-label>
-            <app-input [type]="'text'" [classname]="'form-control'" [name]="'confirmpassword'" [required]="'required'"></app-input>
+            <div class="row-Container">
+              <div class="label-Class">
+                <app-label [for]="'confirmpassword'" [classname]="'label-register'">Confirm Password</app-label>
+              </div>
+              <div>
+                <app-input [type]="'text'" [classname]="'form-control'" [name]="'confirmpassword'" [required]="'required'"></app-input>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <app-label [for]="'Image'">Image</app-label>
-            <input type="file" name="Image">
-            <!-- <app-input [type]="'file'" [classname]="'form-control'" [name]="'Image'" [required]="'required'"></app-input> -->
+          <div class="row-Container">
+            
+              <div class="label-Class">
+                <app-label [for]="'Image'">Image</app-label>
+              </div>
+              <div class="button-choose">
+              <input type="file" name="Image">
+              <!-- <app-input [type]="'file'" [classname]="'form-control'" [name]="'Image'" [required]="'required'"></app-input> -->
+            </div>
           </div>
         </form>
+
         <div class="form-group">
-          <app-button (click)="getLogin()">Register</app-button>
+          <app-button (click)="getLogin()" [classname]="'register-button'">Register</app-button>
         </div>
       </div>
     </div>
