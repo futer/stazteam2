@@ -14,10 +14,22 @@ const editRouter = require('./routes/edit');
 const editpasswordRouter = require('./routes/editpassword');
 
 const app = express();
+
+const admin = require("firebase-admin");
+
+const serviceAccount = require("./environment/serviceAccountKey.json");
+
+const config = require("./environment/config.js");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: config.databaseURL
+});
+
 const cors = require('cors');
 
 const corsOptions = {
-  origin: 'http://localhost:4200',
+  origin: config.origin,
   optionsSuccessStatus: 200 
 }
 app.use(cors(corsOptions));
