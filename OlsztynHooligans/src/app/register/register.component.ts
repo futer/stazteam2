@@ -13,8 +13,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  getLogin(){
+  getLogin() {
     this.router.navigate([`/login`]);
   }
-
 }
