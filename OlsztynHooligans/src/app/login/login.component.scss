@@ -6,7 +6,11 @@
   background-size: cover;
   padding: 10px;
 }
-a {text-decoration: none;}
+
+a {
+  text-decoration: none;
+}
+
 .form-heading {
   color: #fff;
   font-size: 23px;
@@ -50,9 +54,9 @@ a {text-decoration: none;}
   align-items: center;
 }
 
-.social-wrap{
+.social-wrap {
   margin-top: 10px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
