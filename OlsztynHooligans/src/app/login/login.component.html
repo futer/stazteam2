@@ -5,9 +5,12 @@
       <h1>Login</h1>
       <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
         <div class="form-group">
+            <div class="row-Container">
+            <div class="label-Class">
           <app-label [for]="'email'">
             Email
           </app-label>
+          </div>
           <app-input 
             [type]="'text'" 
             [classname]="'form-control'" 
@@ -15,10 +18,14 @@
             [required]="'required'">
           </app-input>
         </div>
+        </div>
         <div class="form-group">
+            <div class="row-Container">
+            <div class="label-Class">
           <app-label [for]="'password'">
             Password
           </app-label>
+          </div>
           <app-input 
             [type]="'text'" 
             [classname]="'form-control'" 
@@ -26,11 +33,16 @@
             [required]="'required'">
           </app-input>
         </div>
+        </div>
         <div class="form-group">
           <app-button [type]="'submit'">Login</app-button>
         </div>
       </form>
-      Dont have an account?<a routerLink="/register">REGISTER NOW!</a>
+      Dont have an account? <a routerLink="/register">Register now</a> or
+      <div class="social-wrap a">
+          <app-button [type]="'submit'" [classname]="'btn btn--facebook'">Sign in with Facebook</app-button>
+          <app-button [type]="'submit'" [classname]="'btn btn--googleplus'" >Sign in with Google</app-button>
     </div>
-  </div>
+    </div>
+
 </div>
