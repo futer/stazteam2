@@ -1,84 +1,108 @@
-<html>
-
-<body id="RegisterForm">
-
-  <div class="container">
-    <h1 class="form-heading" style="font-family:Arial">Register</h1>
-    <div class="register-form" style="font-family:Arial">
-      <div class="main-div">
-        <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
-          <div class="form-group">
-            <div class="row-Container">
-              <div class="label-Class">
-                <app-label [for]="'email'" [classname]="'label-register'">Email</app-label>
-              </div>
-              <div>
-                <app-input [type]="'text'" [classname]="'form-control'" [name]="'email'" [required]="'required'"></app-input>
-              </div>
+<div class="container">
+  <h1 class="form-heading">Register</h1>
+  <div class="register-form">
+    <div class="main-div">
+      <h1>Register</h1>
+      <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+        <div class="form-group">
+          <div class="row-container">
+            <div class="label-class">
+              <app-label [for]="'email'"
+                [classname]="'label-register'">
+                Email
+              </app-label>
+            </div>
+            <div>
+              <app-input [type]="'text'"
+                [classname]="'form-control'"
+                [name]="'email'"
+                [required]="'required'">
+              </app-input>
             </div>
           </div>
-
-          <div class="form-group">
-            <div class="row-Container">
-              <div class="label-Class">
-                <app-label [for]="'name'" [classname]="'label-register'">Name</app-label>
-              </div>
-              <div>
-                <app-input [type]="'text'" [classname]="'form-control'" [name]="'name'" [required]="'required'"></app-input>
-              </div>
+        </div>
+        <div class="form-group">
+          <div class="row-container">
+            <div class="label-class">
+              <app-label [for]="'name'"
+                [classname]="'label-register'">
+                Name
+              </app-label>
+            </div>
+            <div>
+              <app-input [type]="'text'"
+                [classname]="'form-control'"
+                [name]="'name'"
+                [required]="'required'">
+              </app-input>
             </div>
           </div>
-
-          <div class="form-group">
-            <div class="row-Container">
-              <div class="label-Class">
-                <app-label [for]="'surname'" [classname]="'label-register'">Surname</app-label>
-              </div>
-              <div>
-                <app-input [type]="'text'" [classname]="'form-control'" [name]="'surname'" [required]="'required'"></app-input>
-              </div>
+        </div>
+        <div class="form-group">
+          <div class="row-container">
+            <div class="label-class">
+              <app-label [for]="'surname'"
+                [classname]="'label-register'">
+                Surname
+              </app-label>
+            </div>
+            <div>
+              <app-input [type]="'text'"
+                [classname]="'form-control'"
+                [name]="'surname'"
+                [required]="'required'">
+              </app-input>
             </div>
           </div>
-
-          <div class="form-group">
-            <div class="row-Container">
-              <div class="label-Class">
-                <app-label [for]="'password'" [classname]="'label-register'">Password</app-label>
-              </div>
-              <div>
-                <app-input [type]="'text'" [classname]="'form-control'" [name]="'password'" [required]="'required'"></app-input>
-              </div>
+        </div>
+        <div class="form-group">
+          <div class="row-container">
+            <div class="label-class">
+              <app-label [for]="'password'"
+                [classname]="'label-register'">
+                Password
+              </app-label>
+            </div>
+            <div>
+              <app-input [type]="'text'"
+                [classname]="'form-control'"
+                [name]="'password'"
+                [required]="'required'">
+              </app-input>
             </div>
           </div>
-
-          <div class="form-group">
-            <div class="row-Container">
-              <div class="label-Class">
-                <app-label [for]="'confirmpassword'" [classname]="'label-register'">Confirm Password</app-label>
-              </div>
-              <div>
-                <app-input [type]="'text'" [classname]="'form-control'" [name]="'confirmpassword'" [required]="'required'"></app-input>
-              </div>
+        </div>
+        <div class="form-group">
+          <div class="row-container">
+            <div class="label-class">
+              <app-label [for]="'confirmpassword'"
+                [classname]="'label-register'">
+                Confirm Password
+              </app-label>
+            </div>
+            <div>
+              <app-input [type]="'text'"
+                [classname]="'form-control'"
+                [name]="'confirmpassword'"
+                [required]="'required'">
+              </app-input>
             </div>
           </div>
-          <div class="row-Container">
-            
-              <div class="label-Class">
-                <app-label [for]="'Image'">Image</app-label>
-              </div>
-              <div class="button-choose">
-              <input type="file" name="Image">
-              <!-- <app-input [type]="'file'" [classname]="'form-control'" [name]="'Image'" [required]="'required'"></app-input> -->
-            </div>
+        </div>
+        <div class="row-container">
+          <div class="label-class">
+            <app-label [for]="'Image'">
+              Image
+            </app-label>
           </div>
-        </form>
-
+          <div class="button-choose">
+            <input type="file" name="Image">
+          </div>
+        </div>
         <div class="form-group">
           <app-button (click)="getLogin()" [classname]="'register-button'">Register</app-button>
         </div>
-      </div>
+      </form>  
     </div>
   </div>
-</body>
-
-</html>
+</div>

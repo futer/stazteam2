@@ -1,13 +1,47 @@
-.row-Container{
-    display: inline-flex; 
+.container {
+    margin: 0px;
+    background-image: url("../../assets/loginregisterwallpaper.jpg");
+    background-repeat: repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 10px;
+}
+
+.form-heading {
+    color: #fff;
+    font-size: 23px;
+    font-family:Arial;
+}
+
+.register-form{
+    font-family:Arial;
+}
+
+.register-form .form-group {
+    margin-bottom: 10px;
+  }
+
+.main-div {
+    background: #ffffff none repeat scroll 0 0;
+    border-radius: 2px;
+    margin: 10px auto 30px;
+    max-width: 38%;
+    padding: 50px 70px 70px 71px;
+    text-align: center;
+    min-width: 200px;
+}
+
+.row-container{
+    display: inline-flex;
     align-items:center;
 }
 
-.label-Class{
-    width:80px;  
+.label-class{
+    width:80px;
 }
 
 .button-choose{
     margin-top:10px;
     margin-bottom:10px;
+    width: 180px;
 }
