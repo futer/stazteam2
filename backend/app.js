@@ -14,25 +14,37 @@ const editRouter = require('./routes/edit');
 const editpasswordRouter = require('./routes/editpassword');
 const swaggerRouter = require('./routes/swagger');
 const swaggerUi = require('./node_modules/swagger-ui-express'),
-    swaggerDocument = require('./environment/swagger.json');
+  swaggerDocument = require('./environment/swagger.json');
 const app = express();
 
 const admin = require("firebase-admin");
 
 const serviceAccount = require("./environment/serviceAccountKey.json");
 
-const config = require("./environment/config.js");
+const {origin, databaseURL} = require("./environment/config.js");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: config.databaseURL
+  databaseURL: databaseURL
 });
-
+var db = admin.database();
+var ref = db.ref("data");
+ref.once("value", function (snapshot) {
+  console.log(snapshot.val());
+});
+var usersRef = ref.child("users");
+usersRef.push({
+    email: "batman@gmail.com",
+    name: "Peter",
+    surname: "Parker",
+    password: "1234"
+  }
+);
 const cors = require('cors');
 
 const corsOptions = {
-  origin: config.origin,
-  optionsSuccessStatus: 200 
+  origin: origin,
+  optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions));
 const bodyParser = require('body-parser');
@@ -62,12 +74,12 @@ app.use('/editpassword', editpasswordRouter);
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
