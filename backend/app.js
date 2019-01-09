@@ -12,7 +12,9 @@ const dashboardRouter = require('./routes/dashboard');
 const documentRouter = require('./routes/document');
 const editRouter = require('./routes/edit');
 const editpasswordRouter = require('./routes/editpassword');
-
+const swaggerRouter = require('./routes/swagger');
+const swaggerUi = require('./node_modules/swagger-ui-express'),
+    swaggerDocument = require('./environment/swagger.json');
 const app = express();
 
 const admin = require("firebase-admin");
@@ -39,6 +41,9 @@ app.use(bodyParser.json());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/swagger', swaggerRouter);
 
 app.use(logger('dev'));
 app.use(express.json());
