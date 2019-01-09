@@ -16,7 +16,9 @@
               <app-input [type]="'text'"
                 [classname]="'form-control'"
                 [name]="'email'"
-                [required]="'required'">
+                [required]="'required'"
+                (childChanged)="onChangeEmail($event)"
+                [value]="user1.email">
               </app-input>
             </div>
           </div>
@@ -33,7 +35,9 @@
               <app-input [type]="'text'"
                 [classname]="'form-control'"
                 [name]="'name'"
-                [required]="'required'">
+                [required]="'required'"
+                (childChanged)="onChangeName($event)"
+                [value]="user1.name">
               </app-input>
             </div>
           </div>
@@ -50,7 +54,9 @@
               <app-input [type]="'text'"
                 [classname]="'form-control'"
                 [name]="'surname'"
-                [required]="'required'">
+                [required]="'required'"
+                (childChanged)="onChangeSurname($event)"
+                [value]="user1.surname">
               </app-input>
             </div>
           </div>
@@ -67,7 +73,9 @@
               <app-input [type]="'text'"
                 [classname]="'form-control'"
                 [name]="'password'"
-                [required]="'required'">
+                [required]="'required'"
+                (childChanged)="onChangePassword($event)"
+                [value]="user1.password">
               </app-input>
             </div>
           </div>
@@ -84,7 +92,9 @@
               <app-input [type]="'text'"
                 [classname]="'form-control'"
                 [name]="'confirmpassword'"
-                [required]="'required'">
+                [required]="'required'"
+                (childChanged)="onChangePassword2($event)"
+                [value]="passwordconfirm">
               </app-input>
             </div>
           </div>
@@ -100,7 +110,7 @@
           </div>
         </div>
         <div class="form-group">
-          <app-button (click)="getLogin()" [classname]="'register-button'">Register</app-button>
+          <app-button [type]="'submit'" [classname]="'register-button'">Register</app-button>
         </div>
       </form>  
     </div>
