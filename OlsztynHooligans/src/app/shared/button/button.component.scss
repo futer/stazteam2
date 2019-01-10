@@ -7,7 +7,6 @@
 
 .btn {
   color: white;
-  padding-right: 45px;
   height: 35px;
   background: none;
   border: none;
@@ -28,15 +27,36 @@
   text-shadow: rgba(0, 0, 0, 0.5) -1px -1px 0;
 
   &--facebook {
+    padding-right: 45px;
     border-color: #2d5073;
     background-color: #3b5998;
     background-image: url("../../../assets/facebook-icon.png");
   }
 
   &--googleplus {
+    padding-right: 45px;
     border-color: #111;
     background-color: #222;
     text-shadow: #333 -1px -1px 0;
     background-image: url("../../../assets/google-plus-xxl.png");
   }
+
+  &--login{
+    margin-top:10px;
+    text-align: center;
+    background: linear-gradient(rgba(99,64,86,0.5), rgba(76,49,65,0.7));    
+    border-radius: 5px;
+    border: 1px solid #4e3043;
+    box-shadow: 
+    	inset 0 1px rgba(255,255,255,0.4), 
+    	0 2px 1px rgba(0,0,0,0.1);
+
+    /* Font styles */
+    color: white;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Raleway', 'Lato', Arial, sans-serif;
+  }
 }
+
