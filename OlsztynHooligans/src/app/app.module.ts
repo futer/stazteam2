@@ -15,6 +15,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { EditUserPasswordComponent } from './edit-user-password/edit-user-password.component';
 
+import { StoreModule } from '@ngrx/store';
+import { loginReducer } from './store/reducers/login.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +36,11 @@ import { EditUserPasswordComponent } from './edit-user-password/edit-user-passwo
     AppRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({ login: loginReducer}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 10 // number of states to retain
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

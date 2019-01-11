@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="form-group">
-          <app-button [type]="'submit'">Login</app-button>
+          <app-button (click)="loginB()" [type]="'submit'">Login</app-button>
         </div>
       </form>
       Dont have an account? <a routerLink="/register">Register now</a> or
@@ -36,5 +36,4 @@
         <app-button [type]="'submit'" [classname]="'btn btn--googleplus'">Sign in with Google</app-button>
       </div>
     </div>
-
   </div>
