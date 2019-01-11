@@ -11,9 +11,11 @@ import { ChatComponent } from './chat/chat.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DocumentIndexComponent } from './document-index/document-index.component';
 import { DocumentIndexBoxComponent } from './document-index-box/document-index-box.component';
+import { ButtonchatComponent } from './buttonchat/buttonchat.component';
 
 @NgModule({
-  declarations: [ButtonComponent, 
+  declarations: [ButtonComponent,
+    ButtonchatComponent,
     ButtonlistComponent,
     ImageComponent, 
     InputComponent, 
@@ -23,13 +25,14 @@ import { DocumentIndexBoxComponent } from './document-index-box/document-index-b
     ChatComponent, 
     NavbarComponent, 
     DocumentIndexComponent, 
-    DocumentIndexBoxComponent
+    DocumentIndexBoxComponent, ButtonchatComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
     ButtonComponent,
+    ButtonchatComponent,
     ButtonlistComponent,
     ImageComponent,
     InputComponent,

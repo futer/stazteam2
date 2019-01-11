@@ -8,7 +8,9 @@
 }
 
 a {
+  font-weight: bold;
   text-decoration: none;
+  color:rgb(34, 95, 151);
 }
 
 .form-heading {
@@ -18,7 +20,7 @@ a {
 }
 
 .label-Class {
-  width: 80px;
+  width: 100px;
 }
 
 .login-form .form-control {
@@ -41,6 +43,9 @@ a {
 
 .login-form .form-group {
   margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .login-form {
