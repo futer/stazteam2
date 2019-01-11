@@ -9,11 +9,17 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DocumentComponent } from './document/document.component';
 import { ChatComponent } from './chat/chat.component';
-import { BookmarksComponent } from './bookmarks/bookmarks.component';
+import { BookmarksComponent, BookmarksPopupComponent } from './bookmarks/bookmarks.component';
+
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { EditUserPasswordComponent } from './edit-user-password/edit-user-password.component';
+import { MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatRippleModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import '../polyfills';
+import {MatNativeDateModule} from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -25,15 +31,28 @@ import { EditUserPasswordComponent } from './edit-user-password/edit-user-passwo
     DocumentComponent,
     ChatComponent,
     BookmarksComponent,
-    EditUserPasswordComponent
+    EditUserPasswordComponent,
+    BookmarksPopupComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
   ],
+  exports: [
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
+  ],
+  entryComponents: [BookmarksComponent, BookmarksPopupComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
