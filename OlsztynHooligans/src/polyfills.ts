@@ -1,3 +1,4 @@
+declare const require: any;
 require('web-animations-js/web-animations.min');
 
 import 'core-js/es6/reflect';
