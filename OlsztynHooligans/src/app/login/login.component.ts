@@ -24,17 +24,14 @@ export class LoginComponent implements OnInit {
 
 
   user1: IUser;
-  constructor(private router: Router, private dataService: AuthorizationDataService) { }
+  constructor(private router: Router, private dataService: AuthorizationDataService, private store: Store<AppState>) {
+    this.login = this.store.select('login');
+   }
 
   login: Observable<Login>;
 
   logged: string;
 
-  constructor(private router: Router,
-    private store: Store<AppState>
-    ) {
-        this.login = this.store.select('login');
-      }
 
   loginB() {
     this.store.dispatch(new LoginActions.Login(this.logged));
