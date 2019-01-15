@@ -1,4 +1,4 @@
-@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+//@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 .element-xs{
        width:100px;
   }
@@ -11,3 +11,6 @@
   .element-lg{
       width:400px;
   } 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
