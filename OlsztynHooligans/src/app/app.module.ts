@@ -44,11 +44,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     StoreModule.forRoot({ login: loginReducer}),
     StoreDevtoolsModule.instrument({
       maxAge: 10 // number of states to retain
     })
-    HttpClientModule
     MatDialogModule,
     BrowserAnimationsModule,
     MatFormFieldModule,

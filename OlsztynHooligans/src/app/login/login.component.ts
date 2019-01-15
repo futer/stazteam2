@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IUser } from '../interface/interface.IUser';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { AuthorizationDataService} from '../service/authorization-data.service';
+
 
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -18,6 +22,10 @@ interface AppState {
 })
 export class LoginComponent implements OnInit {
 
+
+  user1: IUser;
+  constructor(private router: Router, private dataService: AuthorizationDataService) { }
+
   login: Observable<Login>;
 
   logged: string;
@@ -33,6 +41,17 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user1 = {email: '', password: '' };
+  }
+
+  onChangeEmail(value) {
+    console.log(this.user1.email);
+    this.user1.email = value;
+  }
+
+  onChangePassword(value) {
+    console.log(this.user1.password);
+    this.user1.password = value;
   }
 
   getRegister() {
@@ -40,6 +59,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.dataService.postusers(this.user1).subscribe(data => {
+    console.log(data);
+    });
       this.router.navigate([`/dashboard`]);
   }
 }

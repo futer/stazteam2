@@ -30,17 +30,13 @@ router.get('/', function (req, res, next) {
 module.exports = router;
 
 router.post('/', function (req, res, next) {
-
-  admin.database().ref('data/users').findOne({ email: req.body.email, password: req.body.password }, (err, data) => {
-    if (err) {
-      return res.status(500).send('Błąd danych');
-    }
-    if (data) {
-      //const token = Helper.createJWT(data);
-      //console.log(token);
-      return res.status(200).send({ message: 'Ok' });
-    } else {
-      return res.status(400).send({ message: 'Nie odnaleziono danych' })
-    }
+  console.log(req.body);
+  const databaseRef = admin.database().ref().child('data/users');
+  const querybaseRef = querybase.ref(databaseRef, ['email', 'password']);
+  const queriedDbRef = querybaseRef
+  .where({
+    email: req.body.email,
+    password: req.body.password
   });
+  console.log(queriedDbRef);
 })

@@ -11,7 +11,12 @@
                 Email
               </app-label>
             </div>
-            <app-input [type]="'text'" [classname]="'form-control'" [name]="'email'" [required]="'required'">
+            <app-input [type]="'text'" 
+            [classname]="'form-control'" 
+            [name]="'email'" 
+            [required]="'required'"
+            (childChanged)="onChangeEmail($event)" 
+            [value]="user1.email">
             </app-input>
           </div>
         </div>
@@ -22,7 +27,12 @@
                 Password
               </app-label>
             </div>
-            <app-input [type]="'text'" [classname]="'form-control'" [name]="'password'" [required]="'required'">
+            <app-input [type]="'text'" 
+            [classname]="'form-control'" 
+            [name]="'password'" 
+            [required]="'required'"
+            (childChanged)="onChangePassword($event)" 
+            [value]="user1.password">
             </app-input>
           </div>
         </div>

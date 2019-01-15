@@ -34,6 +34,16 @@ const corsOptions = {
   origin: origin,
   optionsSuccessStatus: 200
 }
+
+const databaseRef = admin.database().ref().child('data/users');
+const querybaseRef = querybase.ref(databaseRef, ['email', 'password']);
+const queriedDbRef = querybaseRef
+.where({
+  email: "test",
+  password: "test"
+});
+console.log(queriedDbRef);
+
 app.use(cors(corsOptions));
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
