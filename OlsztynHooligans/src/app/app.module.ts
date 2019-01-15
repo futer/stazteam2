@@ -21,6 +21,10 @@ import '../polyfills';
 import {MatNativeDateModule} from '@angular/material';
 
 
+import { StoreModule } from '@ngrx/store';
+import { loginReducer } from './store/reducers/login.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +45,10 @@ import {MatNativeDateModule} from '@angular/material';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    StoreModule.forRoot({ login: loginReducer}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 10 // number of states to retain
+    })
     MatDialogModule,
     BrowserAnimationsModule,
     MatFormFieldModule,

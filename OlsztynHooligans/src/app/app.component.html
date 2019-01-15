@@ -2,5 +2,6 @@
     <li><a [routerLink]="['/login']">Home</a></li>
     <li class="right"><a [routerLink]="['/register']">Register</a></li>
     <li class="right"><a [routerLink]="['/login']">Login</a></li>
+    <li class="right"><a [routerLink]="['/login']" (click)="logout()">Logout</a></li>
 </ul>
 <router-outlet></router-outlet>

@@ -5,6 +5,16 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthorizationDataService} from '../service/authorization-data.service';
 
 
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { Login } from '../model/login.model';
+import * as LoginActions from '../store/actions/login.actions';
+
+interface AppState {
+  login: Login;
+}
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,8 +22,23 @@ import { AuthorizationDataService} from '../service/authorization-data.service';
 })
 export class LoginComponent implements OnInit {
 
+
   user1: IUser;
   constructor(private router: Router, private dataService: AuthorizationDataService) { }
+
+  login: Observable<Login>;
+
+  logged: string;
+
+  constructor(private router: Router,
+    private store: Store<AppState>
+    ) {
+        this.login = this.store.select('login');
+      }
+
+  loginB() {
+    this.store.dispatch(new LoginActions.Login(this.logged));
+  }
 
   ngOnInit() {
     this.user1 = {email: '', password: '' };
