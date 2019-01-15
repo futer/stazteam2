@@ -11,6 +11,7 @@ import { DocumentComponent } from './document/document.component';
 import { ChatComponent } from './chat/chat.component';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { HttpClientModule } from '@angular/common/http';
+
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { EditUserPasswordComponent } from './edit-user-password/edit-user-password.component';
