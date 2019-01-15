@@ -9,8 +9,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DocumentComponent } from './document/document.component';
 import { ChatComponent } from './chat/chat.component';
-import { BookmarksComponent, BookmarksPopupComponent } from './bookmarks/bookmarks.component';
-
+import { BookmarksComponent } from './bookmarks/bookmarks.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
@@ -40,6 +40,7 @@ import {MatNativeDateModule} from '@angular/material';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
     MatDialogModule,
     BrowserAnimationsModule,
     MatFormFieldModule,

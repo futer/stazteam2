@@ -14,6 +14,7 @@ export class InputComponent implements OnInit {
   @Input() readonly: string;
   @Input() value: string;
   @Input() title: string;
+  @Input() placeholder = '';
 
   @Output()
   childChanged = new EventEmitter<string>();

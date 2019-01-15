@@ -41,16 +41,17 @@ router.get('/', function (req, res, next) {
 
 
 router.post('/', function (req, res, next) {
+  console.log(req.body);
   if (res.error) {
     return res.status(400).send({ message: res.error.message });
   }
-  //admin.database().ref('/messages').push({original: original})
-  //const usersRef = ref.child("users");
+
   admin.database().ref('data/users').push({
     email: req.body.email,
     name: req.body.name,
     surname: req.body.surname,
     password: req.body.password
   });
+  res.status(200).send({message:'Ok'});
 })
 module.exports = router;
