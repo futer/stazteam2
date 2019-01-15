@@ -25,8 +25,9 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,
     private store: Store<AppState>
     ) {
-      this.login = this.store.select('login');
+        this.login = this.store.select('login');
       }
+
   loginB() {
     this.store.dispatch(new LoginActions.Login(this.logged));
   }

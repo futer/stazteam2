@@ -17,14 +17,13 @@ interface AppState {
 })
 export class AppComponent {
   title = 'OlsztynHooligans';
-
   login: Observable<Login>;
-
   logged: string;
 
   constructor (private store: Store<AppState>) {
     this.login = this.store.select('login');
   }
+
   logout() {
     this.store.dispatch(new LoginActions.Logout(this.logged));
   }
