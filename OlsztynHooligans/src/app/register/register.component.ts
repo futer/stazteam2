@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IUser } from '../interface/interface.IUser';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { AuthorizationDataService} from '../service/authorization-data.service';
 
 @Component({
   selector: 'app-register',
@@ -8,12 +11,66 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private dataService: AuthorizationDataService) { }
+
+  user1: IUser;
+  userForm: FormGroup;
+  passwordconfirm: string;
 
   ngOnInit() {
+    this.user1 = { email: '', password: '', name: '', surname: '' };
+    this.passwordconfirm = '';
+    this.userForm = this.formBuilder.group({
+      'email': [''],
+      'password': [''],
+      'name': [''],
+      'surname': ['']
+    });
   }
 
-  getLogin() {
-    this.router.navigate([`/login`]);
+  // eventEmitter function
+
+  onChangeEmail(value) {
+    console.log(this.user1.email);
+    this.user1.email = value;
+  }
+
+  onChangeName(value) {
+    console.log(this.user1.name);
+    this.user1.name = value;
+  }
+
+  onChangeSurname(value) {
+    console.log(this.user1.surname);
+    this.user1.surname = value;
+  }
+
+  onChangePassword(value) {
+    console.log(this.user1.password);
+    this.user1.password = value;
+  }
+
+  onChangePassword2(value) {
+    console.log(this.passwordconfirm);
+    this.passwordconfirm = value;
+  }
+  // Used in validation
+  get f() { return this.userForm.controls; }
+
+  onSubmit() {
+
+    this.userForm = this.formBuilder.group({
+      'email': [this.user1.email, [Validators.required, Validators.maxLength(30)]],
+      'password': [this.user1.password, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      'passwordconfirm': [this.passwordconfirm, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
+    });
+    if (this.user1.password === this.passwordconfirm) {
+      this.dataService.postuser(this.user1).subscribe(res => {
+        this.router.navigate(['/login']);
+      }, (err) => {
+        console.log(err);
+      });
+
+    }
   }
 }
