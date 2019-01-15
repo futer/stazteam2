@@ -5,9 +5,44 @@ const admin = require('firebase-admin');
 router.get('/', function (req, res, next) {
   res.send('register page');
 });
+
+/**
+ * @swagger
+ * /register:
+ *   post:
+ *     description: Register to the application
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: email
+ *         description: User's email.
+ *         in: formData
+ *         required: true
+ *         type: string
+ *       - name: name
+ *         description: User's name.
+ *         in: formData
+ *         required: true
+ *         type: string
+ *       - name: surname
+ *         description: User's surname.
+ *         in: formData
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         description: User's password.
+ *         in: formData
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: register
+ */
+
+
 router.post('/', function (req, res, next) {
-  if (result.error) {
-    return res.status(400).send({ message: result.error.message });
+  if (res.error) {
+    return res.status(400).send({ message: res.error.message });
   }
   //admin.database().ref('/messages').push({original: original})
   //const usersRef = ref.child("users");

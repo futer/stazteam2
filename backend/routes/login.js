@@ -5,7 +5,28 @@ const admin = require('firebase-admin');
 router.get('/', function (req, res, next) {
   res.send('login page');
 });
-
+/**
+ * @swagger
+ * /login:
+ *   post:
+ *     description: Login to the application
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: email
+ *         description: Email to use for login.
+ *         in: formData
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         description: User's password.
+ *         in: formData
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: login
+ */
 module.exports = router;
 
 router.post('/', function (req, res, next) {

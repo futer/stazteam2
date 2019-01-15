@@ -27,6 +27,7 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: databaseURL
 });
+
 const cors = require('cors');
 
 const corsOptions = {

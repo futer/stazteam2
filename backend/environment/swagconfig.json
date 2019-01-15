@@ -1,0 +1,12 @@
+{
+    "swaggerDefinition": {
+      "info": {
+        "title": "My sample api",
+        "version": "1.0.0"
+      }
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "apis": ["./routes/*.js"]
+    
+  }
