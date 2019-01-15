@@ -27,25 +27,22 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: databaseURL
 });
-var db = admin.database();
-var ref = db.ref("data");
-ref.once("value", function (snapshot) {
-  console.log(snapshot.val());
-});
-var usersRef = ref.child("users");
-usersRef.push({
-    email: "batman@gmail.com",
-    name: "Peter",
-    surname: "Parker",
-    password: "1234"
-  }
-);
 const cors = require('cors');
 
 const corsOptions = {
   origin: origin,
   optionsSuccessStatus: 200
 }
+
+const databaseRef = admin.database().ref().child('data/users');
+const querybaseRef = querybase.ref(databaseRef, ['email', 'password']);
+const queriedDbRef = querybaseRef
+.where({
+  email: "test",
+  password: "test"
+});
+console.log(queriedDbRef);
+
 app.use(cors(corsOptions));
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());

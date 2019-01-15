@@ -1,9 +1,24 @@
 import { Injectable } from '@angular/core';
+import { IUser } from '../interface/interface.IUser';
+import { IToken } from '../interface/interface.IToken';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
+const apiUrl = 'http://localhost:3000';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationDataService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+    // Rejestracja -- POST
+    postuser(data: IUser): Observable<any> {
+      console.log(data);
+      return this.http.post<IUser>(apiUrl + '/register', data).pipe();
+    }
+
+    postusers(user: IUser): Observable<IToken> {
+      return this.http.post<IToken>(apiUrl + '/login', user).pipe();
+    }
 }
