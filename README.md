@@ -1,2 +1,2 @@
-# stazteam2ssdasd
+# stazteam2
 BRAWO BARSZCZ
