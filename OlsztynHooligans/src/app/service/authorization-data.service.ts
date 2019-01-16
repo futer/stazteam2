@@ -3,8 +3,9 @@ import { IUser } from '../interface/interface.IUser';
 import { IToken } from '../interface/interface.IToken';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
-const apiUrl = 'http://localhost:3000';
+const apiUrl = environment.apiUrl;
 @Injectable({
   providedIn: 'root'
 })

@@ -1,14 +1,13 @@
-<div class="mat-dialog-content">
+<form #bookmarkForm="ngForm" (ngSubmit)="onSubmit(bookmarkForm)">
   <p>Bookmark's Title</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.title">
-  </mat-form-field>
-    <p>Bookmark's URL</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.url">
-  </mat-form-field>
-</div>
-<div class="mat-dialog-actions">
-  <button class="mat-button addbutton" (click)="onNoClick()">Cancel</button>
-  <button class="mat-button addbutton" [mat-dialog-close]="data.animal" cdkFocusInitial>Add</button>
-</div>
+  <app-matinput [name]="'title'" [required]="'required'" (childChanged)="onChangeTitle($event)" [value]="bookmark1.title">
+  </app-matinput>
+  <p>Bookmark's URL</p>
+  <app-matinput [name]="'url'" [required]="'required'" (childChanged)="onChangeUrl($event)" [value]="bookmark1.url">
+  </app-matinput>
+  <div class="mat-dialog-actions">
+    <button class="mat-button addbutton" (click)="onNoClick()">Cancel</button>
+    <button class="mat-button addbutton" [type]="'submit'">Add</button>
+  </div>
+</form>
+<!-- [mat-dialog-close]="data.animal" cdkFocusInitial-->
