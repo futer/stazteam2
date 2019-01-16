@@ -12,23 +12,34 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DocumentIndexComponent } from './document-index/document-index.component';
 import { DocumentIndexBoxComponent } from './document-index-box/document-index-box.component';
 import { ButtonchatComponent } from './buttonchat/buttonchat.component';
+import { MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatRippleModule } from '@angular/material';
+import {MatNativeDateModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatinputComponent } from './matinput/matinput.component';
+
 
 @NgModule({
-  declarations: [ButtonComponent,
+  declarations: [
+    ButtonComponent,
     ButtonchatComponent,
     ButtonlistComponent,
-    ImageComponent, 
-    InputComponent, 
-    LabelComponent, 
-    FormComponent, 
-    LiComponent, 
-    ChatComponent, 
-    NavbarComponent, 
-    DocumentIndexComponent, 
-    DocumentIndexBoxComponent, ButtonchatComponent
+    ImageComponent,
+    InputComponent,
+    LabelComponent,
+    FormComponent,
+    LiComponent,
+    ChatComponent,
+    NavbarComponent,
+    DocumentIndexComponent,
+    DocumentIndexBoxComponent, ButtonchatComponent, MatinputComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
   ],
   exports: [
     ButtonComponent,
@@ -41,8 +52,12 @@ import { ButtonchatComponent } from './buttonchat/buttonchat.component';
     LiComponent,
     ChatComponent,
     NavbarComponent,
+    MatinputComponent,
     DocumentIndexComponent,
-    DocumentIndexBoxComponent
+    DocumentIndexBoxComponent,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatRippleModule,
   ]
 })
 export class SharedModule { }

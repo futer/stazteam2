@@ -15,6 +15,7 @@ const editpasswordRouter = require('./routes/editpassword');
 const swaggerRouter = require('./routes/swagger');
 const swaggerUi = require('./node_modules/swagger-ui-express'),
   swaggerDocument = require('./environment/swagger.json');
+const bookmarksRouter = require('./routes/bookmarks');
 const app = express();
 
 const admin = require("firebase-admin");
@@ -34,15 +35,6 @@ const corsOptions = {
   origin: origin,
   optionsSuccessStatus: 200
 }
-
-const databaseRef = admin.database().ref().child('data/users');
-const querybaseRef = querybase.ref(databaseRef, ['email', 'password']);
-const queriedDbRef = querybaseRef
-.where({
-  email: "test",
-  password: "test"
-});
-console.log(queriedDbRef);
 
 app.use(cors(corsOptions));
 const bodyParser = require('body-parser');
@@ -69,7 +61,7 @@ app.use('/dashboard', dashboardRouter);
 app.use('/document', documentRouter);
 app.use('/edit', editRouter);
 app.use('/editpassword', editpasswordRouter);
-
+app.use('/bookmarks', bookmarksRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
