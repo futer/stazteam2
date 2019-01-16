@@ -32,7 +32,7 @@ router.post('/', function (req, res, next) {
     if (res.error) {
       return res.status(400).send({ message: res.error.message });
     }
-    admin.database().ref('data/bookmarks').push({
+    admin.database().ref(`data/bookmarks/${req.body.url}`).push({
       title: req.body.title,
       url: req.body.url
     });
