@@ -2,13 +2,9 @@
 
 <div class="grid-container">
   <div class="item2">
-    <div class="sidebar">
+    <div class="sidebar" *ngFor="let bookmark of bookmarks">
       <ul>
-        <li><a routerLink="/login">link1 </a></li>
-        <li class="right"><a routerLink="/register">link2 </a></li>
-        <li class="right"><a routerLink="/login">link3 </a></li>
+        <li class="right"><a routerLink="/login">{{bookmark.title}}</a></li>
       </ul>
     </div>
   </div>
-
-  

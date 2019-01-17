@@ -5,18 +5,30 @@ import { IBookmark } from '../interface/interface.IBookmark';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { BookmarkService} from '../service/bookmark.service';
 
+
 @Component({
   selector: 'app-bookmarks',
   templateUrl: './bookmarks.component.html',
   styleUrls: ['./bookmarks.component.scss']
 })
 
-export class BookmarksComponent {
+export class BookmarksComponent implements OnInit {
+  constructor(public dialog: MatDialog, private router: Router, private formBuilder: FormBuilder,
+    private dataService: BookmarkService, ) { }
 
   title: string;
   url: string;
+  bookmarks: IBookmark;
 
-  constructor(public dialog: MatDialog) { }
+ngOnInit() {
+  this.dataService.getbookmarks()
+  .subscribe(res => {
+    console.log(res);
+    this.bookmarks = res;
+  }, err => {
+    console.log(err);
+  });
+}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(BookmarksPopupComponent, {

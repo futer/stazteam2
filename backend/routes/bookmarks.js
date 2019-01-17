@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const admin = require('firebase-admin');
-
-router.get('/', function(req, res, next) {
-  res.send('bookmarks container');
-});
 /**
  * @swagger
  * /bookmarks:
@@ -28,14 +24,28 @@ router.get('/', function(req, res, next) {
  *         description: bookmarkspost
  */
 router.post('/', function (req, res, next) {
-    console.log(req.body);
+  console.log(req.body);
+  if (res.error) {
+    return res.status(400).send({ message: res.error.message });
+  }
+  admin.database().ref(`data/bookmarks`).child(req.body.url).set({
+    title: req.body.title,
+    url: req.body.url
+  });
+  res.status(200).send({ message: 'Ok' });
+})
+
+router.get('/', function (req, res, next) {
+  console.log(req.body);
+  admin.database().ref(`data/bookmarks`).child(req.body.url).set({
+    title: req.body.title,
+    url: req.body.url
+  });
+  admin.find(function (err, title) {
     if (res.error) {
       return res.status(400).send({ message: res.error.message });
     }
-    admin.database().ref(`data/bookmarks`).child(req.body.url).set({
-      title: req.body.title,
-      url: req.body.url
-    });
-    res.status(200).send({message:'Ok'});
   })
-  module.exports = router;
+  res.status(200).send({ message: 'Ok' });
+})
+module.exports = router;
