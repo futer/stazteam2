@@ -1,0 +1,46 @@
+.container {
+    margin: 0px;
+    background-image: url("../../assets/loginregisterwallpaper.jpg");
+    background-repeat: repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 10px;
+}
+
+.form-heading {
+    color: #fff;
+    font-size: 23px;
+    font-family:Arial;
+}
+
+.main-div {
+    background: #ffffff none repeat scroll 0 0;
+    border-radius: 2px;
+    margin: 10px auto 30px;
+    max-width: 38%;
+    padding: 50px 70px 70px 71px;
+    text-align: center;
+    min-width: 200px;
+}
+
+.edit-form{
+    font-family:Arial;
+}
+
+.label-class{
+    width:120px;
+    padding-right: 10px;
+}
+
+.button-choose{
+    width: 180px;
+}
+
+.row-container{
+    display: inline-flex;
+    align-items:center;
+}
+
+.form-group {
+    margin: 10px;
+}
