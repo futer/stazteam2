@@ -16,4 +16,8 @@ export class BookmarkService {
     console.log(data);
     return this.http.post<IBookmark>(apiUrl + '/bookmarks', data).pipe();
   }
+
+  getbookmarks(): Observable<IBookmark> {
+    return this.http.get<IBookmark>(apiUrl + '/bookmarks').pipe();
+  }
 }
