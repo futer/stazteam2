@@ -14,7 +14,7 @@ import { BookmarkService} from '../service/bookmark.service';
 
 export class BookmarksComponent implements OnInit {
   constructor(public dialog: MatDialog, private router: Router, private formBuilder: FormBuilder,
-    private dataService: BookmarkService, public data: IBookmark) { }
+    private dataService: BookmarkService, ) { }
 
   title: string;
   url: string;

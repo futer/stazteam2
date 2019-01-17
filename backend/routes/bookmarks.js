@@ -36,16 +36,16 @@ router.post('/', function (req, res, next) {
 })
 
 router.get('/', function (req, res, next) {
-  // console.log(req.body);
-  // admin.database().ref(`data/bookmarks`).child(req.body.url).set({
-  //   title: req.body.title,
-  //   url: req.body.url
-  // });
-  // admin.find(function (err, title) {
-  //   if (res.error) {
-  //     return res.status(400).send({ message: res.error.message });
-  //   }
-  // })
-  // res.status(200).send({ message: 'Ok' });
+  console.log(req.body);
+  admin.database().ref(`data/bookmarks`).child(req.body.url).set({
+    title: req.body.title,
+    url: req.body.url
+  });
+  admin.find(function (err, title) {
+    if (res.error) {
+      return res.status(400).send({ message: res.error.message });
+    }
+  })
+  res.status(200).send({ message: 'Ok' });
 })
 module.exports = router;
