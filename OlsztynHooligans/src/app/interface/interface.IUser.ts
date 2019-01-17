@@ -3,6 +3,7 @@ export interface IUser {
     name?: string;
     surname?: string;
     password: string;
+    newpassword?: string;
     confirmpassword?: string;
     image?: Blob;
 }
