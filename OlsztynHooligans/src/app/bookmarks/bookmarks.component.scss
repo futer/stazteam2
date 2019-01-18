@@ -24,6 +24,10 @@ ul {
     overflow: hidden;
   
   }
+  li {
+    cursor:pointer;
+  }
+
   li a {
     display: block;
     color: black;
