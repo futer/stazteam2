@@ -7,10 +7,11 @@
             [readonly]="readonly"
             [value]="title">
           </app-input>
-          <p>Document title:</p>
       </div>
-      <textarea rows="20" cols="50"></textarea>
-        <div class="buttons">
+      <div>
+          <textarea rows="20" cols="50"></textarea>
+      </div>
+        <div class="form-group">
           <app-button [type]="'submit'" [classname]="'btn btn--save'">Save</app-button>
           <app-button [type]="'submit'" [classname]="'btn btn--aprove'">Aprove</app-button>
         </div>
