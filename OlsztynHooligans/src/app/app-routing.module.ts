@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: 'document/:id', component: DocumentComponent},
   { path: 'document', component: DocumentComponent},
   { path: 'chat', component: ChatComponent},
-  { path: 'bookmarks', component: BookmarksComponent}
+  { path: 'bookmarks', component: BookmarksComponent},
+  { path: 'bookmarks/:id' , component: BookmarksComponent }
 ];
 
 @NgModule({

@@ -2,9 +2,10 @@
 
 <div class="grid-container">
   <div class="item2">
-    <div class="sidebar" *ngFor="let bookmark of bookmarks">
+    <!-- {{bookmarks|json}} -->
+    <div class="sidebar" *ngFor="let bookmark of bookmarks | keyvalue">
       <ul>
-        <li class="right"><a routerLink="/login">{{bookmark.title}}</a></li>
+        <li (click)='getBookmark(bookmark.key)' class="right"><a>{{bookmark.key}}</a></li>
       </ul>
     </div>
   </div>
