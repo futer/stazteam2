@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { IBookmark } from '../interface/interface.IBookmark';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { BookmarkService} from '../service/bookmark.service';
+import { $ } from 'protractor';
 
 
 @Component({
@@ -30,6 +31,12 @@ ngOnInit() {
   });
 }
 
+getBookmark(id) {
+  console.log(id);
+  // this.router.navigateByUrl('bookmarks' || '/url');
+  this.router.navigate(['bookmarks', {id}]);
+}
+
   openDialog(): void {
     const dialogRef = this.dialog.open(BookmarksPopupComponent, {
       width: '250px',
@@ -38,7 +45,6 @@ ngOnInit() {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      // this.animal = result;
     });
   }
 }

@@ -62,7 +62,7 @@ app.use('/document', documentRouter);
 app.use('/edit', editRouter);
 app.use('/editpassword', editpasswordRouter);
 app.use('/bookmarks', bookmarksRouter);
-
+app.use('/bookmarks/:id', bookmarksRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
