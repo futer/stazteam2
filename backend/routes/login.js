@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const admin = require('firebase-admin');
 const jwt = require('jsonwebtoken');
+const firebase = require('firebase');
 
 router.get('/', function (req, res, next) {
   res.send('login page');
@@ -31,22 +32,24 @@ router.get('/', function (req, res, next) {
 module.exports = router;
 
 router.post('/', function (req, res, next) {
-  // console.log(req.body);
-  // const databaseRef = admin.database().ref().child('data/users');
-  // const querybaseRef = querybase.ref(databaseRef, ['email', 'password']);
-  // const queriedDbRef = querybaseRef
-  // .where({
-  //   email: req.body.email,
-  //   password: req.body.password
-  // });
-  // console.log(queriedDbRef);
+
   const user = {
     email: req.body.email,
     password: req.body.password
   }
-  const token = jwt.sign({ user }, 'testkey');
-    res.json({
-      token: token
+  console.log('a');
+  firebase.auth().signInWithEmailAndPassword(user.email, user.password).then(function (firebaseUser) {
+    const token = jwt.sign({ user }, 'testkey');
+      res.json({
+        token: token
+      });
+      console.log(token);
+    return res.status(200).send({ message: 'Ok' });
+  })
+    .catch(function (error) {
+      console.log('b');
+      return res.status(400).send({ message: 'Nie Ok'});
     });
-    console.log(token);
+
+
 })

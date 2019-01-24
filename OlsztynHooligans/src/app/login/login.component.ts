@@ -57,8 +57,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.dataService.postusers(this.user1).subscribe(data => {
-    console.log(data);
-    });
+      console.log(data);
       this.router.navigate([`/dashboard`]);
+    });
   }
 }

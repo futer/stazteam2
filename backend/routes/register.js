@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const admin = require('firebase-admin');
+const firebase = require('firebase');
 
 router.get('/', function (req, res, next) {
   res.send('register page');
@@ -46,12 +47,21 @@ router.post('/', function (req, res, next) {
     return res.status(400).send({ message: res.error.message });
   }
 
-  admin.database().ref('data/users').push({
+  admin.auth().createUser({
     email: req.body.email,
-    name: req.body.name,
-    surname: req.body.surname,
-    password: req.body.password
-  });
-  res.status(200).send({message:'Ok'});
+    password: req.body.password,
+    displayName: req.body.name,
+    //photoURL: "http://www.example.com/12345678/photo.png",
+  })
+    .then(function (userRecord) {
+      // See the UserRecord reference doc for the contents of userRecord.
+      console.log("Successfully created new user:", userRecord.uid);
+      return res.status(200).send({ message: 'Ok' });
+
+    })
+    .catch(function (error) {
+      console.log("Error creating new user:", error);
+      return res.status(400).send({ message: 'Nie Ok'})
+    });
 })
 module.exports = router;
