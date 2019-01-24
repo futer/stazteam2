@@ -21,24 +21,16 @@ const app = express();
 const admin = require("firebase-admin");
 const firebase = require('firebase');
 const serviceAccount = require("./environment/serviceAccountKey.json");
+const config = require('./environment/configfirebase.js')
 
-var config = {
-  apiKey: "AIzaSyBcIKvbFzKJzqQDoJwpa4xbaM_4rCnJY3I",
-  authDomain: "projekt-ambitny.firebaseapp.com",
-  databaseURL: "https://projekt-ambitny.firebaseio.com",
-  projectId: "projekt-ambitny",
-  storageBucket: "projekt-ambitny.appspot.com",
-  messagingSenderId: "132268496062"
-};
-firebase.initializeApp(config);
+firebase.initializeApp(config.config);
+
 const {origin, databaseURL} = require("./environment/config.js");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: databaseURL
 });
-
-
 
 const cors = require('cors');
 

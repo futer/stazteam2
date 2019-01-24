@@ -42,7 +42,6 @@ router.get('/', function (req, res, next) {
 
 
 router.post('/', function (req, res, next) {
-  console.log(req.body);
   if (res.error) {
     return res.status(400).send({ message: res.error.message });
   }
@@ -50,8 +49,7 @@ router.post('/', function (req, res, next) {
   admin.auth().createUser({
     email: req.body.email,
     password: req.body.password,
-    displayName: req.body.name,
-    //photoURL: "http://www.example.com/12345678/photo.png",
+    displayName: req.body.name
   })
     .then(function (userRecord) {
       // See the UserRecord reference doc for the contents of userRecord.
@@ -61,7 +59,7 @@ router.post('/', function (req, res, next) {
     })
     .catch(function (error) {
       console.log("Error creating new user:", error);
-      return res.status(400).send({ message: 'Nie Ok'})
+      return res.status(400).send({ message: 'Not Ok'})
     });
 })
 module.exports = router;
