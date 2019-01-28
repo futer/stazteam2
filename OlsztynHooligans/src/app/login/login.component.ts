@@ -42,12 +42,10 @@ export class LoginComponent implements OnInit {
   }
 
   onChangeEmail(value) {
-    console.log(this.user1.email);
     this.user1.email = value;
   }
 
   onChangePassword(value) {
-    console.log(this.user1.password);
     this.user1.password = value;
   }
 
@@ -57,8 +55,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.dataService.postusers(this.user1).subscribe(data => {
-    console.log(data);
-    });
       this.router.navigate([`/dashboard`]);
+    });
   }
 }

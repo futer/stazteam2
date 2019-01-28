@@ -19,8 +19,11 @@ const bookmarksRouter = require('./routes/bookmarks');
 const app = express();
 
 const admin = require("firebase-admin");
-
+const firebase = require('firebase');
 const serviceAccount = require("./environment/serviceAccountKey.json");
+const config = require('./environment/configfirebase.js')
+
+firebase.initializeApp(config.config);
 
 const {origin, databaseURL} = require("./environment/config.js");
 
