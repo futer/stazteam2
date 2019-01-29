@@ -20,10 +20,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import '../polyfills';
 import {MatNativeDateModule} from '@angular/material';
 
-
 import { StoreModule } from '@ngrx/store';
 import { loginReducer } from './store/reducers/login.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { LoginEffects } from './store/effects/login.effects';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
+    EffectsModule.forRoot([LoginEffects]),
   ],
   exports: [
     MatButtonModule,

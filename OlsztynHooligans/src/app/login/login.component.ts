@@ -32,11 +32,6 @@ export class LoginComponent implements OnInit {
 
   logged: string;
 
-
-  loginB() {
-    this.store.dispatch(new LoginActions.Login(this.logged));
-  }
-
   ngOnInit() {
     this.user1 = {email: '', password: '' };
   }
@@ -55,7 +50,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.dataService.postusers(this.user1).subscribe(data => {
-      this.router.navigate([`/dashboard`]);
+      this.store.dispatch(new LoginActions.Login(this.logged));
     });
   }
 }
