@@ -42,8 +42,6 @@ router.post('/', function (req, res, next) {
     return res.status(200).send({ token: token });
   })
     .catch(function (error) {
-      console.log(error);
+      return res.status(400).send({ message: 'Not OK'});
     });
-
-
 })
