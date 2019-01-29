@@ -18,7 +18,7 @@ export class BookmarksComponent implements OnInit {
     private dataService: BookmarkService, ) { }
 
   title: string;
-  url: string;
+  text: string;
   bookmarks: IBookmark;
 
 ngOnInit() {
@@ -31,16 +31,25 @@ ngOnInit() {
   });
 }
 
-getBookmark(id) {
+getBookmark(id, text) {
   console.log(id);
+  this.dataService.bookmarkkey = id;
+  // id i text wrzucamy do ng store
   // this.router.navigateByUrl('bookmarks' || '/url');
-  this.router.navigate(['bookmarks', {id}]);
+  // this.router.navigate(['bookmarks'], {queryParams: {id}});
+  this.router.navigate(['bookmarks', id]);
+}
+
+getBookmarkText(id) {
+  console.log(id);
+
+
 }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(BookmarksPopupComponent, {
       width: '250px',
-      data: { title: this.title, url: this.url }
+      data: { title: this.title, text: this.text }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -63,11 +72,11 @@ export class BookmarksPopupComponent implements OnInit {
 
   ngOnInit() {
     // console.log('a');
-    this.bookmark1 = { title: '', url: '', };
+    this.bookmark1 = { title: '', text: '', };
     console.log(this.bookmark1.title);
     this.bookmarkForm = this.formBuilder.group({
       'title': [''],
-      'url': [''],
+      'text': [''],
     });
   }
 
@@ -80,9 +89,9 @@ export class BookmarksPopupComponent implements OnInit {
     this.bookmark1.title = value;
   }
 
-  onChangeUrl(value) {
-    console.log(this.bookmark1.url);
-    this.bookmark1.url = value;
+  onChangeText(value) {
+    console.log(this.bookmark1.text);
+    this.bookmark1.text = value;
   }
   get f() { return this.bookmarkForm.controls; }
 
@@ -90,7 +99,7 @@ export class BookmarksPopupComponent implements OnInit {
 
     this.bookmarkForm = this.formBuilder.group({
       'title': [this.bookmark1.title, [Validators.required, Validators.maxLength(20)]],
-      'url': [this.bookmark1.url, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
+      'text': [this.bookmark1.text, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
     });
     console.log(this.bookmark1);
     this.dataService.postbookmark(this.bookmark1).subscribe(res => {

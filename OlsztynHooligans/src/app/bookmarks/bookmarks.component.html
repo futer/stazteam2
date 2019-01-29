@@ -5,7 +5,14 @@
     <!-- {{bookmarks|json}} -->
     <div class="sidebar" *ngFor="let bookmark of bookmarks | keyvalue">
       <ul>
-        <li (click)='getBookmark(bookmark.key)' class="right"><a>{{bookmark.key}}</a></li>
+        <li (click)='getBookmark(bookmark.key,bookmark.value.text)' class="right"><a>{{bookmark.value.title}}</a></li>
       </ul>
     </div>
   </div>
+  <div class="item3"  *ngFor="let bookmark of bookmarks | keyvalue">
+     {{bookmarks|json}} 
+    
+    {{bookmark.value.text}}
+   
+  </div>
+</div>

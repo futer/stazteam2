@@ -42,12 +42,13 @@ ul {
   }
   
   div.sidebar { 
-    width: 80%;
+    width: 100%;
     border: 2px solid black;
   }
   //grid layout
   .item1 {grid-area: header; }
-  .item2 {grid-area: menu; }
+  .item2 {grid-area: menu; 
+  width: 200px;}
   .item3 {grid-area: main; }
   .item4 {grid-area: right; }
   .item5 {grid-area: footer; }
