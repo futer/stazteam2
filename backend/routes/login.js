@@ -39,13 +39,10 @@ router.post('/', function (req, res, next) {
   }
   firebase.auth().signInWithEmailAndPassword(user.email, user.password).then(function (firebaseUser) {
     const token = jwt.sign({ user }, 'testkey');
-      res.json({
-        token: token
-      });
-    return res.status(200).send({ message: 'Ok' });
+    return res.status(200).send({ token: token });
   })
     .catch(function (error) {
-      return res.status(400).send({ message: 'Not Ok'});
+      console.log(error);
     });
 
 
