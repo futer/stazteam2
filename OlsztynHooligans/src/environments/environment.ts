@@ -4,8 +4,15 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000'
-
+  apiUrl: 'http://localhost:3000',
+  firebase: {
+    apiKey: 'AIzaSyBcIKvbFzKJzqQDoJwpa4xbaM_4rCnJY3I',
+    authDomain: 'projekt-ambitny.firebaseapp.com',
+    databaseURL: 'https://projekt-ambitny.firebaseio.com',
+    projectId: 'projekt-ambitny',
+    storageBucket: 'projekt-ambitny.appspot.com',
+    messagingSenderId: '132268496062'
+  }
 };
 
 /*
