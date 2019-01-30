@@ -12,6 +12,8 @@ export class BookmarkService {
 
   constructor(private http: HttpClient) { }
 
+  bookmarkkey: string;
+
   postbookmark(data: IBookmark): Observable<any> {
     console.log(data);
     return this.http.post<IBookmark>(apiUrl + '/bookmarks', data).pipe();
@@ -20,4 +22,6 @@ export class BookmarkService {
   getbookmarks(): Observable<IBookmark> {
     return this.http.get<IBookmark>(apiUrl + '/bookmarks').pipe();
   }
+
+
 }

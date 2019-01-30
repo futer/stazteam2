@@ -18,7 +18,7 @@ export class BookmarksComponent implements OnInit {
     private dataService: BookmarkService, ) { }
 
   title: string;
-  url: string;
+  text: string;
   bookmarks: IBookmark;
 
 ngOnInit() {
@@ -31,16 +31,19 @@ ngOnInit() {
   });
 }
 
-getBookmark(id) {
+getBookmark(id, text) {
   console.log(id);
+  this.dataService.bookmarkkey = id;
+  // id i text wrzucamy do ng store
   // this.router.navigateByUrl('bookmarks' || '/url');
-  this.router.navigate(['bookmarks', {id}]);
+  // this.router.navigate(['bookmarks'], {queryParams: {id}});
+  this.router.navigate(['bookmarks', id]);
 }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(BookmarksPopupComponent, {
       width: '250px',
-      data: { title: this.title, url: this.url }
+      data: { title: this.title, text: this.text }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -58,16 +61,16 @@ export class BookmarksPopupComponent implements OnInit {
   constructor(private router: Router, private formBuilder: FormBuilder, private dataService: BookmarkService,
     public dialogRef: MatDialogRef<BookmarksPopupComponent>, @Inject(MAT_DIALOG_DATA) public data: IBookmark) { }
 
-  bookmark1: IBookmark;
+  bookmarkModel: IBookmark;
   bookmarkForm: FormGroup;
 
   ngOnInit() {
     // console.log('a');
-    this.bookmark1 = { title: '', url: '', };
-    console.log(this.bookmark1.title);
+    this.bookmarkModel = { title: '', text: '', };
+    console.log(this.bookmarkModel.title);
     this.bookmarkForm = this.formBuilder.group({
       'title': [''],
-      'url': [''],
+      'text': [''],
     });
   }
 
@@ -76,24 +79,24 @@ export class BookmarksPopupComponent implements OnInit {
   }
   // eventEmitter function
   onChangeTitle(value) {
-    console.log(this.bookmark1.title);
-    this.bookmark1.title = value;
+    console.log(this.bookmarkModel.title);
+    this.bookmarkModel.title = value;
   }
 
-  onChangeUrl(value) {
-    console.log(this.bookmark1.url);
-    this.bookmark1.url = value;
+  onChangeText(value) {
+    console.log(this.bookmarkModel.text);
+    this.bookmarkModel.text = value;
   }
   get f() { return this.bookmarkForm.controls; }
 
   onSubmit() {
 
     this.bookmarkForm = this.formBuilder.group({
-      'title': [this.bookmark1.title, [Validators.required, Validators.maxLength(20)]],
-      'url': [this.bookmark1.url, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
+      'title': [this.bookmarkModel.title, [Validators.required, Validators.maxLength(20)]],
+      'text': [this.bookmarkModel.text, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
     });
-    console.log(this.bookmark1);
-    this.dataService.postbookmark(this.bookmark1).subscribe(res => {
+    console.log(this.bookmarkModel);
+    this.dataService.postbookmark(this.bookmarkModel).subscribe(res => {
     }, (err) => {
       console.log(err);
     });
