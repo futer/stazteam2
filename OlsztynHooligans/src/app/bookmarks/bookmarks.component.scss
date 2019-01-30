@@ -46,12 +46,12 @@ ul {
     border: 2px solid black;
   }
   //grid layout
-  .item1 {grid-area: header; }
-  .item2 {grid-area: menu; 
+  .header {grid-area: header; }
+  .menu {grid-area: menu; 
   width: 200px;}
-  .item3 {grid-area: main; }
-  .item4 {grid-area: right; }
-  .item5 {grid-area: footer; }
+  .main {grid-area: main; }
+  .right {grid-area: right; }
+  .footer {grid-area: footer; }
   
   .grid-container{
     display:grid;

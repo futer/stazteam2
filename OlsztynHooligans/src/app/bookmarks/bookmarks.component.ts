@@ -40,12 +40,6 @@ getBookmark(id, text) {
   this.router.navigate(['bookmarks', id]);
 }
 
-getBookmarkText(id) {
-  console.log(id);
-
-
-}
-
   openDialog(): void {
     const dialogRef = this.dialog.open(BookmarksPopupComponent, {
       width: '250px',
@@ -67,13 +61,13 @@ export class BookmarksPopupComponent implements OnInit {
   constructor(private router: Router, private formBuilder: FormBuilder, private dataService: BookmarkService,
     public dialogRef: MatDialogRef<BookmarksPopupComponent>, @Inject(MAT_DIALOG_DATA) public data: IBookmark) { }
 
-  bookmark1: IBookmark;
+  bookmarkModel: IBookmark;
   bookmarkForm: FormGroup;
 
   ngOnInit() {
     // console.log('a');
-    this.bookmark1 = { title: '', text: '', };
-    console.log(this.bookmark1.title);
+    this.bookmarkModel = { title: '', text: '', };
+    console.log(this.bookmarkModel.title);
     this.bookmarkForm = this.formBuilder.group({
       'title': [''],
       'text': [''],
@@ -85,24 +79,24 @@ export class BookmarksPopupComponent implements OnInit {
   }
   // eventEmitter function
   onChangeTitle(value) {
-    console.log(this.bookmark1.title);
-    this.bookmark1.title = value;
+    console.log(this.bookmarkModel.title);
+    this.bookmarkModel.title = value;
   }
 
   onChangeText(value) {
-    console.log(this.bookmark1.text);
-    this.bookmark1.text = value;
+    console.log(this.bookmarkModel.text);
+    this.bookmarkModel.text = value;
   }
   get f() { return this.bookmarkForm.controls; }
 
   onSubmit() {
 
     this.bookmarkForm = this.formBuilder.group({
-      'title': [this.bookmark1.title, [Validators.required, Validators.maxLength(20)]],
-      'text': [this.bookmark1.text, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
+      'title': [this.bookmarkModel.title, [Validators.required, Validators.maxLength(20)]],
+      'text': [this.bookmarkModel.text, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
     });
-    console.log(this.bookmark1);
-    this.dataService.postbookmark(this.bookmark1).subscribe(res => {
+    console.log(this.bookmarkModel);
+    this.dataService.postbookmark(this.bookmarkModel).subscribe(res => {
     }, (err) => {
       console.log(err);
     });

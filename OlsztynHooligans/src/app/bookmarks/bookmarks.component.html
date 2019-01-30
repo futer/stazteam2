@@ -1,7 +1,7 @@
 <button class="mat-raised-button addbutton" (click)="openDialog()">Add</button>
 
 <div class="grid-container">
-  <div class="item2">
+  <div class="menu">
     <!-- {{bookmarks|json}} -->
     <div class="sidebar" *ngFor="let bookmark of bookmarks | keyvalue">
       <ul>
@@ -9,9 +9,7 @@
       </ul>
     </div>
   </div>
-  <div class="item3"  *ngFor="let bookmark of bookmarks | keyvalue">
-     {{bookmarks|json}} 
-    
+  <div class="main"  *ngFor="let bookmark of bookmarks | keyvalue">  
     {{bookmark.value.text}}
    
   </div>
