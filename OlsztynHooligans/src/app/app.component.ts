@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import { Login } from './model/login.model';
 import * as LoginActions from './store/actions/login.actions';
-
+import { AuthorizationDataService } from './service/authorization-data.service';
 interface AppState {
   login: Login;
 }
@@ -20,11 +20,13 @@ export class AppComponent {
   login: Observable<Login>;
   logged: string;
 
-  constructor (private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, public authService: AuthorizationDataService) {
     this.login = this.store.select('login');
   }
 
   logout() {
-    this.store.dispatch(new LoginActions.Logout(this.logged));
+    this.authService.signoutuser().subscribe(() => {
+      this.store.dispatch(new LoginActions.Logout(this.logged));
+    });
   }
 }
