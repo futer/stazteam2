@@ -19,11 +19,15 @@ import { MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, M
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import '../polyfills';
 import {MatNativeDateModule} from '@angular/material';
-
+import { AuthorizationDataService } from './service/authorization-data.service';
 
 import { StoreModule } from '@ngrx/store';
 import { loginReducer } from './store/reducers/login.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -54,6 +58,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatFormFieldModule,
     MatInputModule,
     MatNativeDateModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule
   ],
   exports: [
     MatButtonModule,
@@ -62,7 +69,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatRippleModule,
   ],
   entryComponents: [BookmarksComponent, BookmarksPopupComponent],
-  providers: [],
+  providers: [AuthorizationDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

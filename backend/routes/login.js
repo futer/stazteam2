@@ -4,9 +4,7 @@ const admin = require('firebase-admin');
 const jwt = require('jsonwebtoken');
 const firebase = require('firebase');
 
-router.get('/', function (req, res, next) {
-  res.send('login page');
-});
+
 /**
  * @swagger
  * /login:
@@ -39,14 +37,22 @@ router.post('/', function (req, res, next) {
   }
   firebase.auth().signInWithEmailAndPassword(user.email, user.password).then(function (firebaseUser) {
     const token = jwt.sign({ user }, 'testkey');
-      res.json({
-        token: token
-      });
-    return res.status(200).send({ message: 'Ok' });
+    return res.status(200).send({ token: token });
   })
     .catch(function (error) {
-      return res.status(400).send({ message: 'Not Ok'});
+      return res.status(400).send({ message: 'Not Ok' });
     });
 
 
 })
+
+router.get('/', function (req, res, next) {
+  console.log('a');
+  firebase.auth().signOut().then(function () {
+    console.log('Signed Out');
+    const tmpuser = firebase.auth().currentUser;
+    console.log(tmpuser);
+  }, function (error) {
+    console.error('Sign Out Error', error);
+  });
+});
