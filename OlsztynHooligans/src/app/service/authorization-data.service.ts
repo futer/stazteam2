@@ -22,4 +22,14 @@ export class AuthorizationDataService {
     postusers(user: IUser): Observable<IToken> {
       return this.http.post<IToken>(apiUrl + '/login', user).pipe();
     }
+
+    updateuser(data): Observable<any> {
+      const url = `${apiUrl}/edit`;
+      return this.http.put(url, data).pipe();
+    }
+
+    updatepassword(data): Observable<any> {
+      const url = `${apiUrl}/editpassword`;
+      return this.http.put(url, data).pipe();
+    }
 }
