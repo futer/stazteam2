@@ -4,6 +4,8 @@ import { IToken } from '../interface/interface.IToken';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 const apiUrl = environment.apiUrl;
 @Injectable({
@@ -11,7 +13,7 @@ const apiUrl = environment.apiUrl;
 })
 export class AuthorizationDataService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public afAuth: AngularFireAuth) { }
 
     // Rejestracja -- POST
     postuser(data: IUser): Observable<any> {
