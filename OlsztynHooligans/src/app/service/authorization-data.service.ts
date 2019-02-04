@@ -32,4 +32,8 @@ export class AuthorizationDataService {
       const url = `${apiUrl}/editpassword`;
       return this.http.put(url, data).pipe();
     }
+
+    signoutuser() {
+      return this.http.get(apiUrl + '/login');
+    }
 }
