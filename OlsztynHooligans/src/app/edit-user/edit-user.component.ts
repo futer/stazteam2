@@ -10,6 +10,7 @@ import { AuthorizationDataService} from '../service/authorization-data.service';
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent implements OnInit {
+  userForm: any;
 
   constructor(private router: Router,
     private formBuilder: FormBuilder,
@@ -20,24 +21,34 @@ export class EditUserComponent implements OnInit {
   editForm: FormGroup;
 
   ngOnInit() {
-    this.user1 = { email: '', password: '', name: '', surname: '' };
+    this.user1 = { email: '', name: '', password: '', surname: '' };
   }
 
   onChangeEmail(value) {
-    console.log(this.user1.email);
     this.user1.email = value;
   }
 
   onChangeName(value) {
-    console.log(this.user1.name);
     this.user1.name = value;
   }
 
   onChangeSurname(value) {
-    console.log(this.user1.surname);
     this.user1.surname = value;
   }
+  get f() { return this.userForm.controls; }
 
+  onSubmit(form) {
+    this.userForm = this.formBuilder.group({
+      'email': [this.user1.email, [Validators.required, Validators.maxLength(30)]],
+      'name': [this.user1.name, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],    });
+      this.dataService.updateuser(this.user1)
+        .subscribe(res => {
+          console.log(res);
+          this.router.navigate(['/dashboard']);
+        }, (err) => {
+          console.log(err);
+        });
+    }
   changePassword() {
     this.router.navigate([`/editpassword`]);
   }
