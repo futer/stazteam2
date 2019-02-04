@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.dataService.postusers(this.user1).subscribe(data => {
+    this.dataService.postusers(this.user1).subscribe(() => {
       this.store.dispatch(new LoginActions.Login(this.logged));
     });
   }

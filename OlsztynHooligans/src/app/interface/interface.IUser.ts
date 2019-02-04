@@ -1,5 +1,5 @@
 export interface IUser {
-    email: string;
+    email?: string;
     name?: string;
     surname?: string;
     password: string;
@@ -7,3 +7,4 @@ export interface IUser {
     confirmpassword?: string;
     image?: string;
 }
+

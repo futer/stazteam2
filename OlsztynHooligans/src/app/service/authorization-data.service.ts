@@ -25,8 +25,17 @@ export class AuthorizationDataService {
       return this.http.post<IToken>(apiUrl + '/login', user).pipe();
     }
 
+    updateuser(data): Observable<any> {
+      const url = `${apiUrl}/edit`;
+      return this.http.put(url, data).pipe();
+    }
+
+    updatepassword(data): Observable<any> {
+      const url = `${apiUrl}/editpassword`;
+      return this.http.put(url, data).pipe();
+    }
+
     signoutuser() {
       return this.http.get(apiUrl + '/login');
     }
-
 }

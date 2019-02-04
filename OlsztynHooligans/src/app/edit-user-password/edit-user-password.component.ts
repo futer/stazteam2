@@ -10,6 +10,7 @@ import { AuthorizationDataService} from '../service/authorization-data.service';
   styleUrls: ['./edit-user-password.component.scss']
 })
 export class EditUserPasswordComponent implements OnInit {
+  userForm: FormGroup;
 
   constructor(private router: Router,
     private formBuilder: FormBuilder,
@@ -18,10 +19,9 @@ export class EditUserPasswordComponent implements OnInit {
 
     user: IUser;
     editPasswordForm: FormGroup;
-    passwordconfirm: string;
 
   ngOnInit() {
-    this.user = { email: '', password: '', newpassword: '', confirmpassword: '' };
+    this.user = {  password: '', newpassword: '', confirmpassword: '' };
   }
 
   onChangeOldPassword(value) {
@@ -34,5 +34,25 @@ export class EditUserPasswordComponent implements OnInit {
 
   onChangeConfirmPassword(value) {
     this.user.confirmpassword = value;
+  }
+
+  get f() { return this.userForm.controls; }
+
+  onSubmit(form) {
+    console.log('asas');
+    this.userForm = this.formBuilder.group({
+      'password': [this.user.password, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      'newpassword': [this.user.newpassword, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      'confirmpassword': [this.user.confirmpassword, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
+    });
+    if (this.user.newpassword === this.user.confirmpassword) {
+      this.dataService.updatepassword(this.user)
+        .subscribe(res => {
+          console.log(res);
+          this.router.navigate(['/dashboard']);
+        }, (err) => {
+          console.log(err);
+        });
+    }
   }
 }
