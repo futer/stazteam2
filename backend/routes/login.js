@@ -42,16 +42,12 @@ router.post('/', function (req, res, next) {
     .catch(function (error) {
       return res.status(400).send({ message: 'Not Ok' });
     });
-
-
 })
 
 router.get('/', function (req, res, next) {
   firebase.auth().signOut().then(function () {
-    console.log('Signed Out');
-    const tmpuser = firebase.auth().currentUser;
-    console.log(tmpuser);
+    return res.status(200).send({ message: 'Signed Out'});
   }, function (error) {
-    console.error('Sign Out Error', error);
+    return res.status(400).send({ message: 'Sign Out Error'});
   });
 });
