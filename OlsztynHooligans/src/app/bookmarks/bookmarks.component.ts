@@ -12,8 +12,11 @@ import { BookmarkService} from '../service/bookmark.service';
 })
 
 export class BookmarksComponent implements OnInit {
-  constructor(public dialog: MatDialog, private router: Router,
-    private dataService: BookmarkService, ) { }
+  constructor(
+    public dialog: MatDialog,
+    private router: Router,
+    private dataService: BookmarkService
+    ) { }
 
   title: string;
   text: string;
@@ -52,8 +55,11 @@ export class BookmarksComponent implements OnInit {
 
 export class BookmarksPopupComponent implements OnInit {
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private dataService: BookmarkService,
-    public dialogRef: MatDialogRef<BookmarksPopupComponent>, @Inject(MAT_DIALOG_DATA) public data: IBookmark) { }
+  constructor(private router: Router,
+    private formBuilder: FormBuilder,
+    private dataService: BookmarkService,
+    public dialogRef: MatDialogRef<BookmarksPopupComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: IBookmark) { }
 
   bookmarkModel: IBookmark;
   bookmarkForm: FormGroup;
@@ -81,7 +87,6 @@ export class BookmarksPopupComponent implements OnInit {
   get f() { return this.bookmarkForm.controls; }
 
   onSubmit() {
-
     this.bookmarkForm = this.formBuilder.group({
       'title': [this.bookmarkModel.title, [Validators.required, Validators.maxLength(20)]],
       'text': [this.bookmarkModel.text, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
@@ -93,5 +98,3 @@ export class BookmarksPopupComponent implements OnInit {
     this.dialogRef.close();
   }
 }
-
-
