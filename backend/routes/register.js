@@ -53,7 +53,12 @@ console.log(req.body.image);
     photoURL: req.body.image
   })
     .then(function (userRecord) {
-      // See the UserRecord reference doc for the contents of userRecord.
+      admin.database().ref(`data/users`).child(userRecord.uid).set({
+        uid: userRecord.uid,
+        role: '0',  
+        is_banned: false,
+        is_admin: false,
+      });
       console.log("Successfully created new user:", userRecord.uid);
       return res.status(200).send({ message: 'Ok' });
 
