@@ -107,7 +107,7 @@
             </app-label>
           </div>
           <div class="button-choose">
-            <input type="file" name="Image">
+            <input type="file" name="Image" (change)="upload($event)" accept=".png,.jpg">
           </div>
         </div>
         <div class="form-group">

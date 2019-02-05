@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { IUser } from '../interface/interface.IUser';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthorizationDataService} from '../service/authorization-data.service';
-
+import { AngularFireStorage } from 'angularfire2/storage';
+import * as firebase from 'firebase/app';
+import { StorageServiceService } from '../service/storage-service.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,14 +13,19 @@ import { AuthorizationDataService} from '../service/authorization-data.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private dataService: AuthorizationDataService) { }
+  constructor(private router: Router,
+    private formBuilder: FormBuilder,
+    private dataService: AuthorizationDataService,
+    private storage: StorageServiceService,
+    private afStorage: AngularFireStorage) { }
 
   user1: IUser;
   userForm: FormGroup;
   passwordconfirm: string;
+  selectedFile: File;
 
   ngOnInit() {
-    this.user1 = { email: '', password: '', name: '', surname: '' };
+    this.user1 = { email: '', password: '', name: '', surname: '', image: '' };
     this.passwordconfirm = '';
     this.userForm = this.formBuilder.group({
       'email': [''],
@@ -54,10 +61,16 @@ export class RegisterComponent implements OnInit {
     console.log(this.passwordconfirm);
     this.passwordconfirm = value;
   }
+
+  upload(event) {
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
+  }
   // Used in validation
   get f() { return this.userForm.controls; }
 
   onSubmit() {
+
 
     this.userForm = this.formBuilder.group({
       'email': [this.user1.email, [Validators.required, Validators.maxLength(30)]],
@@ -65,6 +78,8 @@ export class RegisterComponent implements OnInit {
       'passwordconfirm': [this.passwordconfirm, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
     });
     if (this.user1.password === this.passwordconfirm) {
+      this.storage.pushUpload(this.selectedFile);
+      this.user1.image = this.storage.image;
       this.dataService.postuser(this.user1).subscribe(res => {
         this.router.navigate(['/login']);
       }, (err) => {

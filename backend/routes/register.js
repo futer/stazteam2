@@ -45,11 +45,12 @@ router.post('/', function (req, res, next) {
   if (res.error) {
     return res.status(400).send({ message: res.error.message });
   }
-
+console.log(req.body.image);
   admin.auth().createUser({
     email: req.body.email,
     password: req.body.password,
-    displayName: req.body.name
+    displayName: req.body.name,
+    photoURL: req.body.image
   })
     .then(function (userRecord) {
       // See the UserRecord reference doc for the contents of userRecord.

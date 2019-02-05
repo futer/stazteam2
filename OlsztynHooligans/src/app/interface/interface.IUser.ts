@@ -5,5 +5,6 @@ export interface IUser {
     password: string;
     newpassword?: string;
     confirmpassword?: string;
-    image?: Blob;
+    image?: string;
 }
+
