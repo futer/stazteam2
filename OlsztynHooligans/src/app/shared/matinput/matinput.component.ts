@@ -12,7 +12,7 @@ export class MatinputComponent implements OnInit {
   @Input() classname: string;
   @Input() name: string;
   @Input() readonly: string;
-  @Input() value: string;
+  @Input() value = '';
   @Input() title: string;
   @Input() placeholder = '';
 

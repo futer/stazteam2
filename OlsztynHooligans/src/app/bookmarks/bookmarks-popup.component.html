@@ -1,9 +1,9 @@
 <form #bookmarkForm="ngForm" (ngSubmit)="onSubmit(bookmarkForm)">
   <p>Bookmark's Title</p>
-  <app-matinput [name]="'title'" [required]="'required'" (childChanged)="onChangeTitle($event)" [value]="bookmark1.title">
+  <app-matinput [name]="'title'" [required]="'required'" (childChanged)="onChangeTitle($event)" [value]="">
   </app-matinput>
   <p>Bookmark's Text</p>
-  <app-matinput [name]="'text'" [required]="'required'" (childChanged)="onChangeText($event)" [value]="bookmark1.text">
+  <app-matinput [name]="'text'" [required]="'required'" (childChanged)="onChangeText($event)" [value]="">
   </app-matinput>
   <div class="mat-dialog-actions">
     <button class="mat-button addbutton" (click)="onNoClick()">Cancel</button>
