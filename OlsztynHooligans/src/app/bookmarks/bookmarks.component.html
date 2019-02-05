@@ -1,16 +1,16 @@
 <button class="mat-raised-button addbutton" (click)="openDialog()">Add</button>
-
 <div class="grid-container">
   <div class="menu">
-    <!-- {{bookmarks|json}} -->
     <div class="sidebar" *ngFor="let bookmark of bookmarks | keyvalue">
       <ul>
-        <li (click)='getBookmark(bookmark.key,bookmark.value.text)' class="right"><a>{{bookmark.value.title}}</a></li>
+        <li [class.selected]="bookmark === selectedBookmarks"
+        (click)='getBookmark(bookmark)' 
+        class="right"><a>{{bookmark.value.title}}</a></li>
       </ul>
     </div>
   </div>
-  <div class="main"  *ngFor="let bookmark of bookmarks | keyvalue">  
-    {{bookmark.value.text}}
-   
+  <div class="main" *ngIf="selectedBookmarks">
+    {{selectedBookmarks.value.text}}
+    <!-- <li *ngFor="let bookmark of bookmarks | keyvalue" >{{bookmark.value.text}}</li> -->
   </div>
 </div>

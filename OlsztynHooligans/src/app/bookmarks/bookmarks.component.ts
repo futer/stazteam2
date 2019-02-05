@@ -4,8 +4,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { IBookmark } from '../interface/interface.IBookmark';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { BookmarkService} from '../service/bookmark.service';
-import { $ } from 'protractor';
-
 
 @Component({
   selector: 'app-bookmarks',
@@ -14,31 +12,25 @@ import { $ } from 'protractor';
 })
 
 export class BookmarksComponent implements OnInit {
-  constructor(public dialog: MatDialog, private router: Router, private formBuilder: FormBuilder,
+  constructor(public dialog: MatDialog, private router: Router,
     private dataService: BookmarkService, ) { }
 
   title: string;
   text: string;
   bookmarks: IBookmark;
+  selectedBookmarks: IBookmark;
+  ngOnInit() {
+    this.dataService.getbookmarks()
+    .subscribe(res => {
+      this.bookmarks = res;
+    }, err => {
+      console.log(err);
+    });
+  }
 
-ngOnInit() {
-  this.dataService.getbookmarks()
-  .subscribe(res => {
-    console.log(res);
-    this.bookmarks = res;
-  }, err => {
-    console.log(err);
-  });
-}
-
-getBookmark(id, text) {
-  console.log(id);
-  this.dataService.bookmarkkey = id;
-  // id i text wrzucamy do ng store
-  // this.router.navigateByUrl('bookmarks' || '/url');
-  // this.router.navigate(['bookmarks'], {queryParams: {id}});
-  this.router.navigate(['bookmarks', id]);
-}
+  getBookmark(book: IBookmark) {
+    this.selectedBookmarks = book;
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(BookmarksPopupComponent, {
@@ -51,11 +43,13 @@ getBookmark(id, text) {
     });
   }
 }
+
 @Component({
   selector: 'app-bookmarks',
   templateUrl: './bookmarks-popup.component.html',
   styleUrls: ['./bookmarks.component.scss']
 })
+
 export class BookmarksPopupComponent implements OnInit {
 
   constructor(private router: Router, private formBuilder: FormBuilder, private dataService: BookmarkService,
@@ -65,7 +59,6 @@ export class BookmarksPopupComponent implements OnInit {
   bookmarkForm: FormGroup;
 
   ngOnInit() {
-    // console.log('a');
     this.bookmarkModel = { title: '', text: '', };
     console.log(this.bookmarkModel.title);
     this.bookmarkForm = this.formBuilder.group({
@@ -77,14 +70,12 @@ export class BookmarksPopupComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-  // eventEmitter function
+
   onChangeTitle(value) {
-    console.log(this.bookmarkModel.title);
     this.bookmarkModel.title = value;
   }
 
   onChangeText(value) {
-    console.log(this.bookmarkModel.text);
     this.bookmarkModel.text = value;
   }
   get f() { return this.bookmarkForm.controls; }
@@ -95,7 +86,6 @@ export class BookmarksPopupComponent implements OnInit {
       'title': [this.bookmarkModel.title, [Validators.required, Validators.maxLength(20)]],
       'text': [this.bookmarkModel.text, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
     });
-    console.log(this.bookmarkModel);
     this.dataService.postbookmark(this.bookmarkModel).subscribe(res => {
     }, (err) => {
       console.log(err);
