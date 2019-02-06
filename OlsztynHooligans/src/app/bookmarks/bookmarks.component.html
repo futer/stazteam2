@@ -12,8 +12,8 @@
     </div>
   </div>
   <div class="main" *ngIf="selectedBookmarks">
-    <p>{{selectedBookmarks.value.title | uppercase }}</p>
-    <p>{{selectedBookmarks.value.text}}</p>
+    <div class="title">{{selectedBookmarks.value.title}}</div>
+    <div class="text">{{selectedBookmarks.value.text}}</div>
     <!-- <li *ngFor="let bookmark of bookmarks | keyvalue" >{{bookmark.value.text}}</li> -->
   </div>
 </div>

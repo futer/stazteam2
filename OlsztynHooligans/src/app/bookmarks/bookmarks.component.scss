@@ -55,7 +55,11 @@ ul {
   .right {grid-area: right; }
   .footer {grid-area: footer; }
   
-  p{
+  .title{
+    text-transform: uppercase;
+  }
+
+  .text{
     word-wrap: break-word;
   }
 

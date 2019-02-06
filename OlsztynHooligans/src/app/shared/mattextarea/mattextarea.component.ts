@@ -25,7 +25,6 @@ export class MattextareaComponent implements OnInit {
   }
 
   inputkeyup(input) {
-    console.log(input.value);
     this.childChanged.emit(input.value);
   }
 }
