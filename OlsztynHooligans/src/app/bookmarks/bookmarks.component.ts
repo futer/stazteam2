@@ -22,6 +22,7 @@ export class BookmarksComponent implements OnInit {
   text: string;
   bookmarks: IBookmark;
   selectedBookmarks: IBookmark;
+
   ngOnInit() {
     this.dataService.getbookmarks()
     .subscribe(res => {
