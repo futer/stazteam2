@@ -16,6 +16,7 @@ import { MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, M
 import {MatNativeDateModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatinputComponent } from './matinput/matinput.component';
+import { MattextareaComponent } from './mattextarea/mattextarea.component';
 
 
 @NgModule({
@@ -31,7 +32,10 @@ import { MatinputComponent } from './matinput/matinput.component';
     ChatComponent,
     NavbarComponent,
     DocumentIndexComponent,
-    DocumentIndexBoxComponent, ButtonchatComponent, MatinputComponent
+    DocumentIndexBoxComponent,
+    ButtonchatComponent,
+    MatinputComponent,
+    MattextareaComponent
   ],
   imports: [
     CommonModule,
@@ -58,6 +62,7 @@ import { MatinputComponent } from './matinput/matinput.component';
     MatButtonModule,
     MatFormFieldModule,
     MatRippleModule,
+    MattextareaComponent
   ]
 })
 export class SharedModule { }
