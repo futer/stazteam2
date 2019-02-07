@@ -88,13 +88,19 @@ export class BookmarksPopupComponent implements OnInit {
 
   onSubmit() {
     this.bookmarkForm = this.formBuilder.group({
-      'title': [this.bookmarkModel.title, [Validators.required, Validators.maxLength(20)]],
+      'title': [this.bookmarkModel.title, [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
       'text': [this.bookmarkModel.text, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
     });
+
+    if (this.bookmarkForm.invalid) {
+      return;
+    }
+    console.log(this.bookmarkForm);
     this.dataService.postbookmark(this.bookmarkModel).subscribe(res => {
+              this.bookmarkModel = { text: this.bookmarkModel.text, title: this.bookmarkModel.title };
+              this.dialogRef.close();
     }, (err) => {
       console.log(err);
     });
-    this.dialogRef.close();
   }
 }
