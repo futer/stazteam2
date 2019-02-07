@@ -25,6 +25,22 @@ export class AuthorizationDataService {
       return this.http.post<IToken>(apiUrl + '/login', user).pipe();
     }
 
+    postFacebook(token: string): Observable<any> {
+      console.log(token);
+      const data = {
+        token: token
+      };
+      return this.http.post<string>(apiUrl + '/loginfacebook', data).pipe();
+    }
+
+    postGoogle(token: string): Observable<any> {
+      console.log(token);
+      const data = {
+        token: token
+      };
+      return this.http.post<string>(apiUrl + '/logingoogle', data).pipe();
+    }
+
     updateuser(data): Observable<any> {
       const url = `${apiUrl}/edit`;
       return this.http.put(url, data).pipe();

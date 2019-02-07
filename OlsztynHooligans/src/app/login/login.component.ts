@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { IUser } from '../interface/interface.IUser';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthorizationDataService} from '../service/authorization-data.service';
-
+import * as firebase from 'firebase/app';
 
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
 
   user1: IUser;
-  constructor(private router: Router, private dataService: AuthorizationDataService, private store: Store<AppState>) {
+  constructor(private router: Router, public dataService: AuthorizationDataService, private store: Store<AppState>) {
     this.login = this.store.select('login');
    }
 
@@ -46,6 +46,42 @@ export class LoginComponent implements OnInit {
 
   getRegister() {
       this.router.navigate([`/register`]);
+  }
+
+  doFacebookLogin() {
+    const newThis = this;
+    const provider = new firebase.auth.FacebookAuthProvider();
+    console.log(provider);
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+      const token = result.credential['accessToken'];
+      newThis.dataService.postFacebook(token).subscribe(() => {
+        newThis.store.dispatch(new LoginActions.Login(newThis.logged));
+      });
+    }).catch(function(error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.email;
+      const credential = error.credential;
+      console.log(errorCode, errorMessage, email, credential);
+    });
+  }
+
+  doGoogleLogin() {
+    const newThis = this;
+    const provider = new firebase.auth.GoogleAuthProvider();
+    console.log(provider);
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+      const token = result.credential['idToken'];
+      newThis.dataService.postGoogle(token).subscribe(() => {
+        newThis.store.dispatch(new LoginActions.Login(newThis.logged));
+      });
+    }).catch(function(error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.email;
+      const credential = error.credential;
+      console.log(errorCode, errorMessage, email);
+    });
   }
 
   onSubmit() {
