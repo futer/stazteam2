@@ -17,12 +17,12 @@
 </div>
   <p>Bookmark's Text</p>
   <div class="form-group">
-  <app-matinput
+  <app-mattextarea
     [name]="'text'"
     [required]="'required'" 
     (childChanged)="onChangeText($event)"
     [classname]="'form-control'">
-  </app-matinput>
+  </app-mattextarea>
 </div>
 <div *ngIf="f.text.errors" class="invalid-feedback">
   <div class="invalid-text" *ngIf="f.text.errors.required">Text is required</div>

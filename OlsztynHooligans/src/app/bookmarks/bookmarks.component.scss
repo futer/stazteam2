@@ -49,10 +49,20 @@ ul {
   .header {grid-area: header; }
   .menu {grid-area: menu; 
   width: 200px;}
-  .main {grid-area: main; }
+  .main {
+    grid-area: main;
+  }
   .right {grid-area: right; }
   .footer {grid-area: footer; }
   
+  .title{
+    text-transform: uppercase;
+  }
+
+  .text{
+    word-wrap: break-word;
+  }
+
   .grid-container{
     display:grid;
     grid-template-areas:

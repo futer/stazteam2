@@ -1,0 +1,18 @@
+<mat-form-field>
+  <textarea #input 
+    matInput
+    [type]="type" 
+    [class]="classname" 
+    [name]="name" 
+    [required]="required" 
+    [readonly]="readonly" 
+    (keyup)="inputkeyup(input)" 
+    (change)="inputkeyup(input)"
+    [value]="value"
+    [placeholder]="placeholder"
+    cdkTextareaAutosize
+    #autosize="cdkTextareaAutosize"
+    cdkAutosizeMinRows="3"
+    cdkAutosizeMaxRows="10">
+  </textarea>
+</mat-form-field>
