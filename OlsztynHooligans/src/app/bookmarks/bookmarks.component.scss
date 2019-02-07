@@ -26,6 +26,9 @@ ul {
   }
   li {
     cursor:pointer;
+    display: flex;
+    justify-content: flex-start, space-around;
+    margin: 5px;
   }
 
   li a {
@@ -35,8 +38,8 @@ ul {
     padding: 14px 16px;
     text-decoration: none;
     font-family: Arial;
-  
   }
+
   li a:hover {
     background-color: lightgray;
   }
@@ -45,7 +48,7 @@ ul {
     width: 100%;
     border: 2px solid black;
   }
-  //grid layout
+
   .header {grid-area: header; }
   .menu {grid-area: menu; 
   width: 200px;}
@@ -77,18 +80,38 @@ ul {
     text-align: center;
   }
   
-  //table style
   .line
   {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  display: grid;
-  grid-template-columns: 2.5fr 2.5fr 1fr 1fr; 
-  padding: 10px 0px 10px 0px;
-  border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2.5fr 2.5fr 1fr 1fr; 
+    padding: 10px 0px 10px 0px;
+    border-bottom: 1px solid #ddd;
   }
+
   .tab
   {
   font-family: Arial, Helvetica, sans-serif;
   }
+
+.edit {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.right {
+  display: grid;
+  align-self: center;
+}
+
+.mat-button {
+  display: flex;
+  justify-content: center;
+}
