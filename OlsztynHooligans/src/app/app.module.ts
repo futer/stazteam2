@@ -15,7 +15,7 @@ import { BookmarksPopupComponent } from './bookmarks/bookmarks.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { EditUserPasswordComponent } from './edit-user-password/edit-user-password.component';
-import { MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatRippleModule } from '@angular/material';
+import { MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatRippleModule, MatIconModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import '../polyfills';
 import {MatNativeDateModule} from '@angular/material';
@@ -64,13 +64,15 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    MatIconModule
   ],
   exports: [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
+    MatIconModule
   ],
   entryComponents: [BookmarksComponent, BookmarksPopupComponent],
   providers: [AuthorizationDataService],
