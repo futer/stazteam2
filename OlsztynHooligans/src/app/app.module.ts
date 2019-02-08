@@ -11,7 +11,7 @@ import { DocumentComponent } from './document/document.component';
 import { ChatComponent } from './chat/chat.component';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { HttpClientModule } from '@angular/common/http';
-import { BookmarksPopupComponent } from './bookmarks/bookmarks.component';
+import { BookmarksPopupComponent, BookmarksPopupEditComponent, BookmarksPopupDeleteComponent } from './bookmarks/bookmarks.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { EditUserPasswordComponent } from './edit-user-password/edit-user-password.component';
@@ -43,6 +43,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     BookmarksComponent,
     EditUserPasswordComponent,
     BookmarksPopupComponent,
+    BookmarksPopupEditComponent,
+    BookmarksPopupDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +76,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     MatRippleModule,
     MatIconModule
   ],
-  entryComponents: [BookmarksComponent, BookmarksPopupComponent],
+  entryComponents: [BookmarksComponent, BookmarksPopupComponent, BookmarksPopupEditComponent, BookmarksPopupDeleteComponent],
   providers: [AuthorizationDataService],
   bootstrap: [AppComponent]
 })

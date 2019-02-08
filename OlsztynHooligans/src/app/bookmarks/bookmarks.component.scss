@@ -22,7 +22,6 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-  
   }
   li {
     cursor:pointer;
@@ -107,13 +106,12 @@ ul {
 }
 
 .right {
-  display: grid;
   align-self: center;
 }
 
 .mat-button {
   display: flex;
-  justify-content: center;
+  justify-content: center, flex-end;
 }
   .invalid-text
   {
