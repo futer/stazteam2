@@ -6,6 +6,7 @@ import { AuthorizationDataService} from '../service/authorization-data.service';
 import { AngularFireStorage } from 'angularfire2/storage';
 import * as firebase from 'firebase/app';
 import { StorageServiceService } from '../service/storage-service.service';
+import { MustMatch } from '../helpers/must-match.validator';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -19,47 +20,48 @@ export class RegisterComponent implements OnInit {
     private storage: StorageServiceService,
     private afStorage: AngularFireStorage) { }
 
-  user1: IUser;
+  userModel: IUser;
   userForm: FormGroup;
-  passwordconfirm: string;
+  // passwordconfirm: string;
   selectedFile: File;
 
   ngOnInit() {
-    this.user1 = { email: '', password: '', name: '', surname: '', image: '' };
-    this.passwordconfirm = '';
+    this.userModel = { email: '', password: '', name: '', surname: '', image: '', confirmpassword: '', };
+    // this.passwordconfirm = '';
     this.userForm = this.formBuilder.group({
       'email': [''],
       'password': [''],
       'name': [''],
-      'surname': ['']
+      'surname': [''],
+      'confirmpassword': [''],
     });
   }
 
   // eventEmitter function
 
   onChangeEmail(value) {
-    console.log(this.user1.email);
-    this.user1.email = value;
+    console.log(this.userModel.email);
+    this.userModel.email = value;
   }
 
   onChangeName(value) {
-    console.log(this.user1.name);
-    this.user1.name = value;
+    console.log(this.userModel.name);
+    this.userModel.name = value;
   }
 
   onChangeSurname(value) {
-    console.log(this.user1.surname);
-    this.user1.surname = value;
+    console.log(this.userModel.surname);
+    this.userModel.surname = value;
   }
 
   onChangePassword(value) {
-    console.log(this.user1.password);
-    this.user1.password = value;
+    console.log(this.userModel.password);
+    this.userModel.password = value;
   }
 
   onChangePassword2(value) {
-    console.log(this.passwordconfirm);
-    this.passwordconfirm = value;
+    console.log(this.userModel.confirmpassword);
+    this.userModel.confirmpassword = value;
   }
 
   upload(event) {
@@ -73,14 +75,23 @@ export class RegisterComponent implements OnInit {
 
 
     this.userForm = this.formBuilder.group({
-      'email': [this.user1.email, [Validators.required, Validators.maxLength(30), Validators.email, ]],
-      'password': [this.user1.password, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      'passwordconfirm': [this.passwordconfirm, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]]
-    });
-    if (this.user1.password === this.passwordconfirm) {
+      'email': [this.userModel.email, [Validators.required, Validators.maxLength(30), Validators.email, ]],
+      'name': [this.userModel.name, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      'surname': [this.userModel.surname, [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
+      'password': [this.userModel.password, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      'confirmpassword': [this.userModel.confirmpassword, Validators.required, ]
+    }, {
+      validator: MustMatch('password', 'confirmpassword')
+  });
+
+    if (this.userForm.invalid) {
+      return;
+    }
+
+    if (this.userModel.password === this.userModel.confirmpassword) {
       this.storage.pushUpload(this.selectedFile);
-      this.user1.image = this.storage.image;
-      this.dataService.postuser(this.user1).subscribe(res => {
+      this.userModel.image = this.storage.image;
+      this.dataService.postuser(this.userModel).subscribe(res => {
         this.router.navigate(['/login']);
       }, (err) => {
         console.log(err);

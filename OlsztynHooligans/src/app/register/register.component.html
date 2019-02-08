@@ -11,6 +11,7 @@
                 [classname]="'label-register'">
                 Email
               </app-label>
+
             </div>
             <div>
               <app-input [type]="'text'"
@@ -18,10 +19,17 @@
                 [name]="'email'"
                 [required]="'required'"
                 (childChanged)="onChangeEmail($event)"
-                [value]="user1.email"
+                [value]="userModel.email"
                 [placeholder]>
               </app-input>
             </div>
+          </div>
+          <div *ngIf="f.email.errors" class="invalid-feedback">
+            <div class="invalid-text" *ngIf="f.email.errors.required">
+              Field "e-mail" is required
+            </div>
+            <div class="invalid-text" *ngIf="f.email.errors.email">This field needs to have e-mail format</div>
+            <div class="invalid-text" *ngIf="f.email.errors.maxlength">E-mail has to be at most 30 characters</div>
           </div>
         </div>
         <div class="form-group">
@@ -33,15 +41,23 @@
               </app-label>
             </div>
             <div>
+
               <app-input [type]="'text'"
                 [classname]="'form-control'"
                 [name]="'name'"
                 [required]="'required'"
                 (childChanged)="onChangeName($event)"
-                [value]="user1.name">
+                [value]="userModel.name">
               </app-input>
             </div>
           </div>
+          <div *ngIf="f.name.errors" class="invalid-feedback">
+              <div class="invalid-text"*ngIf="f.name.errors.required">
+                Field "name" is required
+              </div>
+              <div class="invalid-text" *ngIf="f.name.errors.minlength">Name has to be at least 3 characters</div>
+              <div class="invalid-text" *ngIf="f.name.errors.maxlength">Name has to be at most 20 characters</div>
+            </div>
         </div>
         <div class="form-group">
           <div class="row-container">
@@ -49,7 +65,7 @@
               <app-label [for]="'surname'"
                 [classname]="'label-register'">
                 Surname
-              </app-label>
+              </app-label>       
             </div>
             <div>
               <app-input [type]="'text'"
@@ -57,10 +73,17 @@
                 [name]="'surname'"
                 [required]="'required'"
                 (childChanged)="onChangeSurname($event)"
-                [value]="user1.surname">
+                [value]="userModel.surname">
               </app-input>
             </div>
           </div>
+          <div *ngIf="f.surname.errors" class="invalid-feedback">
+              <div class="invalid-text"*ngIf="f.surname.errors.required">
+                Field "surname" is required
+              </div>
+              <div class="invalid-text" *ngIf="f.surname.errors.minlength">Surname has to be at least 3 characters</div>
+              <div class="invalid-text" *ngIf="f.surname.errors.maxlength">Surname has to be at most 40 characters</div>
+            </div>
         </div>
         <div class="form-group">
           <div class="row-container">
@@ -76,10 +99,17 @@
                 [name]="'password'"
                 [required]="'required'"
                 (childChanged)="onChangePassword($event)"
-                [value]="user1.password">
+                [value]="userModel.password">
               </app-input>
             </div>
           </div>
+          <div *ngIf="f.password.errors" class="invalid-feedback">
+              <div class="invalid-text"*ngIf="f.password.errors.required">
+                Field "password" is required
+              </div>
+              <div class="invalid-text" *ngIf="f.password.errors.minlength">Password has to be at least 3 characters</div>
+              <div class="invalid-text" *ngIf="f.password.errors.maxlength">Password has to be at most 20 characters</div>
+            </div>
         </div>
         <div class="form-group">
           <div class="row-container">
@@ -95,10 +125,16 @@
                 [name]="'confirmpassword'"
                 [required]="'required'"
                 (childChanged)="onChangePassword2($event)"
-                [value]="passwordconfirm">
+                [value]="userModel.confirmpassword"
+                [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
               </app-input>
             </div>
           </div>
+          <div *ngIf="f.confirmpassword.errors" class="invalid-feedback">
+              <div class="invalid-text"*ngIf="f.confirmpassword.errors.required">Confirm Password is required</div>
+              <div  class="invalid-text"*ngIf="f.confirmpassword.errors.mustMatch">Passwords must match</div>
+            </div>
+        
         </div>
         <div class="row-container">
           <div class="label-class">
