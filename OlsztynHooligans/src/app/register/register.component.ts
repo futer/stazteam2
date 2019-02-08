@@ -20,13 +20,13 @@ export class RegisterComponent implements OnInit {
     private storage: StorageServiceService,
     private afStorage: AngularFireStorage) { }
 
-  user1: IUser;
+  userModel: IUser;
   userForm: FormGroup;
   // passwordconfirm: string;
   selectedFile: File;
 
   ngOnInit() {
-    this.user1 = { email: '', password: '', name: '', surname: '', image: '', confirmpassword: '', };
+    this.userModel = { email: '', password: '', name: '', surname: '', image: '', confirmpassword: '', };
     // this.passwordconfirm = '';
     this.userForm = this.formBuilder.group({
       'email': [''],
@@ -40,28 +40,28 @@ export class RegisterComponent implements OnInit {
   // eventEmitter function
 
   onChangeEmail(value) {
-    console.log(this.user1.email);
-    this.user1.email = value;
+    console.log(this.userModel.email);
+    this.userModel.email = value;
   }
 
   onChangeName(value) {
-    console.log(this.user1.name);
-    this.user1.name = value;
+    console.log(this.userModel.name);
+    this.userModel.name = value;
   }
 
   onChangeSurname(value) {
-    console.log(this.user1.surname);
-    this.user1.surname = value;
+    console.log(this.userModel.surname);
+    this.userModel.surname = value;
   }
 
   onChangePassword(value) {
-    console.log(this.user1.password);
-    this.user1.password = value;
+    console.log(this.userModel.password);
+    this.userModel.password = value;
   }
 
   onChangePassword2(value) {
-    console.log(this.user1.confirmpassword);
-    this.user1.confirmpassword = value;
+    console.log(this.userModel.confirmpassword);
+    this.userModel.confirmpassword = value;
   }
 
   upload(event) {
@@ -75,11 +75,11 @@ export class RegisterComponent implements OnInit {
 
 
     this.userForm = this.formBuilder.group({
-      'email': [this.user1.email, [Validators.required, Validators.maxLength(30), Validators.email, ]],
-      'name': [this.user1.name, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      'surname': [this.user1.surname, [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
-      'password': [this.user1.password, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      'confirmpassword': [this.user1.confirmpassword, Validators.required, ]
+      'email': [this.userModel.email, [Validators.required, Validators.maxLength(30), Validators.email, ]],
+      'name': [this.userModel.name, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      'surname': [this.userModel.surname, [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
+      'password': [this.userModel.password, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      'confirmpassword': [this.userModel.confirmpassword, Validators.required, ]
     }, {
       validator: MustMatch('password', 'confirmpassword')
   });
@@ -88,10 +88,10 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    if (this.user1.password === this.user1.confirmpassword) {
+    if (this.userModel.password === this.userModel.confirmpassword) {
       this.storage.pushUpload(this.selectedFile);
-      this.user1.image = this.storage.image;
-      this.dataService.postuser(this.user1).subscribe(res => {
+      this.userModel.image = this.storage.image;
+      this.dataService.postuser(this.userModel).subscribe(res => {
         this.router.navigate(['/login']);
       }, (err) => {
         console.log(err);

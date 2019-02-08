@@ -19,7 +19,7 @@
                 [name]="'email'"
                 [required]="'required'"
                 (childChanged)="onChangeEmail($event)"
-                [value]="user1.email"
+                [value]="userModel.email"
                 [placeholder]>
               </app-input>
             </div>
@@ -47,7 +47,7 @@
                 [name]="'name'"
                 [required]="'required'"
                 (childChanged)="onChangeName($event)"
-                [value]="user1.name">
+                [value]="userModel.name">
               </app-input>
             </div>
           </div>
@@ -73,7 +73,7 @@
                 [name]="'surname'"
                 [required]="'required'"
                 (childChanged)="onChangeSurname($event)"
-                [value]="user1.surname">
+                [value]="userModel.surname">
               </app-input>
             </div>
           </div>
@@ -99,7 +99,7 @@
                 [name]="'password'"
                 [required]="'required'"
                 (childChanged)="onChangePassword($event)"
-                [value]="user1.password">
+                [value]="userModel.password">
               </app-input>
             </div>
           </div>
@@ -125,7 +125,7 @@
                 [name]="'confirmpassword'"
                 [required]="'required'"
                 (childChanged)="onChangePassword2($event)"
-                [value]="user1.confirmpassword"
+                [value]="userModel.confirmpassword"
                 [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
               </app-input>
             </div>
