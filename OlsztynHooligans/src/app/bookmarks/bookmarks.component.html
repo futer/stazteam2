@@ -4,16 +4,17 @@
     <div class="sidebar" *ngFor="let bookmark of bookmarks | keyvalue">
       <ul>
         <li [class.selected]="bookmark === selectedBookmarks"
-          (click)='getBookmark(bookmark)' 
-          class="right">
+          (click)='getBookmark(bookmark)'>
             {{bookmark.value.title}}
         </li>
-        <button (click)="openEditDialog(event,bookmark)" mat-button>
-          <mat-icon class="edit">edit</mat-icon>
-        </button>
-        <button (click)="openDeleteDialog(event,bookmark)" mat-button>
-          <mat-icon class="delete">delete</mat-icon>
-        </button>
+        <li>
+          <button (click)="openEditDialog(event,bookmark)" mat-button>
+            <mat-icon class="edit">edit</mat-icon>
+          </button>
+          <button (click)="openDeleteDialog(event,bookmark)" mat-button>
+            <mat-icon class="delete">delete</mat-icon>
+          </button>
+        </li>       
       </ul>
     </div>
   </div>
