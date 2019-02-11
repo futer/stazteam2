@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Login } from './model/login.model';
 import * as LoginActions from './store/actions/login.actions';
 import { AuthorizationDataService } from './service/authorization-data.service';
+import * as firebase from 'firebase/app';
 interface AppState {
   login: Login;
 }
@@ -25,8 +26,14 @@ export class AppComponent {
   }
 
   logout() {
+    const newThis = this;
     this.authService.signoutuser().subscribe(() => {
-      this.store.dispatch(new LoginActions.Logout(this.logged));
+      firebase.auth().signOut().then(function() {
+        console.log('signout');
+        newThis.store.dispatch(new LoginActions.Logout(newThis.logged));
+      }).catch(function(error) {
+        console.log('Not signout');
+      });
     });
   }
 }
