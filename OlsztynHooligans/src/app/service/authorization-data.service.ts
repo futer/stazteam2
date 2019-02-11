@@ -13,7 +13,8 @@ const apiUrl = environment.apiUrl;
 })
 export class AuthorizationDataService {
 
-  constructor(private http: HttpClient, public afAuth: AngularFireAuth) { }
+  constructor(private http: HttpClient,
+    public afAuth: AngularFireAuth) { }
 
     // Rejestracja -- POST
     postuser(data: IUser): Observable<any> {

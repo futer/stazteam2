@@ -21,7 +21,8 @@ export class AppComponent {
   login: Observable<Login>;
   logged: string;
 
-  constructor(private store: Store<AppState>, public authService: AuthorizationDataService) {
+  constructor(private store: Store<AppState>,
+    public authService: AuthorizationDataService) {
     this.login = this.store.select('login');
   }
 

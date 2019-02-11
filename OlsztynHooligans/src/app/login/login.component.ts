@@ -23,7 +23,9 @@ export class LoginComponent implements OnInit {
 
 
   user1: IUser;
-  constructor(private router: Router, public dataService: AuthorizationDataService, private store: Store<AppState>) {
+  constructor(private router: Router,
+    public dataService: AuthorizationDataService,
+    private store: Store<AppState>) {
     this.login = this.store.select('login');
   }
 
