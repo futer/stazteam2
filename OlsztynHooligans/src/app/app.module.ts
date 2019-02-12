@@ -11,7 +11,6 @@ import { DocumentComponent } from './document/document.component';
 import { ChatComponent } from './chat/chat.component';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { HttpClientModule } from '@angular/common/http';
-import { BookmarksPopupComponent, BookmarksPopupEditComponent, BookmarksPopupDeleteComponent } from './bookmarks/bookmarks.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { EditUserPasswordComponent } from './edit-user-password/edit-user-password.component';
@@ -30,6 +29,9 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { BookmarksAddComponent } from './bookmarks-add/bookmarks-add.component';
+import { BookmarksEditComponent } from './bookmarks-edit/bookmarks-edit.component';
+import { BookmarksDeleteComponent } from './bookmarks-delete/bookmarks-delete.component';
 
 @NgModule({
   declarations: [
@@ -42,9 +44,9 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     ChatComponent,
     BookmarksComponent,
     EditUserPasswordComponent,
-    BookmarksPopupComponent,
-    BookmarksPopupEditComponent,
-    BookmarksPopupDeleteComponent
+    BookmarksAddComponent,
+    BookmarksEditComponent,
+    BookmarksDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +78,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     MatRippleModule,
     MatIconModule
   ],
-  entryComponents: [BookmarksComponent, BookmarksPopupComponent, BookmarksPopupEditComponent, BookmarksPopupDeleteComponent],
+  entryComponents: [BookmarksComponent, BookmarksAddComponent, BookmarksEditComponent, BookmarksDeleteComponent],
   providers: [AuthorizationDataService],
   bootstrap: [AppComponent]
 })

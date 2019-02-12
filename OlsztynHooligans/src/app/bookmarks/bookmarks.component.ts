@@ -4,6 +4,9 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { IBookmark } from '../interface/interface.IBookmark';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookmarkService} from '../service/bookmark.service';
+import { BookmarksEditComponent } from '../bookmarks-edit/bookmarks-edit.component';
+import { BookmarksAddComponent } from '../bookmarks-add/bookmarks-add.component';
+import { BookmarksDeleteComponent } from '../bookmarks-delete/bookmarks-delete.component';
 
 @Component({
   selector: 'app-bookmarks',
@@ -12,6 +15,10 @@ import { BookmarkService} from '../service/bookmark.service';
 })
 
 export class BookmarksComponent implements OnInit {
+
+  bookmarksAdd: MatDialogRef<BookmarksAddComponent>;
+  bookmarksEdit: MatDialogRef<BookmarksEditComponent>;
+  bookmarksDelete: MatDialogRef<BookmarksDeleteComponent>;
   constructor(
     public dialog: MatDialog,
     private dataService: BookmarkService
@@ -36,7 +43,7 @@ export class BookmarksComponent implements OnInit {
   }
 
   openEditDialog(event, data) {
-    this.dialog.open(BookmarksPopupEditComponent, {
+    this.dialog.open(BookmarksEditComponent, {
       width: '250px',
       data: data
     }).afterClosed().subscribe(item => {
@@ -50,7 +57,7 @@ export class BookmarksComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(BookmarksPopupComponent, {
+    const dialogRef = this.dialog.open(BookmarksAddComponent, {
       width: '250px',
       data: { title: this.title, text: this.text }
     });
@@ -65,7 +72,7 @@ export class BookmarksComponent implements OnInit {
   }
 
   openDeleteDialog(event, data) {
-    this.dialog.open(BookmarksPopupDeleteComponent, {
+    this.dialog.open(BookmarksDeleteComponent, {
       width: '250px',
       data: data
     }).afterClosed().subscribe(item => {
@@ -73,159 +80,6 @@ export class BookmarksComponent implements OnInit {
         delete this.bookmarks[item.key];
       }
       console.log('The delete dialog was closed');
-    });
-  }
-}
-
-@Component({
-  selector: 'app-bookmarks',
-  templateUrl: './bookmarks-popup.component.html',
-  styleUrls: ['./bookmarks.component.scss']
-})
-
-export class BookmarksPopupComponent implements OnInit {
-
-  constructor(private router: Router,
-    private formBuilder: FormBuilder,
-    private dataService: BookmarkService,
-    public dialogRef: MatDialogRef<BookmarksPopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IBookmark) { }
-
-  bookmarkModel: IBookmark;
-  bookmarkForm: FormGroup;
-
-  ngOnInit() {
-    this.bookmarkModel = { title: '', text: '', };
-    this.bookmarkForm = this.formBuilder.group({
-      'title': [''],
-      'text': [''],
-    });
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  onChangeTitle(value) {
-    this.bookmarkModel.title = value;
-  }
-
-  onChangeText(value) {
-    this.bookmarkModel.text = value;
-  }
-  get f() { return this.bookmarkForm.controls; }
-
-  onSubmit() {
-    this.bookmarkForm = this.formBuilder.group({
-      'title': [this.bookmarkModel.title, [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
-      'text': [this.bookmarkModel.text, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
-    });
-
-    if (this.bookmarkForm.invalid) {
-      return;
-    }
-    console.log(this.bookmarkForm);
-    this.dataService.postbookmark(this.bookmarkModel).subscribe(res => {
-              this.bookmarkModel = { text: this.bookmarkModel.text, title: this.bookmarkModel.title };
-              this.dialogRef.close(res);
-    }, (err) => {
-      console.log(err);
-    });
-  }
-}
-
-@Component({
-  selector: 'app-bookmarks',
-  templateUrl: './bookmarks-popupedit.component.html',
-  styleUrls: ['./bookmarks.component.scss']
-})
-
-export class BookmarksPopupEditComponent implements OnInit {
-  constructor(private router: Router,
-    private formBuilder: FormBuilder,
-    private dataService: BookmarkService,
-    public dialogRef: MatDialogRef<BookmarksPopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
-      this.dataItem = data;
-    }
-
-  bookmarkModel: IBookmark;
-  bookmarkForm: FormGroup;
-  dataItem: any;
-
-  ngOnInit() {
-    this.bookmarkModel = { title: this.dataItem.value.title, text: this.dataItem.value.text, key: this.dataItem.key};
-    // console.log(this.bookmarkModel.title);
-    this.bookmarkForm = this.formBuilder.group({
-      'title': [''],
-      'text': [''],
-    });
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  onChangeTitle(value) {
-    this.bookmarkModel.title = value;
-  }
-
-  onChangeText(value) {
-    this.bookmarkModel.text = value;
-  }
-  get f() { return this.bookmarkForm.controls; }
-
-  onSubmit() {
-    this.bookmarkForm = this.formBuilder.group({
-      'title': [this.bookmarkModel.title, [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
-      'text': [this.bookmarkModel.text, [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
-    });
-
-    if (this.bookmarkForm.invalid) {
-      return;
-    }
-    this.dataService.putbookmark(this.bookmarkModel).subscribe(res => {
-              this.bookmarkModel = { text: this.bookmarkModel.text, title: this.bookmarkModel.title, key: this.dataItem.key };
-              this.dialogRef.close(this.bookmarkModel);
-    }, (err) => {
-      console.log(err);
-    });
-  }
-}
-
-@Component({
-  selector: 'app-bookmarks',
-  templateUrl: './bookmarks-popupdelete.component.html',
-  styleUrls: ['./bookmarks.component.scss']
-})
-
-export class BookmarksPopupDeleteComponent implements OnInit {
-  constructor(private router: Router,
-    private formBuilder: FormBuilder,
-    private dataService: BookmarkService,
-    public dialogRef: MatDialogRef<BookmarksPopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
-      this.dataItem = data;
-    }
-
-  bookmarkModel: IBookmark;
-  bookmarkForm: FormGroup;
-  dataItem: any;
-
-  ngOnInit() {
-    this.bookmarkModel = { key: this.dataItem.key};
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  onSubmit() {
-
-    this.dataService.deletebookmark(this.bookmarkModel).subscribe(res => {
-              this.dialogRef.close(this.bookmarkModel);
-    }, (err) => {
-      console.log(err);
     });
   }
 }

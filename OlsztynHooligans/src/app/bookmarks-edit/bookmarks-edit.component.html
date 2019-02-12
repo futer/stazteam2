@@ -1,13 +1,12 @@
 <form #bookmarkForm="ngForm" (ngSubmit)="onSubmit(bookmarkForm)">
-    <p>Bookmark Title</p>
-    <div class="form-group">
+  <p>Bookmark Title</p>
+  <div class="form-group">
     <app-matinput
       [name]="'title'"
       [required]="'required'"
       (childChanged)="onChangeTitle($event)"
       [classname]="'form-control'"
-      [value]="bookmarkModel.title"
-      >
+      [value]="bookmarkModel.title">
     </app-matinput>
   </div>
   <div *ngIf="f.title.errors" class="invalid-feedback">
@@ -17,8 +16,8 @@
     <div class="invalid-text" *ngIf="f.title.errors.minlength">Title must be at least 5 characters</div>
     <div class="invalid-text" *ngIf="f.title.errors.maxlength">Title must be at most 30 characters</div>
   </div>
-    <p>Bookmark Text</p>
-    <div class="form-group">
+  <p>Bookmark Text</p>
+  <div class="form-group">
     <app-mattextarea
       [name]="'text'"
       [required]="'required'" 
@@ -33,13 +32,13 @@
     <div class="invalid-text" *ngIf="f.text.errors.maxlength">Text must be at most 100 characters</div>
   </div>
   <button
-  class="mat-button addbutton"
-  (click)="onNoClick()">
+    class="mat-button addbutton"
+    (click)="onNoClick()">
       Cancel
   </button>
   <button
-  class="mat-button addbutton"
-  [type]="'submit'" >
+    class="mat-button addbutton"
+    [type]="'submit'" >
       Update
   </button>
 </form>
