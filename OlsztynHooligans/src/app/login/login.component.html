@@ -17,10 +17,15 @@
               [name]="'email'" 
               [required]="'required'"
               (childChanged)="onChangeEmail($event)" 
-              [value]="user1.email">
+              [value]="userModel.email">
             </app-input>
-          </div>
-        </div>
+          </div>  
+      </div>
+      <!-- start validation -->
+      <div *ngIf="f.email.errors" class="invalid-feedback">
+        <div class="invalid-text"*ngIf="f.email.errors.required">Email is required</div>
+      </div> 
+      <!-- end validation -->
         <div class="form-group">
           <div class="row-Container">
             <div class="label-Class">
@@ -34,10 +39,14 @@
               [name]="'password'" 
               [required]="'required'"
               (childChanged)="onChangePassword($event)" 
-              [value]="user1.password">
+              [value]="userModel.password">
             </app-input>
-          </div>
-        </div>
+          </div>      
+      </div>
+      <div *ngIf="f.password.errors" class="invalid-feedback">
+        <div class="invalid-text"*ngIf="f.password.errors.required">Password is required</div>
+        <div class="invalid-text"*ngIf="f.password.errors.CorrectLogin">Email or password does not match the user.</div>
+      </div> 
         <div class="form-group">
           <app-button 
             [type]="'submit'" 

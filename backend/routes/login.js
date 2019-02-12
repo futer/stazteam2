@@ -37,10 +37,11 @@ router.post('/', function (req, res, next) {
   }
   firebase.auth().signInWithEmailAndPassword(user.email, user.password).then(function (firebaseUser) {
     const user = firebase.auth().currentUser;
-    return res.status(200).send({ user: user });
+    return res.status(200).send({ user });
   })
     .catch(function (error) {
-      return res.status(400).send({ message: 'Not Ok' });
+      const user = 'false';
+      return res.status(200).send({ user });
     });
 })
 
