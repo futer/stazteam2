@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IUser } from '../interface/interface.IUser';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { AuthorizationDataService} from '../service/authorization-data.service';
+import { AuthorizationDataService } from '../service/authorization-data.service';
 import * as firebase from 'firebase/app';
-
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -24,16 +23,18 @@ export class LoginComponent implements OnInit {
 
 
   user1: IUser;
-  constructor(private router: Router, public dataService: AuthorizationDataService, private store: Store<AppState>) {
+  constructor(private router: Router,
+    public dataService: AuthorizationDataService,
+    private store: Store<AppState>) {
     this.login = this.store.select('login');
-   }
+  }
 
   login: Observable<Login>;
 
   logged: string;
 
   ngOnInit() {
-    this.user1 = {email: '', password: '' };
+    this.user1 = { email: '', password: '' };
   }
 
   onChangeEmail(value) {
@@ -45,19 +46,21 @@ export class LoginComponent implements OnInit {
   }
 
   getRegister() {
-      this.router.navigate([`/register`]);
+    this.router.navigate([`/register`]);
   }
 
   doFacebookLogin() {
     const newThis = this;
     const provider = new firebase.auth.FacebookAuthProvider();
     console.log(provider);
-    firebase.auth().signInWithPopup(provider).then(function(result) {
+    firebase.auth().signInWithPopup(provider).then(function (result) {
       const token = result.credential['accessToken'];
-      newThis.dataService.postFacebook(token).subscribe(() => {
-        newThis.store.dispatch(new LoginActions.Login(newThis.logged));
+      newThis.dataService.postFacebook(token).subscribe(data => {
+        firebase.auth().signInWithCustomToken(data.token).then(function () {
+          newThis.store.dispatch(new LoginActions.Login(newThis.logged));
+        });
       });
-    }).catch(function(error) {
+    }).catch(function (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
       const email = error.email;
@@ -70,12 +73,14 @@ export class LoginComponent implements OnInit {
     const newThis = this;
     const provider = new firebase.auth.GoogleAuthProvider();
     console.log(provider);
-    firebase.auth().signInWithPopup(provider).then(function(result) {
+    firebase.auth().signInWithPopup(provider).then(function (result) {
       const token = result.credential['idToken'];
-      newThis.dataService.postGoogle(token).subscribe(() => {
-        newThis.store.dispatch(new LoginActions.Login(newThis.logged));
+      newThis.dataService.postGoogle(token).subscribe(data => {
+        firebase.auth().signInWithCustomToken(data.token).then(function () {
+          newThis.store.dispatch(new LoginActions.Login(newThis.logged));
+        });
       });
-    }).catch(function(error) {
+    }).catch(function (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
       const email = error.email;
@@ -85,8 +90,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.dataService.postusers(this.user1).subscribe(() => {
-      this.store.dispatch(new LoginActions.Login(this.logged));
+    const newThis = this;
+    this.dataService.postusers(this.user1).subscribe(data => {
+      firebase.auth().signInWithCustomToken(data.token).then(function (token) {
+        newThis.store.dispatch(new LoginActions.Login(newThis.logged));
+      });
     });
   }
 }

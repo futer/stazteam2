@@ -36,8 +36,14 @@ router.post('/', function (req, res, next) {
     password: req.body.password
   }
   firebase.auth().signInWithEmailAndPassword(user.email, user.password).then(function (firebaseUser) {
-    const user = firebase.auth().currentUser;
-    return res.status(200).send({ user: user });
+
+    admin.auth().createCustomToken(firebase.auth().currentUser.uid)
+      .then(function (token) {
+        return res.status(200).send({ token: token });
+      })
+      .catch(function (error) {
+        return res.status(400).send({ message: 'Error creating custom token' })
+      });
   })
     .catch(function (error) {
       return res.status(400).send({ message: 'Not Ok' });
@@ -46,8 +52,8 @@ router.post('/', function (req, res, next) {
 
 router.get('/', function (req, res, next) {
   firebase.auth().signOut().then(function () {
-    return res.status(200).send({ message: 'Signed Out'});
+    return res.status(200).send({ message: 'Signed Out' });
   }, function (error) {
-    return res.status(400).send({ message: 'Sign Out Error'});
+    return res.status(400).send({ message: 'Sign Out Error' });
   });
 });
