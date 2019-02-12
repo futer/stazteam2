@@ -5,14 +5,14 @@
       <ul>
         <li [class.selected]="bookmark === selectedBookmarks"
           (click)='getBookmark(bookmark)'>
-            {{bookmark.value.title}}
-        </li>
-        <li>
+            <div class="titles">
+              {{bookmark.value.title}}
+            </div>
           <button (click)="openEditDialog(event,bookmark)" mat-button>
-            <mat-icon class="edit">edit</mat-icon>
+            <mat-icon class="button">edit</mat-icon>
           </button>
           <button (click)="openDeleteDialog(event,bookmark)" mat-button>
-            <mat-icon class="delete">delete</mat-icon>
+            <mat-icon class="button">delete</mat-icon>
           </button>
         </li>       
       </ul>
