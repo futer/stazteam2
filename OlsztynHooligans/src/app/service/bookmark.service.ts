@@ -15,13 +15,18 @@ export class BookmarkService {
   bookmarkkey: string;
 
   postbookmark(data: IBookmark): Observable<any> {
-    console.log(data);
     return this.http.post<IBookmark>(apiUrl + '/bookmarks', data).pipe();
   }
 
-  getbookmarks(): Observable<IBookmark> {
-    return this.http.get<IBookmark>(apiUrl + '/bookmarks').pipe();
+  putbookmark(data: IBookmark): Observable<any> {
+    return this.http.put<IBookmark>(apiUrl + '/bookmarks', data).pipe();
   }
 
-
+  deletebookmark(data: IBookmark): Observable<any> {
+    const url = `${apiUrl}/bookmarks/${data.key}`;
+    return this.http.delete<IBookmark>(url).pipe();
+  }
+  getbookmarks(): Observable<IBookmark[]> {
+    return this.http.get<IBookmark[]>(apiUrl + '/bookmarks').pipe();
+  }
 }
