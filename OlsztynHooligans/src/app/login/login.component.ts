@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 
 import { Login } from '../model/login.model';
 import * as LoginActions from '../store/actions/login.actions';
+import { CorrectLogin } from '../helpers/correct-login.validator';
+
 
 interface AppState {
   login: Login;
@@ -22,27 +24,36 @@ interface AppState {
 export class LoginComponent implements OnInit {
 
 
-  user1: IUser;
+  userModel: IUser;
   constructor(private router: Router,
+    private formBuilder: FormBuilder,
     public dataService: AuthorizationDataService,
     private store: Store<AppState>) {
     this.login = this.store.select('login');
   }
 
   login: Observable<Login>;
-
+  userForm: FormGroup;
   logged: string;
+  badlogindata: boolean;
 
   ngOnInit() {
-    this.user1 = { email: '', password: '' };
+    this.badlogindata = false;
+    this.userModel = { email: '', password: '' };
+    this.userForm = this.formBuilder.group({
+      'email': [''],
+      'password': [''],
+    });
   }
 
+  get f() { return this.userForm.controls; }
+
   onChangeEmail(value) {
-    this.user1.email = value;
+    this.userModel.email = value;
   }
 
   onChangePassword(value) {
-    this.user1.password = value;
+    this.userModel.password = value;
   }
 
   getRegister() {
@@ -90,11 +101,25 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.badlogindata = false;
+
+    this.userForm = this.formBuilder.group({
+      'email': [this.userModel.email, [Validators.required, Validators.email,]],
+      'password': [this.userModel.password, [Validators.required]],
+    });
+    if (this.userForm.invalid) {
+      return;
+    }
     const newThis = this;
-    this.dataService.postusers(this.user1).subscribe(data => {
-      firebase.auth().signInWithCustomToken(data.token).then(function (token) {
-        newThis.store.dispatch(new LoginActions.Login(newThis.logged));
-      });
+    this.dataService.postusers(this.userModel).subscribe(data => {
+      console.log(data.user);
+      if (data.user) {
+        firebase.auth().signInWithCustomToken(data.user).then(function (token) {
+          newThis.store.dispatch(new LoginActions.Login(newThis.logged));
+        });
+      } else {
+        this.badlogindata = true;
+      }
     });
   }
 }
