@@ -13,7 +13,8 @@ const apiUrl = environment.apiUrl;
 })
 export class AuthorizationDataService {
 
-  constructor(private http: HttpClient, public afAuth: AngularFireAuth) { }
+  constructor(private http: HttpClient,
+    public afAuth: AngularFireAuth) { }
 
     // Rejestracja -- POST
     postuser(data: IUser): Observable<any> {
@@ -25,20 +26,20 @@ export class AuthorizationDataService {
       return this.http.post<IToken>(apiUrl + '/login', user).pipe();
     }
 
-    postFacebook(token: string): Observable<any> {
+    postFacebook(token: string): Observable<IToken> {
       console.log(token);
       const data = {
         token: token
       };
-      return this.http.post<string>(apiUrl + '/loginfacebook', data).pipe();
+      return this.http.post<IToken>(apiUrl + '/loginfacebook', data).pipe();
     }
 
-    postGoogle(token: string): Observable<any> {
+    postGoogle(token: string): Observable<IToken> {
       console.log(token);
       const data = {
         token: token
       };
-      return this.http.post<string>(apiUrl + '/logingoogle', data).pipe();
+      return this.http.post<IToken>(apiUrl + '/logingoogle', data).pipe();
     }
 
     updateuser(data): Observable<any> {

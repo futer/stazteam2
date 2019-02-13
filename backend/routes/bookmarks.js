@@ -25,13 +25,14 @@ const admin = require('firebase-admin');
  *         description: bookmarkspost
  */
 router.post('/', function (req, res, next) {
-  console.log(req.body);
-  admin.database().ref(`data/bookmarks`).child(req.body.title).set({
+  const data = {
     title: req.body.title,
     text: req.body.text
-  }).then(function (bookmark) {
-      console.log("Successfully created new bookmark");
-      return res.status(200).send({ message: 'Ok' });
+  }
+  admin.database().ref(`data/bookmarks`).push(data)
+  .then(function (bookmark) {
+      data.key = bookmark.key;
+      return res.status(200).send(data);
 
   })
   .catch(function (error) {
@@ -41,16 +42,42 @@ router.post('/', function (req, res, next) {
 })
 
 router.get('/', function (req, res, next) {
-  console.log(req.body);
   if (res.error) {
     return res.status(400).send({ message: res.error.message });
   }
   admin.database().ref(`data/bookmarks`).once('value').then(function (snapshot) {
-    // console.log('a')
+    console.log(snapshot.val());
     return res.status(200).send(snapshot.val());
   }, (errorObject) => {
     console.log("The read failed: " + errorObject.code);
   })
 }),
+
+router.put('/', function (req, res, next) {
+  admin.database().ref(`data/bookmarks`).child(req.body.key).set({
+    title: req.body.title,
+    text: req.body.text
+  }).then(function (bookmark) {
+      console.log("Successfully updated new bookmark");
+      return res.status(200).send({ message: 'Ok' });
+
+  })
+  .catch(function (error) {
+    console.log("Error updating new bookmark:", error);
+    return res.status(400).send({ message: 'Not Ok'})
+  });
+})
+
+router.delete('/:id', function (req, res, next) {
+  admin.database().ref(`data/bookmarks`).child(req.params.id).remove().then(function (bookmark)
+  {
+    console.log("Successfully updated new bookmark");
+    return res.status(200).send({ message: 'Ok' });
+  }).catch( function(error)
+  {
+    console.log("Error updating new bookmark:", error);
+    return res.status(400).send({ message: 'Not Ok'})
+  });
+})
  
 module.exports = router;

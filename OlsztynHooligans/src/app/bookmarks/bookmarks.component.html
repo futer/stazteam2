@@ -4,22 +4,22 @@
     <div class="sidebar" *ngFor="let bookmark of bookmarks | keyvalue">
       <ul>
         <li [class.selected]="bookmark === selectedBookmarks"
-          (click)='getBookmark(bookmark)' 
-          class="right">
-            {{bookmark.value.title}}
-            <button mat-button>
-              <mat-icon class="edit">edit</mat-icon>
-            </button>
-            <button class="mat-button" mat-button>
-              <mat-icon class="delete">delete</mat-icon>
-            </button>
-        </li>
+          (click)='getBookmark(bookmark)'>
+            <div class="titles">
+              {{bookmark.value.title}}
+            </div>
+          <button (click)="openEditDialog(event,bookmark)" mat-button>
+            <mat-icon class="button">edit</mat-icon>
+          </button>
+          <button (click)="openDeleteDialog(event,bookmark)" mat-button>
+            <mat-icon class="button">delete</mat-icon>
+          </button>
+        </li>       
       </ul>
     </div>
   </div>
   <div class="main" *ngIf="selectedBookmarks">
     <div class="title">{{selectedBookmarks.value.title}}</div>
     <div class="text">{{selectedBookmarks.value.text}}</div>
-    <!-- <li *ngFor="let bookmark of bookmarks | keyvalue" >{{bookmark.value.text}}</li> -->
   </div>
 </div>

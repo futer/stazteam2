@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IUser } from '../interface/interface.IUser';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { AuthorizationDataService} from '../service/authorization-data.service';
+import { AuthorizationDataService } from '../service/authorization-data.service';
 import * as firebase from 'firebase/app';
-
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -31,14 +30,16 @@ export class LoginComponent implements OnInit {
     public dataService: AuthorizationDataService,
     private store: Store<AppState>) {
     this.login = this.store.select('login');
-   }
+  }
 
   login: Observable<Login>;
   userForm: FormGroup;
   logged: string;
+  badlogindata: boolean;
 
   ngOnInit() {
-    this.userModel = {email: '', password: '' };
+    this.badlogindata = false;
+    this.userModel = { email: '', password: '' };
     this.userForm = this.formBuilder.group({
       'email': [''],
       'password': [''],
@@ -56,19 +57,21 @@ export class LoginComponent implements OnInit {
   }
 
   getRegister() {
-      this.router.navigate([`/register`]);
+    this.router.navigate([`/register`]);
   }
 
   doFacebookLogin() {
     const newThis = this;
     const provider = new firebase.auth.FacebookAuthProvider();
     console.log(provider);
-    firebase.auth().signInWithPopup(provider).then(function(result) {
+    firebase.auth().signInWithPopup(provider).then(function (result) {
       const token = result.credential['accessToken'];
-      newThis.dataService.postFacebook(token).subscribe(() => {
-        newThis.store.dispatch(new LoginActions.Login(newThis.logged));
+      newThis.dataService.postFacebook(token).subscribe(data => {
+        firebase.auth().signInWithCustomToken(data.token).then(function () {
+          newThis.store.dispatch(new LoginActions.Login(newThis.logged));
+        });
       });
-    }).catch(function(error) {
+    }).catch(function (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
       const email = error.email;
@@ -81,12 +84,14 @@ export class LoginComponent implements OnInit {
     const newThis = this;
     const provider = new firebase.auth.GoogleAuthProvider();
     console.log(provider);
-    firebase.auth().signInWithPopup(provider).then(function(result) {
+    firebase.auth().signInWithPopup(provider).then(function (result) {
       const token = result.credential['idToken'];
-      newThis.dataService.postGoogle(token).subscribe(() => {
-        newThis.store.dispatch(new LoginActions.Login(newThis.logged));
+      newThis.dataService.postGoogle(token).subscribe(data => {
+        firebase.auth().signInWithCustomToken(data.token).then(function () {
+          newThis.store.dispatch(new LoginActions.Login(newThis.logged));
+        });
       });
-    }).catch(function(error) {
+    }).catch(function (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
       const email = error.email;
@@ -96,23 +101,24 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-
+    this.badlogindata = false;
 
     this.userForm = this.formBuilder.group({
-      'email': [this.userModel.email, [Validators.required]],
+      'email': [this.userModel.email, [Validators.required, Validators.email,]],
       'password': [this.userModel.password, [Validators.required]],
-    }, {
-      validator: CorrectLogin('password')
-  });
-
+    });
+    if (this.userForm.invalid) {
+      return;
+    }
+    const newThis = this;
     this.dataService.postusers(this.userModel).subscribe(data => {
       console.log(data.user);
-      if (data.user !== 'false') {
-      this.store.dispatch(new LoginActions.Login(this.logged));
+      if (data.user) {
+        firebase.auth().signInWithCustomToken(data.user).then(function (token) {
+          newThis.store.dispatch(new LoginActions.Login(newThis.logged));
+        });
       } else {
-        if (this.userForm.invalid) {
-          return;
-        }
+        this.badlogindata = true;
       }
     });
   }
