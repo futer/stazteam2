@@ -35,6 +35,7 @@ import { BookmarksDeleteComponent } from './bookmarks-delete/bookmarks-delete.co
 import { DocumentAddComponent } from './document-add/document-add.component';
 import { DocumentEditComponent } from './document-edit/document-edit.component';
 import { DocumentDeleteComponent } from './document-delete/document-delete.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { DocumentDeleteComponent } from './document-delete/document-delete.compo
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CKEditorModule,
     StoreModule.forRoot({ login: loginReducer}),
     StoreDevtoolsModule.instrument({
       maxAge: 10 // number of states to retain
