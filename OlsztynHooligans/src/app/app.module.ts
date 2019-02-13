@@ -32,6 +32,9 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { BookmarksAddComponent } from './bookmarks-add/bookmarks-add.component';
 import { BookmarksEditComponent } from './bookmarks-edit/bookmarks-edit.component';
 import { BookmarksDeleteComponent } from './bookmarks-delete/bookmarks-delete.component';
+import { DocumentAddComponent } from './document-add/document-add.component';
+import { DocumentEditComponent } from './document-edit/document-edit.component';
+import { DocumentDeleteComponent } from './document-delete/document-delete.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,9 @@ import { BookmarksDeleteComponent } from './bookmarks-delete/bookmarks-delete.co
     BookmarksAddComponent,
     BookmarksEditComponent,
     BookmarksDeleteComponent,
+    DocumentAddComponent,
+    DocumentEditComponent,
+    DocumentDeleteComponent,
   ],
   imports: [
     BrowserModule,
