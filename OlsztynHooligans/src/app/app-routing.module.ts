@@ -8,6 +8,8 @@ import { DocumentComponent } from './document/document.component';
 import { EditUserPasswordComponent } from './edit-user-password/edit-user-password.component';
 import { ChatComponent } from './chat/chat.component';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
+import { DocumentAddComponent } from './document-add/document-add.component';
+import { DocumentEditComponent } from './document-edit/document-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -20,7 +22,9 @@ const routes: Routes = [
   { path: 'document', component: DocumentComponent},
   { path: 'chat', component: ChatComponent},
   { path: 'bookmarks', component: BookmarksComponent},
-  { path: 'bookmarks/:id' , component: BookmarksComponent }
+  { path: 'bookmarks/:id' , component: BookmarksComponent },
+  { path: 'document-add', component: DocumentAddComponent},
+  { path: 'document-edit/:id', component: DocumentEditComponent},
 ];
 
 @NgModule({
