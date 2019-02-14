@@ -1,3 +1,28 @@
-<p>
-  document-add works!
-</p>
+<div class="container">
+  <div class="main-div">
+      <div class="form-group">
+          <div class="row-Container">
+        <div class="label-Class">
+            <app-label [for]="'title'">
+              Title:
+            </app-label>
+          </div>
+        <app-input [type]="'text'"
+          [name]="'title'"
+          [required]="'required'"
+          [readonly]="readonly"
+          [value]="title">
+        </app-input>
+    </div>
+      </div>
+      
+    <div>
+      <ckeditor [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
+    </div>
+      <div class="form-group">
+        <app-button [type]="'submit'" [classname]="'btn btn--save'">Save</app-button>
+        <app-button [type]="'submit'" [classname]="'btn btn--aprove'">Aprove</app-button>
+        <app-button [type]="'submit'" [classname]="'btn btn--aprove'">Back</app-button>
+      </div>
+  </div>
+</div>
