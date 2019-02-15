@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'document', component: DocumentComponent, canActivate: [AuthGuard]},
   { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
   { path: 'bookmarks', component: BookmarksComponent, canActivate: [AuthGuard]},
-  { path: 'bookmarks/:id' , component: BookmarksComponent, canActivate: [AuthGuard]}
+  { path: 'bookmarks/:id' , component: BookmarksComponent, canActivate: [AuthGuard]},
   { path: 'document-add', component: DocumentAddComponent, canActivate: [AuthGuard]},
   { path: 'document-edit/:id', component: DocumentEditComponent, canActivate: [AuthGuard]},
 ];
