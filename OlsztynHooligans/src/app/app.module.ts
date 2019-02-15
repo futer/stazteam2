@@ -32,6 +32,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { BookmarksAddComponent } from './bookmarks-add/bookmarks-add.component';
 import { BookmarksEditComponent } from './bookmarks-edit/bookmarks-edit.component';
 import { BookmarksDeleteComponent } from './bookmarks-delete/bookmarks-delete.component';
+import { AuthGuard } from './service/auth.guard';
+
 
 @NgModule({
   declarations: [
@@ -69,7 +71,7 @@ import { BookmarksDeleteComponent } from './bookmarks-delete/bookmarks-delete.co
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule,
     AngularFireStorageModule,
-    MatIconModule
+    MatIconModule,
   ],
   exports: [
     MatButtonModule,
@@ -79,7 +81,7 @@ import { BookmarksDeleteComponent } from './bookmarks-delete/bookmarks-delete.co
     MatIconModule
   ],
   entryComponents: [BookmarksComponent, BookmarksAddComponent, BookmarksEditComponent, BookmarksDeleteComponent],
-  providers: [AuthorizationDataService],
+  providers: [AuthorizationDataService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
