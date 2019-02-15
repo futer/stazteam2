@@ -34,6 +34,10 @@ import { BookmarksEditComponent } from './bookmarks-edit/bookmarks-edit.componen
 import { BookmarksDeleteComponent } from './bookmarks-delete/bookmarks-delete.component';
 import { AuthGuard } from './service/auth.guard';
 
+import { DocumentAddComponent } from './document-add/document-add.component';
+import { DocumentEditComponent } from './document-edit/document-edit.component';
+import { DocumentDeleteComponent } from './document-delete/document-delete.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -49,6 +53,9 @@ import { AuthGuard } from './service/auth.guard';
     BookmarksAddComponent,
     BookmarksEditComponent,
     BookmarksDeleteComponent,
+    DocumentAddComponent,
+    DocumentEditComponent,
+    DocumentDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +64,7 @@ import { AuthGuard } from './service/auth.guard';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CKEditorModule,
     StoreModule.forRoot({ login: loginReducer}),
     StoreDevtoolsModule.instrument({
       maxAge: 10 // number of states to retain

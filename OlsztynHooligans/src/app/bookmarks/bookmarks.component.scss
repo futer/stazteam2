@@ -27,21 +27,8 @@ ul {
 li {
   cursor:pointer;
   display: flex;
-  justify-content: center;
-  text-align: left;
-}
-
-li a {
-  display: block;
-  color: black;
-  text-align: left;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-family: Arial;
-}
-
-li a:hover {
-  background-color: lightgray;
+  justify-content: space-between;
+  padding: 5px 0 5px 0;
 }
 
 div.sidebar { 
@@ -60,13 +47,9 @@ div.sidebar {
 
 .main {
   grid-area: main;
+  text-align: center;
 }
 
-.right {
-  display: flex;
-  justify-content: center;
-  padding-left: 1px;
-}
 
 .footer {
   grid-area: footer;
@@ -90,24 +73,21 @@ div.sidebar {
   padding: 10px;
 }
 
-.grid-container > div {
-  text-align: center;
-}
 
-.line {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  display: grid;
-  grid-template-columns: 2.5fr 2.5fr 1fr 1fr; 
-  padding: 10px 0px 10px 0px;
-  border-bottom: 1px solid #ddd;
-}
-
-.tab {
-font-family: Arial, Helvetica, sans-serif;
+.titles{
+  width: 150px;
+  word-wrap: break-word;
 }
 
 .invalid-text {
   color:red;
+}
+.mat-button {
+  width: 10px;
+  min-width: 24px;
+  padding: 0px;
+}
+.button {
+  display: flex;
+  justify-content: flex-end;
 }

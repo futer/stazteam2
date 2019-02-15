@@ -1,3 +1,4 @@
 export interface IToken {
-    token: firebase.User;
+    token: string;
+    user: string;
 }

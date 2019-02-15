@@ -11,6 +11,6 @@ export class DocumentComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.title = 'Default Docuemnt Title';
+    this.title = 'Default Document Title';
   }
 }

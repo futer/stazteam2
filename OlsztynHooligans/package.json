@@ -25,6 +25,8 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "@auth0/angular-jwt": "^2.1.0",
+    "@ckeditor/ckeditor5-angular": "^1.0.1",
+    "@ckeditor/ckeditor5-build-classic": "^11.2.0",
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^7.1.0",
     "@ngrx/store": "^6.1.2",
@@ -39,7 +41,7 @@
     "ng6-social-button": "^1.0.5",
     "rxjs": "~6.3.3",
     "web-animations-js": "^2.3.1",
-    "zone.js": "~0.8.26"
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.12.1",

@@ -15,7 +15,8 @@ const apiUrl = environment.apiUrl;
 export class AuthorizationDataService {
   readonly authState$: Observable<User | null> = this.afAuth.authState;
 
-  constructor(private http: HttpClient, public afAuth: AngularFireAuth) { }
+  constructor(private http: HttpClient,
+    public afAuth: AngularFireAuth) { }
 
   get user(): User | null {
     return firebase.auth().currentUser;
