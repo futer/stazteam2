@@ -32,6 +32,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { BookmarksAddComponent } from './bookmarks-add/bookmarks-add.component';
 import { BookmarksEditComponent } from './bookmarks-edit/bookmarks-edit.component';
 import { BookmarksDeleteComponent } from './bookmarks-delete/bookmarks-delete.component';
+import { AuthGuard } from './service/auth.guard';
+
 import { DocumentAddComponent } from './document-add/document-add.component';
 import { DocumentEditComponent } from './document-edit/document-edit.component';
 import { DocumentDeleteComponent } from './document-delete/document-delete.component';
@@ -77,7 +79,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule,
     AngularFireStorageModule,
-    MatIconModule
+    MatIconModule,
   ],
   exports: [
     MatButtonModule,
@@ -87,7 +89,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     MatIconModule
   ],
   entryComponents: [BookmarksComponent, BookmarksAddComponent, BookmarksEditComponent, BookmarksDeleteComponent],
-  providers: [AuthorizationDataService],
+  providers: [AuthorizationDataService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
