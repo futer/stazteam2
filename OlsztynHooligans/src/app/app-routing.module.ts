@@ -8,19 +8,24 @@ import { DocumentComponent } from './document/document.component';
 import { EditUserPasswordComponent } from './edit-user-password/edit-user-password.component';
 import { ChatComponent } from './chat/chat.component';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
+import { AuthGuard } from './service/auth.guard';
+import { DocumentAddComponent } from './document-add/document-add.component';
+import { DocumentEditComponent } from './document-edit/document-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'edit', component: EditUserComponent},
-  { path: 'editpassword', component: EditUserPasswordComponent},
-  { path: 'dashboard', component: DashboardComponent},
-  { path: 'document/:id', component: DocumentComponent},
-  { path: 'document', component: DocumentComponent},
-  { path: 'chat', component: ChatComponent},
-  { path: 'bookmarks', component: BookmarksComponent},
-  { path: 'bookmarks/:id' , component: BookmarksComponent }
+  { path: 'edit', component: EditUserComponent, canActivate: [AuthGuard]},
+  { path: 'editpassword', component: EditUserPasswordComponent, canActivate: [AuthGuard]},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  { path: 'document/:id', component: DocumentComponent, canActivate: [AuthGuard]},
+  { path: 'document', component: DocumentComponent, canActivate: [AuthGuard]},
+  { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
+  { path: 'bookmarks', component: BookmarksComponent, canActivate: [AuthGuard]},
+  { path: 'bookmarks/:id' , component: BookmarksComponent, canActivate: [AuthGuard]},
+  { path: 'document-add', component: DocumentAddComponent, canActivate: [AuthGuard]},
+  { path: 'document-edit/:id', component: DocumentEditComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

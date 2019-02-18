@@ -7,6 +7,7 @@ import { Login } from './model/login.model';
 import * as LoginActions from './store/actions/login.actions';
 import { AuthorizationDataService } from './service/authorization-data.service';
 import * as firebase from 'firebase/app';
+
 interface AppState {
   login: Login;
 }

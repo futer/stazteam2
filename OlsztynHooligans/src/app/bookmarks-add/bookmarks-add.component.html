@@ -9,7 +9,7 @@
     </app-matinput>
   </div>
   <div *ngIf="f.title.errors" class="invalid-feedback">
-    <div *ngIf="f.title.errors.required">
+    <div *ngIf="f.title.errors.required" class="invalid-text">
       Title is required
     </div>
     <div class="invalid-text" *ngIf="f.title.errors.minlength">Title must be at least 5 characters</div>

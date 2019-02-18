@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { BookmarksComponent } from './bookmarks.component';
 
 describe('BookmarksComponent', () => {

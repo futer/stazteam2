@@ -37,16 +37,22 @@ router.post('/', function (req, res, next) {
   }
   firebase.auth().signInWithEmailAndPassword(user.email, user.password).then(function (firebaseUser) {
 
+    // console.log(firebaseUser);
+    console.log(firebase.auth().currentUser.uid);
     admin.auth().createCustomToken(firebase.auth().currentUser.uid)
-      .then(function (token) {
-        return res.status(200).send({ token: token });
+      .then(function (user) {
+        console.log(user);
+        return res.status(200).send({ user: user });
       })
       .catch(function (error) {
+        console.log(error);
         return res.status(400).send({ message: 'Error creating custom token' })
       });
   })
     .catch(function (error) {
-      return res.status(400).send({ message: 'Not Ok' });
+      console.log(error);
+      const user =  null;
+      return res.status(200).send({ user: user });
     });
 })
 

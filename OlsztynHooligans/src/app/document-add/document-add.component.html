@@ -1,0 +1,41 @@
+<form #documentForm="ngForm" (ngSubmit)="onSubmit(documentForm)">
+<div class="container">
+  <div class="main-div">
+    <!-- TITLE START -->
+      <div class="form-group">
+          <div class="row-Container">
+            <p>Document's Title:</p>
+        <app-input
+          [name]="'title'"
+          [required]="'required'"
+          (childChanged)="onChangeTitle($event)"
+          [classname]="'form-control'"
+          [value]="''">
+        </app-input>
+    </div>
+      </div>
+      <div *ngIf="f.title.errors" class="invalid-feedback">
+        <div *ngIf="f.title.errors.required" class="invalid-text">
+          Title is required
+        </div>
+        <div class="invalid-text" *ngIf="f.title.errors.minlength">Title must be at least 5 characters</div>
+        <div class="invalid-text" *ngIf="f.title.errors.maxlength">Title must be at most 30 characters</div>
+      </div>
+      <!-- TITLE END -->
+      <!-- TEXT START -->
+        <ckeditor
+          [editor]="Editor" 
+          data="<p>Hello, world!</p>">
+        </ckeditor>
+    <div>
+  
+    </div>
+    <!-- TEXT END -->
+      <div class="form-group">
+        <app-button [type]="'submit'" [classname]="'btn btn--save'">Save</app-button>
+        <app-button [type]="'submit'" [classname]="'btn btn--aprove'">Aprove</app-button>
+        <app-button [type]="'submit'" [classname]="'btn btn--aprove'">Back</app-button>
+      </div>
+  </div>
+</div>
+</form>

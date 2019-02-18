@@ -1,5 +1,6 @@
 export interface IDocument {
-    name: string;
-    text: Blob;
+    title: string;
+    text: string;
     confirmed: boolean;
+    key?: string;
 }

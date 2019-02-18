@@ -1,0 +1,50 @@
+.container {
+    margin: 0px;
+    background-image: url("../../assets/loginregisterwallpaper.jpg");
+    background-repeat: repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.main-div {
+   // text-align: center;
+    background: #ffffff none repeat scroll 0 0;
+    border-radius: 2px;
+    margin: 10px auto 30px;
+    max-width: 38%;
+    padding: 50px 70px 70px 71px;
+}
+  
+textarea{
+    resize: none; 
+    overflow: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 80%;
+    width: 100%;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    margin: 10px 0 ;
+    
+}
+
+.form-group{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;  
+    margin-bottom: 10px;
+    margin-top:10px;
+}
+
+.invalid-text {
+    color:red;
+    margin-bottom:10px;
+  }
