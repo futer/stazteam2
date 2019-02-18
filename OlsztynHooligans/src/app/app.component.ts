@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -21,19 +21,33 @@ export class AppComponent {
   title = 'OlsztynHooligans';
   login: Observable<Login>;
   logged: string;
+  isLogged: boolean;
 
   constructor(private store: Store<AppState>,
     public authService: AuthorizationDataService) {
+    this.loginState();
     this.login = this.store.select('login');
+  }
+  async loginState() {
+    return new Promise(() => {
+      const newThis = this;
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          newThis.isLogged = true;
+        } else {
+          newThis.isLogged = false;
+        }
+      });
+    });
   }
 
   logout() {
     const newThis = this;
     this.authService.signoutuser().subscribe(() => {
-      firebase.auth().signOut().then(function() {
+      firebase.auth().signOut().then(function () {
         console.log('signout');
         newThis.store.dispatch(new LoginActions.Logout(newThis.logged));
-      }).catch(function(error) {
+      }).catch(function (error) {
         console.log('Not signout');
       });
     });
