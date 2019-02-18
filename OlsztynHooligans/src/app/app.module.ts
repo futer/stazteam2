@@ -32,6 +32,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { BookmarksAddComponent } from './bookmarks-add/bookmarks-add.component';
 import { BookmarksEditComponent } from './bookmarks-edit/bookmarks-edit.component';
 import { BookmarksDeleteComponent } from './bookmarks-delete/bookmarks-delete.component';
+import { ChatService } from './service/chat.service';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,7 @@ import { BookmarksDeleteComponent } from './bookmarks-delete/bookmarks-delete.co
     MatIconModule
   ],
   entryComponents: [BookmarksComponent, BookmarksAddComponent, BookmarksEditComponent, BookmarksDeleteComponent],
-  providers: [AuthorizationDataService],
+  providers: [AuthorizationDataService, ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

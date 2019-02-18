@@ -31,6 +31,7 @@ export class AppComponent {
     this.authService.signoutuser().subscribe(() => {
       firebase.auth().signOut().then(function() {
         console.log('signout');
+        localStorage.removeItem('user');
         newThis.store.dispatch(new LoginActions.Logout(newThis.logged));
       }).catch(function(error) {
         console.log('Not signout');
