@@ -1,4 +1,4 @@
-export interface IComment{
+export interface IComment {
     text: string;
     _idDoc: string;
 }

@@ -68,6 +68,7 @@ export class LoginComponent implements OnInit {
       const token = result.credential['accessToken'];
       newThis.dataService.postFacebook(token).subscribe(data => {
         firebase.auth().signInWithCustomToken(data.token).then(function () {
+          localStorage.setItem('user',  JSON.stringify(firebase.auth().currentUser));
           newThis.store.dispatch(new LoginActions.Login(newThis.logged));
         });
       });
@@ -83,11 +84,11 @@ export class LoginComponent implements OnInit {
   doGoogleLogin() {
     const newThis = this;
     const provider = new firebase.auth.GoogleAuthProvider();
-    console.log(provider);
     firebase.auth().signInWithPopup(provider).then(function (result) {
       const token = result.credential['idToken'];
       newThis.dataService.postGoogle(token).subscribe(data => {
         firebase.auth().signInWithCustomToken(data.token).then(function () {
+          localStorage.setItem('user',  JSON.stringify(firebase.auth().currentUser));
           newThis.store.dispatch(new LoginActions.Login(newThis.logged));
         });
       });
@@ -115,6 +116,7 @@ export class LoginComponent implements OnInit {
       console.log(data.user);
       if (data.user) {
         firebase.auth().signInWithCustomToken(data.user).then(function (token) {
+          localStorage.setItem('user',  JSON.stringify(firebase.auth().currentUser));
           newThis.store.dispatch(new LoginActions.Login(newThis.logged));
         });
       } else {

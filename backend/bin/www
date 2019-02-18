@@ -21,9 +21,22 @@ app.set('port', port);
 
 const server = http.createServer(app);
 
+const socketIO = require('socket.io');
+const io = socketIO(server);
 /**
  * Listen on provided port, on all network interfaces.
  */
+io.on('connection', (socket) => {
+  // console.log('user connected');
+
+  socket.on('new-message', (message) => {
+    io.emit('new-message', message);
+  });
+
+  socket.on('delete-message' , (message) => {
+    io.emit('delete-message', message);
+  })
+});
 
 server.listen(port);
 server.on('error', onError);

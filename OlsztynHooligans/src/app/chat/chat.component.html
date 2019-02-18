@@ -1,8 +1,29 @@
 <div class="chatContainer">
     <div class="chatHeader">Chat</div>
-    <div class="chatMessages"></div>
+    <div #messageA class="chatMessages" (click)="scrollToBottom()">
+        <div *ngFor="let message of messages">
+            <div class="message">
+                <div class="photo">
+                    <img src="{{ message.photoUrl }}" alt="Bążur" height="42px" width="42px">
+                </div>
+                <div class="info">
+                    <div class="navmessage">
+                        {{ message.time | date:'shortTime' }} {{ message.name }}
+                    </div>
+                    <div class="content">
+                        {{ message.text }}
+                    </div>
+                </div>
+                <button (click)="deleteMessage(message)" mat-button>
+                    <mat-icon class="button">delete</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
     <div class="textPlusSend">
-        <app-input [type]="'text'" [required]="'required'" [classname]="'input input--chat'"></app-input>
-        <app-buttonchat [type]="'submit'" [classname]="'btn '">Send</app-buttonchat>
+        <!-- <app-input [type]="'text'" [required]="'required'" [classname]="'input input--chat'"></app-input>
+        <app-buttonchat [type]="'submit'" [classname]="'btn '">Send</app-buttonchat> -->
+        <input [(ngModel)]="message.text" />
+        <button (click)="sendMessage()">Send</button>
     </div>
 </div>
