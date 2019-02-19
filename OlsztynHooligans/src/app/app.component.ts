@@ -7,6 +7,10 @@ import { Login } from './model/login.model';
 import * as LoginActions from './store/actions/login.actions';
 import { AuthorizationDataService } from './service/authorization-data.service';
 import * as firebase from 'firebase/app';
+import { NOTLOGGED} from './mock-navbar';
+import { LOGGED } from './mock-navbar';
+import { INavbar } from './interface/interface.INavbar';
+import { Button } from 'protractor';
 
 interface AppState {
   login: Login;
@@ -21,7 +25,11 @@ export class AppComponent {
   title = 'OlsztynHooligans';
   login: Observable<Login>;
   logged: string;
-  isLogged: boolean;
+  tabLogged: INavbar[];
+  tableLogged = LOGGED;
+  tableNotLogged = NOTLOGGED;
+  buttonLogout: boolean;
+
 
   constructor(private store: Store<AppState>,
     public authService: AuthorizationDataService) {
@@ -31,12 +39,9 @@ export class AppComponent {
   async loginState() {
     return new Promise(() => {
       const newThis = this;
-      firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          newThis.isLogged = true;
-        } else {
-          newThis.isLogged = false;
-        }
+      firebase.auth().onAuthStateChanged((user) => {
+        newThis.tabLogged = user ? LOGGED : NOTLOGGED;
+        newThis.buttonLogout = user ? true : false;
       });
     });
   }
@@ -45,10 +50,11 @@ export class AppComponent {
     const newThis = this;
     this.authService.signoutuser().subscribe(() => {
       firebase.auth().signOut().then(function () {
-        console.log('signout');
+        alert('Sign out');
+        console.log('Sign out');
         newThis.store.dispatch(new LoginActions.Logout(newThis.logged));
       }).catch(function (error) {
-        console.log('Not signout');
+        alert('Not signout');
       });
     });
   }

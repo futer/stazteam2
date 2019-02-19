@@ -1,10 +1,10 @@
 <ul>
     <li><a [routerLink]="['/dashboard']">Home</a></li>
-    <li *ngIf="!isLogged" class="right"><a [routerLink]="['/register']">Register</a></li>
-    <li *ngIf="!isLogged" class="right"><a [routerLink]="['/login']">Login</a></li>    
-    <li *ngIf="isLogged" class="right"><a [routerLink]="['/login']" (click)="logout()">Logout</a></li>
-    <li *ngIf="isLogged" class="right"><a [routerLink]="['/edit']">Edit profile</a></li>
-    <li *ngIf="isLogged" class="right"><a [routerLink]="['/document-add']">Document</a></li>
-    <li *ngIf="isLogged" class="right"><a [routerLink]="['/bookmarks']">Bookmarks</a></li>
+    <li *ngIf="buttonLogout" class="right"><a [routerLink]="['/login']" (click)="logout()">Logout</a></li>
+    <div *ngFor="let element of tabLogged">
+        <li class="{{element.class}}">
+            <a [routerLink]="[element.link]">{{element.title}}</a>            
+        </li>
+    </div>
 </ul>
 <router-outlet></router-outlet>
