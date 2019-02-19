@@ -11,6 +11,7 @@ textarea {
 }
 
 .chatMessages {
+  overflow-y: auto;
   margin-top:10px;
   border-style: solid;
   width: 543px;
@@ -30,4 +31,27 @@ textarea {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+img{
+  height:42px; 
+  width:42px;
+  border-radius: 50%;
+}
+.message{
+  padding: 5px;
+  display: flex; 
+  flex-direction: row;
+}
+
+.content{
+  background-color: rgb(242, 247, 255);
+  border-radius: 0px 10px 10px 10px;
+  box-sizing: border-box;
+  padding: 10px;
+  word-wrap: break-word; 
+}
+
+.info{
+  margin-right: 5px;
+  width: 85%;
 }

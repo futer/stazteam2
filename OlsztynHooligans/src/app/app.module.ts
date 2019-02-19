@@ -32,6 +32,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { BookmarksAddComponent } from './bookmarks-add/bookmarks-add.component';
 import { BookmarksEditComponent } from './bookmarks-edit/bookmarks-edit.component';
 import { BookmarksDeleteComponent } from './bookmarks-delete/bookmarks-delete.component';
+import { ChatService } from './service/chat.service';
 import { AuthGuard } from './service/auth.guard';
 
 import { DocumentAddComponent } from './document-add/document-add.component';
@@ -89,7 +90,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     MatIconModule
   ],
   entryComponents: [BookmarksComponent, BookmarksAddComponent, BookmarksEditComponent, BookmarksDeleteComponent],
-  providers: [AuthorizationDataService, AuthGuard],
+  providers: [AuthorizationDataService, ChatService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
