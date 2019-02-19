@@ -25,15 +25,20 @@
       <!-- TEXT START -->
         <ckeditor
           [editor]="Editor" 
-          data="<p>Hello, world!</p>">
+          (change)="onChangeText($event)"
+          data="{{editorData}}">
         </ckeditor>
     <div>
     </div>
     <!-- TEXT END -->
       <div class="form-group">
-        <app-button [type]="'submit'" [classname]="'btn btn--save'">Save</app-button>
-        <app-button [type]="'submit'" [classname]="'btn btn--aprove'">Aprove</app-button>
-        <app-button [type]="'submit'" [classname]="'btn btn--aprove'">Back</app-button>
+        <button [type]="'submit'" class="mat-button addbutton">Save</button>
+        <button [type]="'submit'" class="mat-button addbutton">Aprove</button>
+        <a [routerLink]="['/dashboard']">
+          <button  class="mat-button addbutton">
+            Back
+          </button>
+        </a>
       </div>
   </div>
 </div>
