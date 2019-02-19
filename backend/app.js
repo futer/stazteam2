@@ -11,7 +11,7 @@ const loginfacebookRouter = require('./routes/loginfacebook');
 const logingoogleRouter = require('./routes/logingoogle'); 
 const registerRouter = require('./routes/register');
 const dashboardRouter = require('./routes/dashboard');
-const documentRouter = require('./routes/document');
+const documentRouter = require('./routes/documents');
 const editRouter = require('./routes/edit');
 const editpasswordRouter = require('./routes/editpassword');
 const swaggerRouter = require('./routes/swagger');
@@ -65,15 +65,12 @@ app.use('/loginfacebook', loginfacebookRouter);
 app.use('/logingoogle', logingoogleRouter);
 app.use('/register', registerRouter);
 app.use('/dashboard', dashboardRouter);
-app.use('/document', documentRouter);
+app.use('/documents', documentRouter);
 app.use('/edit', editRouter);
 app.use('/editpassword', editpasswordRouter);
 app.use('/bookmarks', bookmarksRouter);
 app.use('/bookmarks/:id', bookmarksRouter);
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
-});
+
 
 // error handler
 app.use(function (err, req, res, next) {

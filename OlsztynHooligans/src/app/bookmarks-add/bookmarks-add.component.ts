@@ -35,10 +35,12 @@ export class BookmarksAddComponent implements OnInit {
   }
 
   onChangeTitle(value) {
+    console.log(value);
     this.bookmarkModel.title = value;
   }
 
   onChangeText(value) {
+    console.log(value);
     this.bookmarkModel.text = value;
   }
   get f() { return this.bookmarkForm.controls; }
