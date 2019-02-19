@@ -1,5 +1,4 @@
 <ul>
-<<<<<<< HEAD
     <li><a [routerLink]="['/dashboard']">Home</a></li>
     <li *ngIf="buttonLogout" class="right"><a [routerLink]="['/login']" (click)="logout()">Logout</a></li>
     <div *ngFor="let element of tabLogged">
@@ -7,12 +6,5 @@
             <a [routerLink]="[element.link]">{{element.title}}</a>            
         </li>
     </div>
-=======
-    <li><a [routerLink]="['/login']">Home</a></li>
-    <li><a [routerLink]="['/chat']">Chat</a></li>
-    <li class="right"><a [routerLink]="['/register']">Register</a></li>
-    <li class="right"><a [routerLink]="['/login']">Login</a></li>
-    <li class="right"><a [routerLink]="['/login']" (click)="logout()">Logout</a></li>
->>>>>>> master
 </ul>
 <router-outlet></router-outlet>
