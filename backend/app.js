@@ -14,6 +14,7 @@ const dashboardRouter = require('./routes/dashboard');
 const documentRouter = require('./routes/document');
 const editRouter = require('./routes/edit');
 const editpasswordRouter = require('./routes/editpassword');
+const chatRouter = require('./routes/chat');
 const swaggerRouter = require('./routes/swagger');
 const swaggerUi = require('./node_modules/swagger-ui-express'),
   swaggerDocument = require('./environment/swagger.json');
@@ -67,6 +68,7 @@ app.use('/register', registerRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/document', documentRouter);
 app.use('/edit', editRouter);
+app.use('/chat', chatRouter);
 app.use('/editpassword', editpasswordRouter);
 app.use('/bookmarks', bookmarksRouter);
 app.use('/bookmarks/:id', bookmarksRouter);

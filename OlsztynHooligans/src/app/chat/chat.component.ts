@@ -2,7 +2,6 @@ import { Component, OnInit, AfterViewChecked, ElementRef, ViewChild } from '@ang
 import { ChatService } from '../service/chat.service';
 import { IMessage } from '../interface/interface.IMessage';
 import * as firebase from 'firebase/app';
-import { MESSAGES_CONTAINER_ID } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-chat',
@@ -16,39 +15,52 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   messages: IMessage[] = [];
   message: IMessage;
   messagesLength = 0;
+  isbanned = false;
 
   constructor(private chatService: ChatService) { }
 
   sendMessage() {
     const user = JSON.parse(localStorage.getItem('user'));
-    const timestamp = Date.now();
-    this.message.time = timestamp;
-    const randomId = '_' + Math.random().toString(36).substr(2, 9);
-    this.message.id = randomId;
-    if (this.message.text !== '') {
-      this.chatService.sendMessage(this.message);
-    }
-    if (user.photoURL) {
-      this.message = {
-        id: null,
-        time: null,
-        text: '',
-        name: user.displayName,
-        photoUrl: user.photoURL,
-      };
+    if (!this.isbanned) {
+      const timestamp = Date.now();
+      this.message.time = timestamp;
+      const randomId = '_' + Math.random().toString(36).substr(2, 9);
+      this.message.id = randomId;
+      if (this.message.text !== '') {
+        this.chatService.sendMessage(this.message);
+      }
+      if (user.photoURL) {
+        this.message = {
+          id: null,
+          time: null,
+          text: '',
+          name: user.displayName,
+          photoUrl: user.photoURL,
+          uid: user.uid,
+        };
+      } else {
+        this.message = {
+          id: null,
+          time: null,
+          text: '',
+          name: user.displayName,
+          photoUrl: '../../assets/piesel.jpg',
+          uid: user.uid,
+        };
+      }
     } else {
-      this.message = {
-        id: null,
-        time: null,
-        text: '',
-        name: user.displayName,
-        photoUrl: '../../assets/piesel.jpg',
-      };
+      return;
     }
   }
 
   ngOnInit() {
     const user = JSON.parse(localStorage.getItem('user'));
+    console.log('a');
+    this.chatService.getuser(user.uid).subscribe(res => {
+      console.log(res);
+      this.isbanned = res.user[user.uid].is_banned;
+      console.log(this.isbanned);
+    });
 
     if (user.photoURL) {
       this.message = {
@@ -57,6 +69,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         text: '',
         name: user.displayName,
         photoUrl: user.photoURL,
+        uid: user.uid,
       };
     } else {
       this.message = {
@@ -65,8 +78,12 @@ export class ChatComponent implements OnInit, AfterViewChecked {
         text: '',
         name: user.displayName,
         photoUrl: '../../assets/piesel.jpg',
+        uid: user.uid,
       };
     }
+
+    // if(false) { return; }
+
     this.chatService
       .getMessages()
       .subscribe((message: IMessage) => {
@@ -74,15 +91,34 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       });
 
     this.chatService
-    .getDeletedMessgaes()
-    .subscribe((message: IMessage) => {
-      const a = this.messages.findIndex(function(element) {
-        return element.id === message.id;
+      .getDeletedMessgaes()
+      .subscribe((message: IMessage) => {
+        const a = this.messages.findIndex(function (element) {
+          return element.id === message.id;
+        });
+        this.messages[a].text = message.text;
+        this.messages[a].name = message.name;
+        this.messages[a].photoUrl = message.photoUrl;
       });
-      this.messages[a].text = message.text;
-      this.messages[a].name = message.name;
-      this.messages[a].photoUrl = message.photoUrl;
-    });
+
+    this.chatService
+      .getBanMessage()
+      .subscribe((uid: string) => {
+        const tabMessageBanned = [];
+        this.chatService.getuser(user.uid).subscribe(res => {
+          this.isbanned = res.user[user.uid].is_banned;
+        });
+        for (let i = 0; i < this.messages.length; i++) {
+          if (this.messages[i].uid === uid) {
+            tabMessageBanned.push(i);
+          }
+        }
+        for (let j = 0; j < tabMessageBanned.length; j++) {
+          this.messages[tabMessageBanned[j]].text = 'Wiadomość usunięta';
+          this.messages[tabMessageBanned[j]].name = 'banned';
+          this.messages[tabMessageBanned[j]].photoUrl = '"../../assets/avatar-default-icon.png';
+        }
+      });
   }
 
   ngAfterViewChecked() {
@@ -104,5 +140,27 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.messages[a].name = '??????????';
     this.messages[a].photoUrl = '"../../assets/avatar-default-icon.png';
     this.chatService.deleteMessage(this.messages[a]);
+  }
+
+  banUser(uid) {
+    console.log('a');
+    const tabMessageBanned = [];
+    for (let i = 0; i < this.messages.length; i++) {
+      if (this.messages[i].uid === uid) {
+        tabMessageBanned.push(i);
+      }
+    }
+    console.log(tabMessageBanned);
+    for (let j = 0; j < tabMessageBanned.length; j++) {
+      this.messages[tabMessageBanned[j]].text = 'Wiadomość usunięta';
+      this.messages[tabMessageBanned[j]].name = 'banned';
+      this.messages[tabMessageBanned[j]].photoUrl = '"../../assets/avatar-default-icon.png';
+    }
+    console.log(this.messages);
+    this.chatService.banuser(uid).subscribe(res => {
+    }, (err) => {
+      console.log(err);
+    });
+    this.chatService.banMessage(uid);
   }
 }
