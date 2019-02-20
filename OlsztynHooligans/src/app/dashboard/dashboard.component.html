@@ -25,34 +25,19 @@
         </div>
       </div>
 
-      <div class="line">
-        <div class="tab element-sm">
-          Dokument1
-        </div>
-        <div class="tab element-sm">
-          21/12/2018
-        </div>
-        <div class="tab element-xs">
-          <app-buttonlist [type]="'text'" [classname]="'btn btn--edit'">Edit</app-buttonlist>
-        </div>
-        <div class="tab element-xs">
-          <app-buttonlist [type]="'text'" [classname]="'btn btn--delete'">Delete</app-buttonlist>
-        </div>
-      </div>
-
-      <div class="line">
-        <div class="tab element-sm">
-          Dokument2
-        </div>
-        <div class="tab element-sm">
-          20/12/2018
-        </div>
-        <div class="tab element-xs">
-          <app-buttonlist [type]="'text'" [classname]="'btn btn--edit'">Edit</app-buttonlist>
-        </div>
-        <div class="tab element-xs">
-          <app-buttonlist [type]="'text'" [classname]="'btn btn--delete'">Delete</app-buttonlist>
-        </div>
+      <div class="line" *ngFor="let document of documents | keyvalue">
+              <div class="tab element-sm">
+                  {{document.value.title}}
+                </div>
+                <div class="tab element-sm">
+                  06/06/2006
+                </div>
+                <div class="tab element-xs">
+                  <app-buttonlist [type]="'text'" [classname]="'btn btn--edit'">Edit</app-buttonlist>
+                </div>
+                <div class="tab element-xs">
+                  <app-buttonlist (click)="deleteDocument(document)" [type]="'text'" [classname]="'btn btn--delete'">Delete</app-buttonlist>
+                </div>   
       </div>
     </div>
   </div>

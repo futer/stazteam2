@@ -39,6 +39,7 @@ import { DocumentAddComponent } from './document-add/document-add.component';
 import { DocumentEditComponent } from './document-edit/document-edit.component';
 import { DocumentDeleteComponent } from './document-delete/document-delete.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { DocumentService } from './service/document.service';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     MatIconModule
   ],
   entryComponents: [BookmarksComponent, BookmarksAddComponent, BookmarksEditComponent, BookmarksDeleteComponent],
-  providers: [AuthorizationDataService, ChatService, AuthGuard],
+  providers: [AuthorizationDataService, ChatService, AuthGuard, DocumentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
