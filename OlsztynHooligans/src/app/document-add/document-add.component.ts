@@ -56,7 +56,7 @@ export class DocumentAddComponent implements OnInit {
       return;
     }
     console.log(this.documentForm);
-    this.dataService.postdocument(this.documentForm.value).subscribe(res => {
+    this.dataService.postDocument(this.documentForm.value).subscribe(res => {
       this.router.navigate(['/dashboard']);
     }, (err) => {
       console.log(err);

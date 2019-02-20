@@ -1,3 +1,13 @@
-<p>
-  document-delete works!
-</p>
+<form #documentForm="ngForm" (ngSubmit)="onSubmit(documentForm)">
+    <p>Do you want delete this document?</p>
+    <button
+      class="mat-button addbutton"
+      (click)="onNoClick()">
+          Cancel
+    </button>
+    <button
+      class="mat-button addbutton"
+      [type]="'submit'" >
+          Delete
+    </button>
+  </form>

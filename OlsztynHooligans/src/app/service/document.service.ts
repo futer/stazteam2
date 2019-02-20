@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IDocument } from '../interface/interface.IDocument';
+import { IDocument} from '../interface/interface.IDocument';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -14,7 +14,7 @@ export class DocumentService {
 
   documentkey: string;
 
-  postdocument(data: IDocument): Observable<any> {
+  postDocument(data: IDocument): Observable<any> {
     return this.http.post<IDocument>(apiUrl + '/documents', data).pipe();
   }
 
@@ -22,11 +22,11 @@ export class DocumentService {
     return this.http.put<IDocument>(apiUrl + '/documents', data).pipe();
   }
 
-  deletedocument(data: IDocument): Observable<any> {
-    const url = `${apiUrl}/documents/${data.key}`;
+  deletedocument(id: IDocument): Observable<any> {
+    const url = `${apiUrl}/documents/${id}`;
     return this.http.delete<IDocument>(url).pipe();
   }
-  getdocuments(): Observable<IDocument[]> {
+  getDocuments(): Observable<IDocument[]> {
     return this.http.get<IDocument[]>(apiUrl + '/documents').pipe();
   }
 }
