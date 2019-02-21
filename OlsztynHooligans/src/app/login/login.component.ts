@@ -105,7 +105,7 @@ export class LoginComponent implements OnInit {
     this.badlogindata = false;
 
     this.userForm = this.formBuilder.group({
-      'email': [this.userModel.email, [Validators.required, Validators.email,]],
+      'email': [this.userModel.email, [Validators.required, Validators.email]],
       'password': [this.userModel.password, [Validators.required]],
     });
     if (this.userForm.invalid) {

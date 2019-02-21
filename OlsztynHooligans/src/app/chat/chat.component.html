@@ -17,6 +17,9 @@
                 <button (click)="deleteMessage(message)" mat-button>
                     <mat-icon class="button">delete</mat-icon>
                 </button>
+                <button (click)="banUser(message.uid)" mat-button>
+                    <mat-icon class="button">not_interested</mat-icon>
+                </button>
             </div>
         </div>
     </div>
@@ -24,6 +27,6 @@
         <!-- <app-input [type]="'text'" [required]="'required'" [classname]="'input input--chat'"></app-input>
         <app-buttonchat [type]="'submit'" [classname]="'btn '">Send</app-buttonchat> -->
         <input [(ngModel)]="message.text" />
-        <button (click)="sendMessage()">Send</button>
+        <button (click)="sendMessage()" [disabled]="isbanned">Send</button>
     </div>
 </div>
